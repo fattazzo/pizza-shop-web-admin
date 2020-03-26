@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+.dark-theme {
+  background-color: #3f3f3f;
+  color: #dedede;
+  > h3 {
+    color: #dedede;
+  }
+  > h4 {
+    color: #dedede;
+  }
+}
