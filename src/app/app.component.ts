@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DomHandler } from './dom-handler';
+import { Theme } from './services/theme/theme';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +10,12 @@ import { DomHandler } from './dom-handler';
 export class AppComponent {
   title = 'pizzaroad-web-app';
 
-  theme = 'rhea';
+  theme = Theme;
 
-  changeTheme(event, theme: string, dark: boolean) {
-    let themeElement = document.getElementById('theme-css');
-    themeElement.setAttribute('href', themeElement.getAttribute('href').replace(this.theme, theme));
-    let themeColorElement = document.getElementById('theme-color-css');
-    themeColorElement.setAttribute('href', themeColorElement.getAttribute('href').replace(this.theme, theme));
-    this.theme = theme;
-    const hasBodyDarkTheme = DomHandler.hasClass(document.body, 'dark-theme');
+  constructor(private themeService: ThemeService) { }
 
-    if (dark) {
-      if (!hasBodyDarkTheme) {
-        DomHandler.addClass(document.body, 'dark-theme');
-      }
-    }
-    else if (hasBodyDarkTheme) {
-      DomHandler.removeClass(document.body, 'dark-theme');
-    }
-
+  changeTheme(event, theme: Theme) {
+    this.themeService.changeTheme(theme);
     event.preventDefault();
 
   }

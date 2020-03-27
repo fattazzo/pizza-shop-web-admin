@@ -16,6 +16,15 @@
         "--user-data-dir='/tmp'",
         "--remote-debugging-port=9222"
       ]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Chome",
+      "runtimeExecutable": "/usr/bin/chromium",
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": ["--remote-debugging-port=9222"]
     }
   ]
 }

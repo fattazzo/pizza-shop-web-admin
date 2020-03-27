@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+  background-color: #dedede;
+  color: #3f3f3f;
+}
+
+.success-color {
+  color: #34a835;
+}
