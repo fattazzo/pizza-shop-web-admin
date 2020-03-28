@@ -11,7 +11,7 @@ import { ThemeService } from '../services/theme/theme.service';
 })
 export class TopBarComponent implements OnInit {
 
-  itemsAnagrafiche: MenuItem[];
+  itemsData: MenuItem[];
   itemsSettings: MenuItem[];
 
   constructor(
@@ -19,17 +19,21 @@ export class TopBarComponent implements OnInit {
     private themeService: ThemeService) { }
 
   ngOnInit(): void {
-    this.buildMenuItems();
+    this.buildDataItems();
     this.buildSettingsItems();
 
     this.translate.onLangChange.subscribe((_event: LangChangeEvent) => {
-      this.buildMenuItems();
+      this.buildDataItems();
       this.buildSettingsItems();
     });
   }
 
-  private buildMenuItems() {
-    this.itemsAnagrafiche = [
+  private buildDataItems() {
+    this.itemsData = [
+      {
+        label: this.translate.instant('company'),
+        icon: 'pi pi-table'
+      }
     ]
   }
 

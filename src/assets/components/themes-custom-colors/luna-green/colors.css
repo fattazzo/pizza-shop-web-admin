@@ -1,15 +1,13 @@
 @charset "UTF-8";
 
-body {
-  background-color: #3f3f3f;
-  color: #dedede;
-}
+:root {
+  --background-color: #3f3f3f;
 
-.text-color {
-  color: #dedede;
-}
+  --text-color: #dedede;
+  --text-color-alt: #333333;
 
-.success-color,
-.toolbar-text-color {
-  color: #34a835;
+  --primary-color: #1ea04c;
+  --success-color: #34a835;
+
+  --toolbar-text-color: var(--primary-color);
 }

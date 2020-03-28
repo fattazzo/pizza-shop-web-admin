@@ -1,15 +1,13 @@
-<div class='ui-toolbar p-grid p-align-center main-toolbar'>
-  <div class='p-col-6'>
-    <h1 class='title'>Pizzaroad</h1>
-  </div>
+<div class='ui-toolbar p-align-center main-toolbar'>
+  <h1 class='title'>Pizzaroad</h1>
 
-  <div class='p-col-6'>
-
+  <div>
     <ul class='topbar-menu'>
+      <li (click)='menuData.toggle($event)'><a translate>data</a></li>
       <li (click)='menuOptions.toggle($event)'><a translate>settings</a></li>
     </ul>
-    <p-slideMenu #menuAnagrafiche [style]="{' width':'250px'}" [model]='itemsAnagrafiche' [popup]='true'
-      [menuWidth]='250' [viewportHeight]='380'></p-slideMenu>
+    <p-slideMenu #menuData [model]='itemsData' [popup]='true' backLabel="{{'back' | translate}}"></p-slideMenu>
     <p-slideMenu #menuOptions [model]='itemsSettings' [popup]='true' backLabel="{{'back' | translate}}">
     </p-slideMenu>
   </div>
+</div>

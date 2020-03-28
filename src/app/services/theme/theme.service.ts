@@ -9,7 +9,8 @@ export class ThemeService {
   private static THEME_STORAGE_KEY = 'current-theme';
 
   init() {
-    this.changeTheme(this.loadSavedTheme() || Theme.LUNA_GREEN);
+    let savedTheme = this.loadSavedTheme();
+    this.changeTheme(savedTheme ? savedTheme : Theme.LUNA_GREEN);
   }
 
   /**
@@ -25,12 +26,10 @@ export class ThemeService {
     themeElement.setAttribute('href', themeElement.getAttribute('href').replace(themeToReplace, theme));
 
     // Custom theme colors
-    /*
     let themeColorElement = document.getElementById('theme-color-css');
     href = themeColorElement.getAttribute('href');
     let themeColorsToReplace = href.substring(href.indexOf('themes-custom-colors') + 21, href.length - 11);
     themeColorElement.setAttribute('href', themeColorElement.getAttribute('href').replace(themeColorsToReplace, theme));
-    */
 
     localStorage.setItem(ThemeService.THEME_STORAGE_KEY, theme);
   }
@@ -46,7 +45,7 @@ export class ThemeService {
     let index = href.indexOf('themes');
     let themeString = href.substring(index + 7, href.length - 10);
 
-    return Theme[themeString] || Theme.RHEA;
+    return Theme.getByValue(themeString) || Theme.LUNA_GREEN;
   }
 
   /**
@@ -58,7 +57,7 @@ export class ThemeService {
     let themeString = localStorage.getItem(ThemeService.THEME_STORAGE_KEY);
 
     if (themeString != null) {
-      return Theme[themeString];
+      return Theme.getByValue(themeString);
     }
     return null;
   }
