@@ -4,23 +4,27 @@ import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ButtonModule } from 'primeng/button';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { AppComponent } from './app.component';
 import { SideBarService } from './services/sidebar/sidebar.service';
 import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return createMultiTranslateLoader(http);
 }
 
 export function appInitializerFactory(
   translate: TranslateService,
-  injector: Injector
+  injector: Injector,
+  themeService: ThemeService
 ) {
+  themeService.init();
+
   return async () => {
     await injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
 
@@ -50,6 +54,7 @@ export function appInitializerFactory(
       }
     }),
     RouterModule.forRoot([]),
+    FontAwesomeModule,
     ButtonModule,
     SlideMenuModule,
   ],
@@ -58,18 +63,22 @@ export function appInitializerFactory(
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFactory,
-      deps: [TranslateService, Injector],
+      deps: [TranslateService, Injector, ThemeService],
       multi: true
     },
     SideBarService,
-    ThemeService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (ts: ThemeService) => () => ts.init(),
-      deps: [ThemeService],
-      multi: true
-    }
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private library: FaIconLibrary) {
+    // regular
+    this.library.addIcons();
+    // solid
+    this.library.addIcons();
+    // brand
+    this.library.addIcons();
+  }
+}

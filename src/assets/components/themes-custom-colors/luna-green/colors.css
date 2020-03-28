@@ -5,6 +5,11 @@ body {
   color: #dedede;
 }
 
-.success-color {
+.text-color {
+  color: #dedede;
+}
+
+.success-color,
+.toolbar-text-color {
   color: #34a835;
 }

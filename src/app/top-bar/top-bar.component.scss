@@ -79,7 +79,16 @@
   background-color: #4a4f52;
 }
 
-.contentRowCentrali {
-  display: flex;
-  justify-content: space-between;
+:host {
+  ::ng-deep .ui-slidemenu {
+    width: 250px;
+  }
+
+  ::ng-deep .ui-slidemenu-wrapper {
+    width: 100%;
+  }
+
+  ::ng-deep p-slidemenusub > ul {
+    width: 100% !important;
+  }
 }
