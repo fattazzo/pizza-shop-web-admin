@@ -1,13 +1,28 @@
 <div class='ui-toolbar p-align-center main-toolbar'>
-  <h1 class='title'>Pizzaroad</h1>
+  <h1 class='title'>{{appTitle}}</h1>
 
   <div>
     <ul class='topbar-menu'>
-      <li (click)='menuData.toggle($event)'><a translate>data</a></li>
+      <li *ngIf="(authService.currentUserValue | async)" (click)='menuData.toggle($event)'><a translate>data</a>
+      </li>
       <li (click)='menuOptions.toggle($event)'><a translate>settings</a></li>
     </ul>
-    <p-slideMenu #menuData [model]='itemsData' [popup]='true' backLabel="{{'back' | translate}}"></p-slideMenu>
+    <p-menu #menuData [model]='itemsData' [popup]='true'></p-menu>
     <p-slideMenu #menuOptions [model]='itemsSettings' [popup]='true' backLabel="{{'back' | translate}}">
     </p-slideMenu>
+  </div>
+</div>
+
+<div class='ui-toolbar p-align-center main-toolbar'>
+  <div class="branch-container">
+    <p-dropdown *ngIf="(session.getBranch() | async)" [options]=" branchesItems" [ngModel]="session.getBranch() |async">
+    </p-dropdown>
+  </div>
+  <div *ngIf="(authService.currentUserValue | async) as user" class="user-container">
+    <a (click)='menuUser.toggle($event)' class="user-item-menu">
+      {{user.user.username}}
+      <fa-icon [icon]="['fas', 'user']" class="user-icon" size="1x"></fa-icon>
+    </a>
+    <p-slideMenu #menuUser [model]='itemsUser' [popup]='true'></p-slideMenu>
   </div>
 </div>

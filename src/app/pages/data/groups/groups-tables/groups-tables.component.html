@@ -1,0 +1,23 @@
+<p-table #groupsTable [value]="groups" [responsive]="true" selectionMode="single" [(selection)]="groupSelected"
+  dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+  <ng-template pTemplate="caption">
+    <div class="p-grid">
+      <div class="p-col table-title">
+        <h2 style="margin: 0;" translate [translateParams]="{ count: 2 }">group</h2>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th pSortableColumn="name" translate>
+        name
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-group>
+    <tr [pSelectableRow]="group">
+      <td>{{ group.name}}</td>
+    </tr>
+  </ng-template>
+</p-table>

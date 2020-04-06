@@ -32,6 +32,9 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
 export function createMultiTranslateLoader(http: HttpClient) {
   return new MultiTranslateHttpLoader(http, [
     { prefix: './assets/i18n/base/', suffix: '.json' },
-    { prefix: './assets/i18n/company/', suffix: '.json' }
+    { prefix: './assets/i18n/models/', suffix: '.json' },
+    { prefix: './assets/i18n/auth/', suffix: '.json' },
+    { prefix: './assets/i18n/errors/', suffix: '.json' },
+    { prefix: './assets/i18n/enums/', suffix: '.json' }
   ]);
 }

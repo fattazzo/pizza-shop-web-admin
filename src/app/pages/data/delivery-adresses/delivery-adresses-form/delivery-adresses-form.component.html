@@ -1,0 +1,45 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()" class="ui-fluid">
+  <!-- streetAddress -->
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 form-label" translate>streetAddress</div>
+    <div class="p-sm-6 p-col-12">
+      <input required pInputText name="streetAddress" type="text" [(ngModel)]="address.address.streetAddress"
+        placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}" />
+    </div>
+  </div>
+  <!-- number -->
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 form-label" translate [translateParams]="{count: 1}">number</div>
+    <div class="p-sm-6 p-col-12">
+      <input required pInputText name="number" type="text" [(ngModel)]="address.address.number"
+        placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+    </div>
+  </div>
+  <!-- postalCode -->
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 form-label" translate [translateParams]="{count: 1}">postalCode</div>
+    <div class="p-sm-6 p-col-12">
+      <input pInputText name="postalCode" type="text" [(ngModel)]="address.address.postalCode" />
+    </div>
+  </div>
+  <!-- Place -->
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 form-label" translate>place</div>
+    <div class="p-sm-6 p-col-12">
+      <input pInputText name="place" type="text" [(ngModel)]="address.address.place" />
+    </div>
+  </div>
+  <!-- Shipping method -->
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 form-label" translate [translateParams]="{count: 1}">shippingMethod</div>
+    <div class="p-sm-6 p-col-12">
+      <p-dropdown [options]="shippingMethods" [(ngModel)]="address.shippingMethod" name="shippingMethod"></p-dropdown>
+    </div>
+  </div>
+  <div class="p-grid">
+    <div class="p-sm-6 p-col-12 p-sm-offset-6 p-offset-0">
+      <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+        [disabled]="!form.valid"></button>
+    </div>
+  </div>
+</form>

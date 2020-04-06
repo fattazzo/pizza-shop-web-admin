@@ -1,0 +1,36 @@
+[
+  {
+    "id": 3,
+    "phone": "some text",
+    "webUrl": "some text",
+    "shippingMethods": [
+      {
+        "id": 45,
+        "title": "some text",
+        "description": "some text"
+      },
+      {
+        "id": 26,
+        "title": "some text",
+        "description": "some text"
+      }
+    ],
+    "shippingZones": [
+      {
+        "id": 34,
+        "name": "some text"
+      },
+      {
+        "id": 27,
+        "name": "some text"
+      }
+    ],
+    "primary": true,
+    "address": {
+      "streetAddress": "via Rossi",
+      "number": "10/A",
+      "place": "Milano",
+      "postalCode": "11111"
+    }
+  }
+]

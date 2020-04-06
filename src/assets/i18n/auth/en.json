@@ -1,0 +1,17 @@
+{
+  "login_account": "Login into your account",
+
+  "signin": "Sign in",
+  "signin_with_google": "Sign in with Google",
+  "signin_with_facebook": "Sign in with Facebook",
+
+  "signup": "Sign up",
+  "signup_new_account": "Don'have an account? Sing up!",
+
+  "remember_me": "Remember me",
+  "forgot_password": "Forgot password?",
+
+  "logout": "Logout",
+
+  "security": "Security"
+}

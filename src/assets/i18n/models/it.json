@@ -1,0 +1,17 @@
+{
+  "company": "Aziend{count, plural, =0{} one{a} other{e}}",
+  "user": "Utent{count, plural, =0{} one{e} other{i}}",
+  "group": "Grupp{count, plural, =0{} one{o} other{i}}",
+
+  "name": "Nome",
+  "role": "Permess{count, plural, =0{} one{o} other{i}}",
+  "email": "Email",
+  "firstName": "Nome",
+  "lastName": "Cognome",
+  "deliveryAddress": "Indirizz{count, plural, =0{o} one{o} other{i}} di consegna",
+  "streetAddress": "Via",
+  "number": "Numer{count, plural, =0{} one{o} other{i}}",
+  "postalCode": "Codic{count, plural, =0{} one{e} other{i}} postal{count, plural, =0{} one{e} other{i}}",
+  "place": "Città",
+  "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione"
+}

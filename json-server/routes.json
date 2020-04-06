@@ -1,0 +1,13 @@
+{
+  "/companies/:id/users": "/users_c:id",
+  "/companies/:id/users/:iduser": "/users_details_c:id/:iduser",
+
+  "/companies/:id/groups": "/groups_c:id",
+  "/companies/:id/groups/:idgroup": "/groups_c:id/:idgroup",
+
+  "/companies/:id/branches": "/branches_c:id",
+  "/companies/:id/branches/:idbranch": "/branches_details_c:id/:idbranch",
+
+  "/companies/:id/shippingmethods": "/shippingmethods_c:id",
+  "/companies/:id/shippingmethods/:idship": "/shippingmethods_c:id/:idship"
+}

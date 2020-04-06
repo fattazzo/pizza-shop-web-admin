@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "phone": "some text",
+    "webUrl": "some text",
+    "shippingMethods": [
+      {
+        "id": 17,
+        "title": "some text",
+        "description": "some text"
+      },
+      {
+        "id": 89,
+        "title": "some text",
+        "description": "some text"
+      }
+    ],
+    "shippingZones": [
+      {
+        "id": 29,
+        "name": "some text"
+      },
+      {
+        "id": 75,
+        "name": "some text"
+      }
+    ],
+    "primary": true,
+    "address": {
+      "streetAddress": "via test",
+      "number": "1",
+      "place": "Trento",
+      "postalCode": "38121"
+    }
+  },
+  {
+    "id": 2,
+    "phone": "some text",
+    "webUrl": "some text",
+    "shippingMethods": [
+      {
+        "id": 45,
+        "title": "some text",
+        "description": "some text"
+      },
+      {
+        "id": 26,
+        "title": "some text",
+        "description": "some text"
+      }
+    ],
+    "shippingZones": [
+      {
+        "id": 34,
+        "name": "some text"
+      },
+      {
+        "id": 27,
+        "name": "some text"
+      }
+    ],
+    "primary": true,
+    "address": {
+      "streetAddress": "via prova",
+      "number": "1",
+      "place": "Baselga di Pinè",
+      "postalCode": "38042"
+    }
+  }
+]

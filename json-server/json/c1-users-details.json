@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "username": "fattazzo",
+    "password": "**********",
+    "email": "fattazzoXXXXX@gmail.com",
+    "firstName": "Gianluca",
+    "lastName": "Fattarsi",
+    "deliveryAddresses": [
+      {
+        "id": 17,
+        "address": {
+          "streetAddress": "via Di Bugno",
+          "number": "12",
+          "place": "Baselga di Pinè",
+          "postalCode": "38042"
+        },
+        "shippingMethod": {
+          "id": 1,
+          "title": "Cash on delivery",
+          "description": "Paying for goods when they are delivered.",
+          "type": "CASH_ON_DELIVERY"
+        }
+      },
+      {
+        "id": 92,
+        "address": {
+          "streetAddress": "via Galilei",
+          "number": "4/A",
+          "place": "Milano",
+          "postalCode": "11111"
+        },
+        "shippingMethod": {
+          "id": 3,
+          "title": "PayPal",
+          "description": "PayPal transaction",
+          "type": "PAY_PAL"
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": 1,
+        "name": "Admin",
+        "roles": ["SECURITY_VIEW", "SECURITY_EDIT", "WEB_ADMIN"]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "username": "user",
+    "password": "**********",
+    "email": "user@email.com",
+    "firstName": "User",
+    "lastName": "User",
+    "deliveryAddresses": [
+      {
+        "id": 92,
+        "address": {
+          "streetAddress": "via Galilei",
+          "number": "4/A",
+          "place": "Milano",
+          "postalCode": "11111"
+        },
+        "shippingMethod": {
+          "id": 1,
+          "title": "Cash on delivery",
+          "description": "Paying for goods when they are delivered.",
+          "type": "CASH_ON_DELIVERY"
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": 1,
+        "name": "Admin",
+        "roles": ["SECURITY_VIEW", "WEB_ADMIN"]
+      }
+    ]
+  }
+]

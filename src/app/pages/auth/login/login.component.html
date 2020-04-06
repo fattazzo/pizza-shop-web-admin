@@ -1,0 +1,59 @@
+<p-toast [style]="{marginTop: '80px'}" position="top-center" key="login-toast"></p-toast>
+<div class="p-grid">
+  <p-card class="p-lg-8 p-xl-6 p-col-10 p-lg-offset-2 p-xl-offset-3 p-offset-1 login-card">
+    <div class="p-grid">
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-5 p-xl-5">
+        <h3 class="p-col-12 title" translate>login_account</h3>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+          <div class="ui-inputgroup p-col-12 ui-fluid">
+            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+            <input required pInputText type="text" placeholder="{{'username' | translate}}" name="username"
+              [(ngModel)]="userLogin.username">
+          </div>
+          <div class="ui-inputgroup p-col-12 ui-fluid">
+            <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
+            <input required pInputText #password_field type="password" placeholder="{{'password' | translate}}"
+              name="password" [(ngModel)]="userLogin.password">
+            <button pButton type="button" [icon]="(password_field.type=='password')?' pi pi-eye':' pi pi-eye-slash'"
+              class="ui-button-warn"
+              (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
+          </div>
+          <div class="p-col-12 ui-fluid">
+            <p-dropdown required [options]="companies" name="company" [(ngModel)]="userLogin.companyId"
+              placeholder="{{'company' | translate:&quot;{ count: 1 }&quot;}}"></p-dropdown>
+          </div>
+          <div class="p-col-12 ui-fluid">
+            <button pButton label="{{'signin' | translate}}" type="submit" icon="pi pi-" class="ui-button"
+              [disabled]="!form.valid"></button>
+          </div>
+        </form>
+      </div>
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-2 p-xl-2 ui-fluid"
+        style="display: flex;justify-content: center;align-items: center;">
+        <label translate>or</label>
+      </div>
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-5 p-xl-5">
+        <h3 class="p-col-12 title">&nbsp;</h3>
+        <div class="p-col-12 ui-fluid">
+          <button pButton label="{{'signin_with_google' | translate}}" type="button" icon="pi pi-"
+            class="ui-button google" disabled="true"></button>
+        </div>
+        <div class="p-col-12 ui-fluid">
+          <button pButton label="{{'signin_with_facebook' | translate}}" type="button" icon="pi pi-"
+            class="ui-button facebook" disabled="true"></button>
+        </div>
+      </div>
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-6 p-xl-6">
+        <div class="p-col-6">
+          <p-checkbox binary="true" label="{{'remember_me' | translate}}" disabled="true"></p-checkbox>
+        </div>
+      </div>
+      <div class="p-col-12 p-sm-6 p-md-12 p-lg-6 p-xl-6">
+        <div class="p-grid">
+          <a class="p-col-12" style="text-align: end;" translate>forgot_password</a>
+          <a class="p-col-12" style="text-align: end;" translate>signup_new_account</a>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>

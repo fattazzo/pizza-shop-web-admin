@@ -1,0 +1,7 @@
+{
+  "error": "Errore",
+  "errorSummary": "Attenzione",
+  "loginErrorDetail": "Errore imprevisto durante il login",
+
+  "notAuthorizedToView": "Non sei autorizzato a vedere questa pagina"
+}

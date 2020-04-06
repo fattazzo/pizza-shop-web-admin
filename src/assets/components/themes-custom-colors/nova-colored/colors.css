@@ -10,4 +10,7 @@
   --success-color: #34a835;
 
   --toolbar-text-color: var(--text-color-alt);
+  --toolbar-background-color: #007ad9;
+
+  --item-hover-background-color: #0062ad;
 }

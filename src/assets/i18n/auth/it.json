@@ -1,0 +1,17 @@
+{
+  "login_account": "Accedi al tuo account",
+
+  "signin": "Accedi",
+  "signin_with_google": "Accedi con Google",
+  "signin_with_facebook": "Accedi con Facebook",
+
+  "signup": "Iscriviti",
+  "signup_new_account": "Non hai ancora un account? Iscriviti",
+
+  "remember_me": "Ricordami",
+  "forgot_password": "Password dimenticata?",
+
+  "logout": "Esci",
+
+  "security": "Sicurezza"
+}

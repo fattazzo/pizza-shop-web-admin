@@ -1,0 +1,11 @@
+{
+  "Role": {
+    "WEB_ADMIN": "Accesso web admin",
+    "SECURITY_EDIT": "Modifica anag. sicurezza",
+    "SECURITY_VIEW": "Visualizzazione anag. sicurezza"
+  },
+  "ShippingMethodType": {
+    "PAY_PAL": "PayPal",
+    "CASH_ON_DELIVERY": "Pagamento alla consegna"
+  }
+}

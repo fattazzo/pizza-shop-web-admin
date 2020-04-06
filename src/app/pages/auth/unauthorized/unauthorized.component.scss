@@ -1,0 +1,26 @@
+.login-card {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+}
+
+.google {
+  background-color: #db3236;
+  border: 1px solid #db3236;
+  color: white;
+}
+
+.facebook {
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  color: white;
+}

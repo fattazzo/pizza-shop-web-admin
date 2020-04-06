@@ -1,0 +1,80 @@
+<form #form="ngForm">
+  <p-panel header="{{user.username || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <!-- username -->
+      <div class="p-grid">
+        <div class="p-col-6 form-label" translate>username</div>
+        <div class="p-col-6">
+          <input required pInputText name="username" type="text" [(ngModel)]="user.username"
+            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}"
+            [disabled]="!hasEditRole() || user.id" />
+        </div>
+      </div>
+      <!-- password -->
+      <div class="p-grid">
+        <div class="p-col-6 form-label" translate>password</div>
+        <div class="p-col-6 ui-inputgroup">
+          <input required #password_field pInputText name="password" type="password" [(ngModel)]="user.password"
+            placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}"
+            [disabled]="!hasEditRole() || authService.currentUserValue.value.user.id !== user.id" />
+          <button pButton type="button" [icon]="(password_field.type=='password')?' pi pi-eye':' pi pi-eye-slash'"
+            class="ui-button-warn" *ngIf="authService.currentUserValue.value.user.id === user.id"
+            (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
+        </div>
+      </div>
+      <!-- email -->
+      <div class="p-grid">
+        <div class="p-col-6 form-label" translate>email</div>
+        <div class="p-col-6">
+          <input required pInputText name="email" type="text" [(ngModel)]="user.email"
+            placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}" [disabled]="!hasEditRole()" />
+        </div>
+      </div>
+      <!-- first name -->
+      <div class="p-grid">
+        <div class="p-col-6 form-label" translate>firstName</div>
+        <div class="p-col-6">
+          <input pInputText name="firstName" type="text" [(ngModel)]="user.firstName" [disabled]="!hasEditRole()" />
+        </div>
+      </div>
+      <!-- last name -->
+      <div class="p-grid">
+        <div class="p-col-6 form-label" translate>lastName</div>
+        <div class="p-col-6">
+          <input pInputText name="lastName" type="text" [(ngModel)]="user.lastName" [disabled]="!hasEditRole()" />
+        </div>
+      </div>
+      <!-- groups -->
+      <div class="p-grid">
+        <div class="p-col-12" translate [translateParams]="{ count: 2 }">group</div>
+        <p-pickList class="p-col-12" [source]="groupsAvailable" [target]="user.groups"
+          sourceHeader="{{'available' | translate:&quot;{ count: 2 }&quot;}}"
+          targetHeader="{{'selected' | translate:&quot;{ gender: 'other' }&quot;}}" [responsive]="true"
+          [showSourceControls]="false" [showTargetControls]="false" [disabled]="!hasEditRole()">
+          <ng-template let-group pTemplate="item">
+            {{group.name}}
+          </ng-template>
+        </p-pickList>
+      </div>
+      <!-- deliveryAddresses -->
+      <app-delivery-adresses class="p-col-12" [deliveryAddresses]="user.deliveryAddresses"
+        [shippingMethods]="shippingMethodsAvailable" (addressesChange)="updateAddress($event)"
+        [editable]="hasEditRole()">
+      </app-delivery-adresses>
+    </div>
+    <div class="p-grid" *ngIf="hasEditRole()">
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
+          (click)="onNew()"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"
+          (click)="onSubmit()"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash" [disabled]="user.id == null"
+          (click)="onDelete()" class="ui-button-danger"></button>
+      </div>
+    </div>
+  </p-panel>
+</form>

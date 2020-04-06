@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.0.7",
+    "@angular/cdk": "^9.2.0",
     "@angular/common": "~9.0.5",
     "@angular/compiler": "~9.0.5",
     "@angular/core": "~9.0.5",
@@ -25,6 +26,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
+    "messageformat": "^2.3.0",
+    "ngx-translate-messageformat-compiler": "^4.6.0",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.2",

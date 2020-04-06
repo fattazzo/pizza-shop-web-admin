@@ -5,5 +5,28 @@
   "language": "Lingua",
   "data": "Anagrafiche",
 
-  "back": "Indietro"
+  "back": "Indietro",
+
+  "username": "Username",
+  "password": "Password",
+
+  "or": "o",
+
+  "backToHome": "Ritorna alla home",
+
+  "required": "Richiest{gender, select, male{o} female{a} other{i}}",
+
+  "save": "Salva",
+  "new": "Nuov{gender, select, male{o} female{a} other{i}}",
+  "delete": "Cancella",
+  "edit": "Modifica",
+
+  "available": "Disponibil{count, plural, =0{} one{e} other{i}}",
+  "selected": "Selezionat{gender, select, male{o} female{a} other{i}}",
+
+  "confirmDeleteTitle": "Attenzione",
+  "confirmDeleteResource": "L'elemento selezionato sarà eliminato. Si desidera Continuare?",
+
+  "yes": "Si",
+  "no": "No"
 }

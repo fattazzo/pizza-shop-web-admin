@@ -1,0 +1,49 @@
+<p-panel>
+  <p-header>
+    <div style="display: flex;justify-content: space-between;">
+      <div class="ui-panel-title" style="flex-grow: 2;display: flex;align-items: center;" translate
+        [translateParams]="{ count: 2 }">deliveryAddress</div>
+      <button pButton label="{{'new' | translate:&quot;{ gender: 'male' }&quot;}}" [style]="{'width':'auto'}"
+        icon="pi pi-file-o" (click)="openDetailDialog(null)" *ngIf="editable"></button>
+    </div>
+  </p-header>
+  <div class="p-grid" *ngFor="let da of deliveryAddresses">
+    <div class="p-col-12 p-sm-9" style="display: flex;flex-direction: column;">
+      <!-- Address -->
+      <div>
+        <fa-icon [icon]="['fas', 'map-marked-alt']"></fa-icon>
+        <span #address style="margin-left: 4px;">{{da.address.streetAddress}} {{da.address.number}}
+          {{da.address.postalCode}}
+          {{da.address.place}}</span>
+      </div>
+      <!-- Shipping method -->
+      <div>
+        <fa-icon [icon]="['fas', 'money-check-alt']"></fa-icon>
+        {{da.shippingMethod?.title}}
+      </div>
+    </div>
+    <!-- Buttons -->
+    <div class="p-col-12 p-sm-3" style="display: flex;align-items: center;">
+      <div class="buttons-container">
+        <button pButton type="button" class="fa-button-icon-only" (click)="openDetailDialog(da)" *ngIf="editable">
+          <div class="icon-container">
+            <fa-icon [icon]="['far', 'edit']"></fa-icon>
+          </div>
+        </button>
+        <button pButton type="button" class="fa-button-icon-only ui-button-danger" (click)="removeAddress(da.id)"
+          *ngIf="editable">
+          <div class="icon-container">
+            <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+          </div>
+        </button>
+        <button pButton type="button" class="fa-button-icon-only ui-button-info"
+          (click)="openMapAddress(address.textContent)">
+          <div class="icon-container">
+            <fa-icon [icon]="['fas', 'map-marked-alt']"></fa-icon>
+          </div>
+        </button>
+      </div>
+    </div>
+    <hr class="p-col-12">
+  </div>
+</p-panel>

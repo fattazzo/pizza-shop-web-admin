@@ -1,0 +1,7 @@
+{
+  "error": "Error",
+  "errorSummary": "Error",
+  "loginErrorDetail": "Unexpected error while logging in",
+
+  "notAuthorizedToView": "You are not authorized to view this resource."
+}

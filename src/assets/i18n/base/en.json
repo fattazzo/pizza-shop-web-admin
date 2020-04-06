@@ -5,5 +5,28 @@
   "language": "Language",
   "data": "Data",
 
-  "back": "Back"
+  "back": "Back",
+
+  "username": "username",
+  "password": "password",
+
+  "or": "o",
+
+  "backToHome": "Back to home",
+
+  "required": "Required{gender, select, male{} female{} other{}}",
+
+  "save": "Save",
+  "new": "New{gender, select, male{} female{} other{}}",
+  "delete": "Delete",
+  "edit": "Edit",
+
+  "available": "Available{count, plural, =0{} one{} other{}}",
+  "selected": "Selected{gender, select, male{} female{} other{}}",
+
+  "confirmDeleteTitle": "Deleting resource",
+  "confirmDeleteResource": "The selected element will be deleted. Do you want to continue?",
+
+  "yes": "Yes",
+  "no": "No"
 }

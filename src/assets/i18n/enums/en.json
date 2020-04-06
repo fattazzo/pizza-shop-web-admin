@@ -1,0 +1,11 @@
+{
+  "Role": {
+    "WEB_ADMIN": "Web admin access",
+    "SECURITY_EDIT": "Edit security",
+    "SECURITY_VIEW": "View security"
+  },
+  "ShippingMethodType": {
+    "PAY_PAL": "PayPal",
+    "CASH_ON_DELIVERY": "Cash on delivery"
+  }
+}

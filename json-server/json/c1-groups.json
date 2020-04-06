@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "roles": ["SECURITY_VIEW", "SECURITY_EDIT", "WEB_ADMIN"]
+  },
+  {
+    "id": 51,
+    "name": "Employee",
+    "roles": ["SECURITY_VIEW", "WEB_ADMIN"]
+  }
+]

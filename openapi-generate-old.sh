@@ -7,7 +7,7 @@ rm -rf ..?* .[!.]* *
 wget --quiet --no-check-certificate https://studio.apicur.io/download?type=api&format=json&id=24548 -O api.json
 
 # genero il client
-npx openapi-generator generate -i api.json -g typescript-angular
+npx openapi-generator generate -i ../../../api.json -g typescript-angular
 
 # rimuovo tutto quello che non serve
 rm -f api.json
