@@ -7,9 +7,10 @@ rm -rf ..?* .[!.]* *
 unzip /tmp/typescript-angular-client-generated.zip
 
 # rimuovo tutto quello che non serve
-rm -f api.json
 rm -f README.md
 rm -f git_push.sh
-rm -f .openapi-generator-ignore
+rm -f .swagger-codegen-ignore
 rm -f .gitignore
-rm -rf .openapi-generator
+rm -rf .swagger-codegen
+rm -f .npmignore
+rm -f ng-package.json

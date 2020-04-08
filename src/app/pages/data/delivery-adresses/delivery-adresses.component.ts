@@ -62,6 +62,8 @@ export class DeliveryAdressesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.detailDialogRef.close();
+    if (this.detailDialogRef) {
+      this.detailDialogRef.close();
+    }
   }
 }

@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { roles: [Role.WEBADMIN] } },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITYVIEW] } },
   { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITYVIEW] } },
-  { path: 'shipping-methods', component: ShippingMethodsComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITYVIEW] } },
+  { path: 'shipping-methods', component: ShippingMethodsComponent, canActivate: [AuthGuard], data: { roles: [Role.SHIPPINGMETHODSVIEW] } },
   { path: 'login', component: LoginComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
 ];

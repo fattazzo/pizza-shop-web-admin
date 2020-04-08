@@ -3,6 +3,7 @@
     "id": 1,
     "title": "Cash on delivery",
     "description": "Paying for goods when they are delivered.",
-    "type": "CASH_ON_DELIVERY"
+    "type": "CASH_ON_DELIVERY",
+    "enabled": true
   }
 ]

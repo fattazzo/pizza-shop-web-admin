@@ -44,24 +44,29 @@ export class MenuService {
     }
     */
 
+    // SHIPPING METHODS
+    if (allRoles.indexOf(Role.SHIPPINGMETHODSVIEW) >= 0) {
+      menu.push(
+        {
+          label: this.translate.instant('shippingMethod', { count: 2 }),
+          icon: 'pi pi-table',
+          command: () => this.router.navigate(['shipping-methods'])
+        }
+      )
+    }
+
     // SECURITY
     if (allRoles.indexOf(Role.SECURITYVIEW) >= 0) {
       menu.push(
         {
-          label: this.translate.instant('security'),
+          label: this.translate.instant('user', { count: 2 }),
           icon: 'pi pi-table',
-          items: [
-            {
-              label: this.translate.instant('user', { count: 2 }),
-              icon: 'pi pi-table',
-              command: () => this.router.navigate(['users'])
-            },
-            {
-              label: this.translate.instant('group', { count: 2 }),
-              icon: 'pi pi-table',
-              command: () => this.router.navigate(['groups'])
-            }
-          ]
+          command: () => this.router.navigate(['users'])
+        },
+        {
+          label: this.translate.instant('group', { count: 2 }),
+          icon: 'pi pi-table',
+          command: () => this.router.navigate(['groups'])
         }
       );
     }

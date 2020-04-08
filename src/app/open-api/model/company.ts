@@ -14,4 +14,5 @@ export interface Company {
     id: number;
     name: string;
     webUrl?: string;
+    enabled: boolean;
 }

@@ -26,6 +26,7 @@
       }
     ],
     "primary": true,
+    "enabled": true,
     "address": {
       "streetAddress": "via test",
       "number": "1",
@@ -59,7 +60,8 @@
         "name": "some text"
       }
     ],
-    "primary": true,
+    "primary": false,
+    "enabled": true,
     "address": {
       "streetAddress": "via prova",
       "number": "1",

@@ -4,6 +4,7 @@
     "phone": "some text",
     "webUrl": "some text",
     "primary": true,
+    "enabled": true,
     "address": {
       "streetAddress": "via test",
       "number": "1",
@@ -15,7 +16,8 @@
     "id": 2,
     "phone": "some text",
     "webUrl": "some text",
-    "primary": true,
+    "primary": false,
+    "enabled": true,
     "address": {
       "streetAddress": "via prova",
       "number": "1",

@@ -3,18 +3,21 @@
     "id": 1,
     "title": "Cash on delivery",
     "description": "Paying for goods when they are delivered.",
-    "type": "CASH_ON_DELIVERY"
+    "type": "CASH_ON_DELIVERY",
+    "enabled": true
   },
   {
     "id": 2,
     "title": "Air mail",
     "description": "Fast and Furious!",
-    "type": "CASH_ON_DELIVERY"
+    "type": "CASH_ON_DELIVERY",
+    "enabled": true
   },
   {
     "id": 3,
     "title": "PayPal",
     "description": "PayPal transaction",
-    "type": "PAY_PAL"
+    "type": "PAY_PAL",
+    "enabled": true
   }
 ]

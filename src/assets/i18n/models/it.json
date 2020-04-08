@@ -13,5 +13,7 @@
   "number": "Numer{count, plural, =0{} one{o} other{i}}",
   "postalCode": "Codic{count, plural, =0{} one{e} other{i}} postal{count, plural, =0{} one{e} other{i}}",
   "place": "Città",
-  "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione"
+  "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione",
+  "type": "Tip{count, plural, =0{o} one{o} other{i}}",
+  "description": "Descrizion{count, plural, =0{e} one{e} other{i}}"
 }

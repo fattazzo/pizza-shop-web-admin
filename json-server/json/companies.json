@@ -2,11 +2,13 @@
   {
     "id": 1,
     "name": "Company 1",
-    "webUrl": "wwww.company1.com"
+    "webUrl": "wwww.company1.com",
+    "enabled": true
   },
   {
     "id": 2,
     "name": "Company 2",
-    "webUrl": "www.company2.com"
+    "webUrl": "www.company2.com",
+    "enabled": true
   }
 ]

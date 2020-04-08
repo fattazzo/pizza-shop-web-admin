@@ -1,0 +1,51 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <p-panel header="{{shippingMethod.title || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <!-- title -->
+      <div class="p-grid">
+        <div class="p-col-5 form-label" translate>name</div>
+        <div class="p-col-7">
+          <input required pInputText name="title" type="text" [(ngModel)]="shippingMethod.title"
+            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!hasEditRole()" />
+        </div>
+      </div>
+      <!-- description -->
+      <div class="p-grid">
+        <div class="p-col-5 form-label" translate [translateParams]="{count:1}">description</div>
+        <div class="p-col-7">
+          <input pInputText name="description" type="text" [(ngModel)]="shippingMethod.description"
+            [disabled]="!hasEditRole()" />
+        </div>
+      </div>
+      <!-- type -->
+      <div class="p-grid">
+        <div class="p-col-5 form-label" translate [translateParams]="{count:1}">type</div>
+        <div class="p-col-7">
+          <p-dropdown required [options]="types" [(ngModel)]="shippingMethod.type" name="type"
+            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}"></p-dropdown>
+        </div>
+      </div>
+      <!-- enabled -->
+      <div class="p-grid">
+        <div class="p-col-5 form-label" translate [translateParams]="{gender:'male'}">enabled</div>
+        <div class="p-col-7">
+          <p-checkbox binary="true" [(ngModel)]="shippingMethod.enabled" name="enabled"></p-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="p-grid" *ngIf="hasEditRole()">
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
+          (click)="onNew()"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+          [disabled]="!form.valid"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash"
+          [disabled]="shippingMethod.id == null" (click)="onDelete()" class="ui-button-danger"></button>
+      </div>
+    </div>
+  </p-panel>
+</form>

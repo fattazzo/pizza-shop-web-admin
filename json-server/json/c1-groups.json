@@ -2,7 +2,13 @@
   {
     "id": 1,
     "name": "Admin",
-    "roles": ["SECURITY_VIEW", "SECURITY_EDIT", "WEB_ADMIN"]
+    "roles": [
+      "SECURITY_VIEW",
+      "SECURITY_EDIT",
+      "WEB_ADMIN",
+      "SHIPPING_METHODS_VIEW",
+      "SHIPPING_METHODS_EDIT"
+    ]
   },
   {
     "id": 51,

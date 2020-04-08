@@ -52,6 +52,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
 import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping-methods.component';
+import { ShippingMethodsTableComponent } from './pages/data/shipping-methods/shipping-methods-table/shipping-methods-table.component';
+import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -94,7 +96,9 @@ export function appInitializerFactory(
     UsersFormComponent,
     DeliveryAdressesComponent,
     DeliveryAdressesFormComponent,
-    ShippingMethodsComponent
+    ShippingMethodsComponent,
+    ShippingMethodsTableComponent,
+    ShippingMethodsFormComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,5 @@ export interface Branch {
     webUrl?: string;
     primary: boolean;
     address: Address;
+    enabled: boolean;
 }

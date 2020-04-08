@@ -13,5 +13,7 @@
   "number": "Number{count, plural, =0{} one{} other{s}}",
   "postalCode": "Postal code{count, plural, =0{} one{} other{s}}",
   "place": "Place",
-  "shippingMethod": "Shipping method{count, plural, =0{} one{} other{s}}"
+  "shippingMethod": "Shipping method{count, plural, =0{} one{} other{s}}",
+  "type": "Type{count, plural, =0{} one{} other{s}}",
+  "description": "Description{count, plural, =0{} one{} other{s}}"
 }

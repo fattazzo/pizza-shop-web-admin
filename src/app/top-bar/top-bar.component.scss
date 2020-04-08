@@ -96,6 +96,10 @@
   ::ng-deep p-slidemenusub > ul {
     width: 100% !important;
   }
+
+  ::ng-deep .ui-menu {
+    width: auto;
+  }
 }
 
 .user-container {

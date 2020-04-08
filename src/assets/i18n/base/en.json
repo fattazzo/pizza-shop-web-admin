@@ -28,5 +28,7 @@
   "confirmDeleteResource": "The selected element will be deleted. Do you want to continue?",
 
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+
+  "enabled": "Enabled{gender, select, male{} female{} other{}}"
 }

@@ -2,7 +2,9 @@
   "Role": {
     "WEB_ADMIN": "Web admin access",
     "SECURITY_EDIT": "Edit security",
-    "SECURITY_VIEW": "View security"
+    "SECURITY_VIEW": "View security",
+    "SHIPPING_METHODS_VIEW": "View shipping methods",
+    "SHIPPING_METHODS_EDIT": "Edit shipping methods"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

@@ -25,4 +25,5 @@ export interface ShippingMethod {
      */
     description?: string;
     type: ShippingMethodType;
+    enabled: boolean;
 }

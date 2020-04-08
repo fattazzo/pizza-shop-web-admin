@@ -2,7 +2,9 @@
   "Role": {
     "WEB_ADMIN": "Accesso web admin",
     "SECURITY_EDIT": "Modifica anag. sicurezza",
-    "SECURITY_VIEW": "Visualizzazione anag. sicurezza"
+    "SECURITY_VIEW": "Visualizzazione anag. sicurezza",
+    "SHIPPING_METHODS_VIEW": "Visualizzazione metodi di pagamento",
+    "SHIPPING_METHODS_EDIT": "Modifica metodi di pagamento"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",
