@@ -1,0 +1,21 @@
+<form #form="ngForm" class="p-grid p-col-12 p-md-8 p-lg-6" (ngSubmit)="onSubmit()">
+  <!-- name -->
+  <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
+  <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+    <input required pInputText name="name" type="text" [(ngModel)]="company.name"
+      placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!hasEditRole()" />
+  </div>
+  <!-- webUrl -->
+  <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{count:1}">webUrl</div>
+  <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+    <input pInputText name="webUrl" type="text" [(ngModel)]="company.webUrl" [disabled]="!hasEditRole()" />
+  </div>
+  <!-- enabled -->
+  <div class="p-col-5 p-sm-5 p-lg-4 form-label" translate [translateParams]="{gender:'female'}">enabled</div>
+  <div class="p-col-7 p-sm-7 p-lg-8">
+    <p-checkbox binary="true" [(ngModel)]="company.enabled" name="enabled" [disabled]="!hasEditRole()"></p-checkbox>
+  </div>
+  <div class="p-col-12 p-sm-7 p-lg-8 p-offset-0 p-sm-offset-5 p-lg-offset-4 ui-fluid" *ngIf="hasEditRole()">
+    <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"></button>
+  </div>
+</form>

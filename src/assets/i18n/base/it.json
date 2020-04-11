@@ -30,5 +30,6 @@
   "yes": "Si",
   "no": "No",
 
-  "enabled": "Abilitat{gender, select, male{o} female{a} other{i}}"
+  "enabled": "Abilitat{gender, select, male{o} female{a} other{i}}",
+  "disabled": "Disabilitat{gender, select, male{o} female{a} other{i}}"
 }

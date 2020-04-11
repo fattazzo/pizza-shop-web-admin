@@ -22,6 +22,7 @@ export class TopBarComponent implements OnInit {
   itemsUser: MenuItem[];
 
   appTitle: string = 'Pizza shop web app';
+  companyDisabled: boolean = false;
 
   branchesItems: SelectItem[];
 
@@ -44,7 +45,10 @@ export class TopBarComponent implements OnInit {
 
     this.menuService.getDataMenu().subscribe(menu => this.itemsData = menu);
 
-    this.session.getCompany().subscribe(c => { this.appTitle = c !== null ? c.name : 'Pizza shop web app' });
+    this.session.getCompany().subscribe(c => {
+      this.appTitle = c !== null ? c.name : 'Pizza shop web app';
+      this.companyDisabled = !c?.enabled;
+    });
 
     this.session.getBranches().pipe(map(bs => {
       if (!bs) { return [] }

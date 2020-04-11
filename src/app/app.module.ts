@@ -25,6 +25,7 @@ import { PickListModule } from 'primeng/picklist';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { TooltipModule } from 'primeng/tooltip';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,11 +35,15 @@ import { AuthGuard } from './pages/auth/auth.guard';
 import { AuthService } from './pages/auth/auth.service';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { UnauthorizedComponent } from './pages/auth/unauthorized/unauthorized.component';
+import { CompanyComponent } from './pages/data/company/company.component';
 import { DeliveryAdressesFormComponent } from './pages/data/delivery-adresses/delivery-adresses-form/delivery-adresses-form.component';
 import { DeliveryAdressesComponent } from './pages/data/delivery-adresses/delivery-adresses.component';
 import { GroupsFormComponent } from './pages/data/groups/groups-form/groups-form.component';
 import { GroupsTablesComponent } from './pages/data/groups/groups-tables/groups-tables.component';
 import { GroupsComponent } from './pages/data/groups/groups.component';
+import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
+import { ShippingMethodsTableComponent } from './pages/data/shipping-methods/shipping-methods-table/shipping-methods-table.component';
+import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping-methods.component';
 import { UsersFormComponent } from './pages/data/users/users-form/users-form.component';
 import { UsersTableComponent } from './pages/data/users/users-table/users-table.component';
 import { UsersComponent } from './pages/data/users/users.component';
@@ -51,9 +56,7 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
-import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping-methods.component';
-import { ShippingMethodsTableComponent } from './pages/data/shipping-methods/shipping-methods-table/shipping-methods-table.component';
-import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
+import { BranchesComponent } from './pages/data/branches/branches.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -98,7 +101,9 @@ export function appInitializerFactory(
     DeliveryAdressesFormComponent,
     ShippingMethodsComponent,
     ShippingMethodsTableComponent,
-    ShippingMethodsFormComponent
+    ShippingMethodsFormComponent,
+    CompanyComponent,
+    BranchesComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +138,8 @@ export function appInitializerFactory(
     PickListModule,
     ConfirmDialogModule,
     DynamicDialogModule,
-    FieldsetModule
+    FieldsetModule,
+    TooltipModule
   ],
   exports: [TranslateModule],
   providers: [

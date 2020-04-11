@@ -2,6 +2,7 @@
   "company": "Compan{count, plural, =0{} one{y} other{ies}}",
   "user": "User{count, plural, =0{} one{} other{s}}",
   "group": "Group{count, plural, =0{} one{} other{s}}",
+  "branch": "Branch{count, plural, =0{} one{} other{es}}",
 
   "name": "Name",
   "role": "Role{count, plural, =0{} one{} other{s}}",
@@ -15,5 +16,6 @@
   "place": "Place",
   "shippingMethod": "Shipping method{count, plural, =0{} one{} other{s}}",
   "type": "Type{count, plural, =0{} one{} other{s}}",
-  "description": "Description{count, plural, =0{} one{} other{s}}"
+  "description": "Description{count, plural, =0{} one{} other{s}}",
+  "webUrl": "Web url{count, plural, =0{} one{} other{s}}"
 }

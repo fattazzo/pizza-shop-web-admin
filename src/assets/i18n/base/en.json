@@ -30,5 +30,6 @@
   "yes": "Yes",
   "no": "No",
 
-  "enabled": "Enabled{gender, select, male{} female{} other{}}"
+  "enabled": "Enabled{gender, select, male{} female{} other{}}",
+  "disabled": "Disabled{gender, select, male{} female{} other{}}"
 }

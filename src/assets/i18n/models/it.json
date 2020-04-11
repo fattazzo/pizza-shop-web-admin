@@ -2,6 +2,7 @@
   "company": "Aziend{count, plural, =0{} one{a} other{e}}",
   "user": "Utent{count, plural, =0{} one{e} other{i}}",
   "group": "Grupp{count, plural, =0{} one{o} other{i}}",
+  "branch": "Sed{count, plural, =0{e} one{e} other{i}}",
 
   "name": "Nome",
   "role": "Permess{count, plural, =0{} one{o} other{i}}",
@@ -15,5 +16,6 @@
   "place": "Città",
   "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione",
   "type": "Tip{count, plural, =0{o} one{o} other{i}}",
-  "description": "Descrizion{count, plural, =0{e} one{e} other{i}}"
+  "description": "Descrizion{count, plural, =0{e} one{e} other{i}}",
+  "webUrl": "Indirizz{count, plural, =0{o} one{o} other{i}} web"
 }

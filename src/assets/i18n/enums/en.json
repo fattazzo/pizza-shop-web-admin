@@ -4,7 +4,9 @@
     "SECURITY_EDIT": "Edit security",
     "SECURITY_VIEW": "View security",
     "SHIPPING_METHODS_VIEW": "View shipping methods",
-    "SHIPPING_METHODS_EDIT": "Edit shipping methods"
+    "SHIPPING_METHODS_EDIT": "Edit shipping methods",
+    "COMPANY_VIEW": "View company and branches",
+    "COMPANY_EDIT": "Edit company and branches"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

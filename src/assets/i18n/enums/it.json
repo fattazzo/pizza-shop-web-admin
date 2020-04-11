@@ -4,7 +4,9 @@
     "SECURITY_EDIT": "Modifica anag. sicurezza",
     "SECURITY_VIEW": "Visualizzazione anag. sicurezza",
     "SHIPPING_METHODS_VIEW": "Visualizzazione metodi di pagamento",
-    "SHIPPING_METHODS_EDIT": "Modifica metodi di pagamento"
+    "SHIPPING_METHODS_EDIT": "Modifica metodi di pagamento",
+    "COMPANY_VIEW": "Visualizzazione azienda e sedi",
+    "COMPANY_EDIT": "Modifica azienda e sedi"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

@@ -35,14 +35,22 @@ export class MenuService {
     }
 
     // COMPANY
-    /*
-    if(allRoles.indexOf(Role.)) {
+    if (allRoles.indexOf(Role.COMPANYVIEW) >= 0) {
       menu.push({
-        label: this.translate.instant('company'),
-        icon: 'pi pi-table'
+        label: this.translate.instant('company', { count: 1 }),
+        icon: 'pi pi-table',
+        command: () => this.router.navigate(['company'])
       });
     }
-    */
+
+    // BRANCHES
+    if (allRoles.indexOf(Role.COMPANYVIEW) >= 0) {
+      menu.push({
+        label: this.translate.instant('branch', { count: 2 }),
+        icon: 'pi pi-table',
+        command: () => this.router.navigate(['branches'])
+      });
+    }
 
     // SHIPPING METHODS
     if (allRoles.indexOf(Role.SHIPPINGMETHODSVIEW) >= 0) {

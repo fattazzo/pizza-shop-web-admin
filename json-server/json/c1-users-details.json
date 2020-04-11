@@ -47,7 +47,9 @@
           "SECURITY_EDIT",
           "WEB_ADMIN",
           "SHIPPING_METHODS_VIEW",
-          "SHIPPING_METHODS_EDIT"
+          "SHIPPING_METHODS_EDIT",
+          "COMPANY_VIEW",
+          "COMPANY_EDIT"
         ]
       }
     ]
@@ -80,7 +82,7 @@
       {
         "id": 1,
         "name": "Admin",
-        "roles": ["SECURITY_VIEW", "WEB_ADMIN"]
+        "roles": ["COMPANY_VIEW", "SECURITY_VIEW", "WEB_ADMIN"]
       }
     ]
   }
