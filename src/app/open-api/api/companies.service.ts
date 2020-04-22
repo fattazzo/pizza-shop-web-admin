@@ -56,163 +56,15 @@ export class CompaniesService {
 
 
     /**
-     * Create a Company
-     * Creates a new instance of a &#x60;Company&#x60;.
-     * @param body A new &#x60;Company&#x60; to be created.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public createCompany(body: Company, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createCompany(body: Company, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createCompany(body: Company, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createCompany(body: Company, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createCompany.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<any>('post',`${this.basePath}/companies`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Delete a Company
-     * Deletes an existing &#x60;Company&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public deleteCompany(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteCompany(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteCompany(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteCompany(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteCompany.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * List All companies
-     * Gets a list of all &#x60;Company&#x60; entities.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getCompanies(observe?: 'body', reportProgress?: boolean): Observable<Array<Company>>;
-    public getCompanies(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Company>>>;
-    public getCompanies(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Company>>>;
-    public getCompanies(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<Company>>('get',`${this.basePath}/companies`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Get a Company
      * Gets the details of a single instance of a &#x60;Company&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getCompany(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<Company>;
-    public getCompany(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Company>>;
-    public getCompany(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Company>>;
-    public getCompany(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getCompany.');
-        }
+    public getCompany(observe?: 'body', reportProgress?: boolean): Observable<Company>;
+    public getCompany(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Company>>;
+    public getCompany(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Company>>;
+    public getCompany(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -236,7 +88,7 @@ export class CompaniesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Company>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}`,
+        return this.httpClient.request<Company>('get',`${this.basePath}/company`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -250,21 +102,16 @@ export class CompaniesService {
      * Update a Company
      * Updates an existing &#x60;Company&#x60;.
      * @param body Updated &#x60;Company&#x60; information.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateCompany(body: Company, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateCompany(body: Company, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateCompany(body: Company, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateCompany(body: Company, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateCompany(body: Company, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateCompany(body: Company, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateCompany(body: Company, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateCompany(body: Company, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateCompany.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateCompany.');
         }
 
         let headers = this.defaultHeaders;
@@ -293,7 +140,7 @@ export class CompaniesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/company`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

@@ -59,21 +59,16 @@ export class GroupsService {
      * Create a Group
      * Creates a new instance of a &#x60;Group&#x60;.
      * @param body A new &#x60;Group&#x60; to be created.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createGroup(body: Group, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createGroup(body: Group, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createGroup(body: Group, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createGroup(body: Group, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createGroup(body: Group, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createGroup(body: Group, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createGroup(body: Group, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createGroup(body: Group, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createGroup.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling createGroup.');
         }
 
         let headers = this.defaultHeaders;
@@ -102,7 +97,7 @@ export class GroupsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/groups`,
+        return this.httpClient.request<any>('post',`${this.basePath}/groups`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -116,19 +111,14 @@ export class GroupsService {
     /**
      * Delete a Group
      * Deletes an existing &#x60;Group&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param groupId A unique identifier for a &#x60;Group&#x60;.
+     * @param groupId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteGroup(companyId: number, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteGroup(companyId: number, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteGroup(companyId: number, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteGroup(companyId: number, groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteGroup.');
-        }
+    public deleteGroup(groupId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteGroup(groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteGroup(groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteGroup(groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (groupId === null || groupId === undefined) {
             throw new Error('Required parameter groupId was null or undefined when calling deleteGroup.');
@@ -155,7 +145,7 @@ export class GroupsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/groups/${encodeURIComponent(String(groupId))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/groups/${encodeURIComponent(String(groupId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -168,19 +158,14 @@ export class GroupsService {
     /**
      * Get a Group
      * Gets the details of a single instance of a &#x60;Group&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param groupId A unique identifier for a &#x60;Group&#x60;.
+     * @param groupId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getGroup(companyId: number, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<Group>;
-    public getGroup(companyId: number, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Group>>;
-    public getGroup(companyId: number, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Group>>;
-    public getGroup(companyId: number, groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getGroup.');
-        }
+    public getGroup(groupId: number, observe?: 'body', reportProgress?: boolean): Observable<Group>;
+    public getGroup(groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Group>>;
+    public getGroup(groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Group>>;
+    public getGroup(groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (groupId === null || groupId === undefined) {
             throw new Error('Required parameter groupId was null or undefined when calling getGroup.');
@@ -208,7 +193,7 @@ export class GroupsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Group>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/groups/${encodeURIComponent(String(groupId))}`,
+        return this.httpClient.request<Group>('get',`${this.basePath}/groups/${encodeURIComponent(String(groupId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -221,18 +206,13 @@ export class GroupsService {
     /**
      * List All groups
      * Gets a list of all &#x60;Group&#x60; entities.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getGroups(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Group>>;
-    public getGroups(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Group>>>;
-    public getGroups(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Group>>>;
-    public getGroups(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getGroups.');
-        }
+    public getGroups(observe?: 'body', reportProgress?: boolean): Observable<Array<Group>>;
+    public getGroups(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Group>>>;
+    public getGroups(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Group>>>;
+    public getGroups(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -256,7 +236,7 @@ export class GroupsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Group>>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/groups`,
+        return this.httpClient.request<Array<Group>>('get',`${this.basePath}/groups`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -270,22 +250,17 @@ export class GroupsService {
      * Update a Group
      * Updates an existing &#x60;Group&#x60;.
      * @param body Updated &#x60;Group&#x60; information.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param groupId A unique identifier for a &#x60;Group&#x60;.
+     * @param groupId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateGroup(body: Group, companyId: number, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateGroup(body: Group, companyId: number, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateGroup(body: Group, companyId: number, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateGroup(body: Group, companyId: number, groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateGroup(body: Group, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateGroup(body: Group, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateGroup(body: Group, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateGroup(body: Group, groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateGroup.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateGroup.');
         }
 
         if (groupId === null || groupId === undefined) {
@@ -318,7 +293,7 @@ export class GroupsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/groups/${encodeURIComponent(String(groupId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/groups/${encodeURIComponent(String(groupId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

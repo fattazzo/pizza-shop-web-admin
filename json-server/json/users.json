@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "username": "fattazzo",
+    "username": "admin",
     "password": "**********",
-    "email": "fattazzoXXXXX@gmail.com",
+    "email": "admin@gmail.com",
     "firstName": "Gianluca",
     "lastName": "Fattarsi"
   },
   {
     "id": 2,
-    "username": "user",
+    "username": "worker",
     "password": "**********",
-    "email": "user@email.com",
+    "email": "worker@email.com",
     "firstName": "User",
     "lastName": "User"
   }

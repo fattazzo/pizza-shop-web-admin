@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UsersService } from 'src/app/open-api';
-import { SessionService } from 'src/app/services/session.service';
 import { UsersComponentService } from '../services/users-component.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class UsersTableComponent implements OnInit {
   loading = false;
 
   constructor(
-    private sessionService: SessionService,
     private usersService: UsersService,
     private usersComponentService: UsersComponentService
   ) { }
@@ -25,7 +23,7 @@ export class UsersTableComponent implements OnInit {
 
     this.loading = true;
     this.usersService
-      .getUsers(this.sessionService.getCompanyId())
+      .getUsers()
       .subscribe(result => {
         this.loading = false;
         this.users = result;
@@ -43,11 +41,11 @@ export class UsersTableComponent implements OnInit {
   }
 
   private removeUser(user: User) {
-    this.users = this.users.filter(obj => obj.id !== user.id)
+    this.users = this.users.filter(obj => obj.username !== user.username)
   }
 
   private addUser(user: User) {
-    const userFound = this.users.find(obj => obj.id === user.id);
+    const userFound = this.users.find(obj => obj.username === user.username);
     if (userFound !== undefined) {
       const index = this.users.indexOf(userFound);
       if (index !== -1) {

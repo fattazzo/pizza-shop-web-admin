@@ -1,7 +1,0 @@
-[
-  {
-    "id": 3,
-    "name": "Admin",
-    "roles": ["SECURITY_VIEW", "SECURITY_EDIT", "WEB_ADMIN"]
-  }
-]

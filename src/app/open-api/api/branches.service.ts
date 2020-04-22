@@ -61,21 +61,16 @@ export class BranchesService {
      * Create a Branch for company
      * Creates a new instance of a &#x60;Branch&#x60;.
      * @param body A new &#x60;Branch&#x60; to be created.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createBranch(body: BranchDetails, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createBranch(body: BranchDetails, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createBranch(body: BranchDetails, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createBranch(body: BranchDetails, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createBranch(body: BranchDetails, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createBranch(body: BranchDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createBranch(body: BranchDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createBranch(body: BranchDetails, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createBranch.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling createBranch.');
         }
 
         let headers = this.defaultHeaders;
@@ -104,7 +99,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches`,
+        return this.httpClient.request<any>('post',`${this.basePath}/branches`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -119,22 +114,17 @@ export class BranchesService {
      * Create a ShippingZone
      * Creates a new instance of a &#x60;ShippingZone&#x60;.
      * @param body A new &#x60;ShippingZone&#x60; to be created.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
+     * @param branchId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createShippingZone(body: ShippingZone, companyId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createShippingZone(body: ShippingZone, companyId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createShippingZone(body: ShippingZone, companyId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createShippingZone(body: ShippingZone, companyId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createShippingZone(body: ShippingZone, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createShippingZone.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling createShippingZone.');
         }
 
         if (branchId === null || branchId === undefined) {
@@ -167,7 +157,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}/shippingzones`,
+        return this.httpClient.request<any>('post',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -182,21 +172,16 @@ export class BranchesService {
      * Delete a Branch
      * Deletes an existing &#x60;Branch&#x60;.
      * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteBranch(branchId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteBranch(branchId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteBranch(branchId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteBranch(branchId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteBranch(branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteBranch(branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteBranch(branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteBranch(branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling deleteBranch.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteBranch.');
         }
 
         let headers = this.defaultHeaders;
@@ -220,7 +205,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -233,27 +218,22 @@ export class BranchesService {
     /**
      * Delete a ShippingZone
      * Deletes an existing &#x60;ShippingZone&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
+     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteShippingZone(shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteShippingZone.');
+        if (shippingzoneId === null || shippingzoneId === undefined) {
+            throw new Error('Required parameter shippingzoneId was null or undefined when calling deleteShippingZone.');
         }
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling deleteShippingZone.');
-        }
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling deleteShippingZone.');
         }
 
         let headers = this.defaultHeaders;
@@ -277,7 +257,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -291,21 +271,16 @@ export class BranchesService {
      * Get a Branch
      * Gets the details of a single instance of a &#x60;Branch&#x60;.
      * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getBranch(branchId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<BranchDetails>;
-    public getBranch(branchId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<BranchDetails>>;
-    public getBranch(branchId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<BranchDetails>>;
-    public getBranch(branchId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getBranch(branchId: number, observe?: 'body', reportProgress?: boolean): Observable<BranchDetails>;
+    public getBranch(branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<BranchDetails>>;
+    public getBranch(branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<BranchDetails>>;
+    public getBranch(branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling getBranch.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getBranch.');
         }
 
         let headers = this.defaultHeaders;
@@ -330,7 +305,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<BranchDetails>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}`,
+        return this.httpClient.request<BranchDetails>('get',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -343,18 +318,13 @@ export class BranchesService {
     /**
      * List All branches of company
      * Gets a list of all &#x60;Branch&#x60; entities.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getBranches(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<Branch>>;
-    public getBranches(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Branch>>>;
-    public getBranches(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Branch>>>;
-    public getBranches(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getBranches.');
-        }
+    public getBranches(observe?: 'body', reportProgress?: boolean): Observable<Array<Branch>>;
+    public getBranches(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Branch>>>;
+    public getBranches(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Branch>>>;
+    public getBranches(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -378,7 +348,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Branch>>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches`,
+        return this.httpClient.request<Array<Branch>>('get',`${this.basePath}/branches`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -391,27 +361,22 @@ export class BranchesService {
     /**
      * Get a ShippingZone
      * Gets the details of a single instance of a &#x60;ShippingZone&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
+     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingZone>;
-    public getShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingZone>>;
-    public getShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingZone>>;
-    public getShippingZone(companyId: number, branchId: number, shippingzoneId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingZone>;
+    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingZone>>;
+    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingZone>>;
+    public getShippingZone(shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getShippingZone.');
+        if (shippingzoneId === null || shippingzoneId === undefined) {
+            throw new Error('Required parameter shippingzoneId was null or undefined when calling getShippingZone.');
         }
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling getShippingZone.');
-        }
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling getShippingZone.');
         }
 
         let headers = this.defaultHeaders;
@@ -436,7 +401,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<ShippingZone>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
+        return this.httpClient.request<ShippingZone>('get',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -449,19 +414,14 @@ export class BranchesService {
     /**
      * List All shippingzones
      * Gets a list of all &#x60;ShippingZone&#x60; entities.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
+     * @param branchId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getShippingZones(companyId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingZone>>;
-    public getShippingZones(companyId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingZone>>>;
-    public getShippingZones(companyId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingZone>>>;
-    public getShippingZones(companyId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getShippingZones.');
-        }
+    public getShippingZones(branchId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingZone>>;
+    public getShippingZones(branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingZone>>>;
+    public getShippingZones(branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingZone>>>;
+    public getShippingZones(branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling getShippingZones.');
@@ -489,7 +449,7 @@ export class BranchesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<ShippingZone>>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}/shippingzones`,
+        return this.httpClient.request<Array<ShippingZone>>('get',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -504,14 +464,13 @@ export class BranchesService {
      * Updates an existing &#x60;Branch&#x60;.
      * @param body Updated &#x60;Branch&#x60; information.
      * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateBranch(body: BranchDetails, branchId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateBranch(body: BranchDetails, branchId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateBranch(body: BranchDetails, branchId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateBranch(body: BranchDetails, branchId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateBranch(body: BranchDetails, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateBranch.');
@@ -519,10 +478,6 @@ export class BranchesService {
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling updateBranch.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateBranch.');
         }
 
         let headers = this.defaultHeaders;
@@ -551,7 +506,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -566,31 +521,26 @@ export class BranchesService {
      * Update a ShippingZone
      * Updates an existing &#x60;ShippingZone&#x60;.
      * @param body Updated &#x60;ShippingZone&#x60; information.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
+     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateShippingZone(body: ShippingZone, companyId: number, branchId: number, shippingzoneId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateShippingZone(body: ShippingZone, companyId: number, branchId: number, shippingzoneId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateShippingZone(body: ShippingZone, companyId: number, branchId: number, shippingzoneId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateShippingZone(body: ShippingZone, companyId: number, branchId: number, shippingzoneId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateShippingZone.');
         }
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateShippingZone.');
+        if (shippingzoneId === null || shippingzoneId === undefined) {
+            throw new Error('Required parameter shippingzoneId was null or undefined when calling updateShippingZone.');
         }
 
         if (branchId === null || branchId === undefined) {
             throw new Error('Required parameter branchId was null or undefined when calling updateShippingZone.');
-        }
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling updateShippingZone.');
         }
 
         let headers = this.defaultHeaders;
@@ -619,7 +569,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

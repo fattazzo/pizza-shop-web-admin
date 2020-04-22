@@ -60,21 +60,16 @@ export class UsersService {
      * Create a User
      * Creates a new instance of a &#x60;User&#x60;.
      * @param body A new &#x60;User&#x60; to be created.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUser(body: UserDetails, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUser(body: UserDetails, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUser(body: UserDetails, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createUser(body: UserDetails, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createUser(body: UserDetails, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createUser(body: UserDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createUser(body: UserDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUser(body: UserDetails, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createUser.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling createUser.');
         }
 
         let headers = this.defaultHeaders;
@@ -103,7 +98,7 @@ export class UsersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/users`,
+        return this.httpClient.request<any>('post',`${this.basePath}/users`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -117,22 +112,17 @@ export class UsersService {
     /**
      * Delete a User
      * Deletes an existing &#x60;User&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param userId A unique identifier for a &#x60;User&#x60;.
+     * @param userName A unique identifier for a &#x60;User&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteUser(companyId: number, userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteUser(companyId: number, userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteUser(companyId: number, userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteUser(companyId: number, userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteUser(userName: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteUser(userName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteUser(userName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteUser(userName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteUser.');
-        }
-
-        if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling deleteUser.');
+        if (userName === null || userName === undefined) {
+            throw new Error('Required parameter userName was null or undefined when calling deleteUser.');
         }
 
         let headers = this.defaultHeaders;
@@ -156,7 +146,7 @@ export class UsersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/users/${encodeURIComponent(String(userId))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/users/${encodeURIComponent(String(userName))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -169,22 +159,17 @@ export class UsersService {
     /**
      * Get a User
      * Gets the details of a single instance of a &#x60;User&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param userId A unique identifier for a &#x60;User&#x60;.
+     * @param userName A unique identifier for a &#x60;User&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUser(companyId: number, userId: number, observe?: 'body', reportProgress?: boolean): Observable<UserDetails>;
-    public getUser(companyId: number, userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserDetails>>;
-    public getUser(companyId: number, userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserDetails>>;
-    public getUser(companyId: number, userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getUser(userName: string, observe?: 'body', reportProgress?: boolean): Observable<UserDetails>;
+    public getUser(userName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserDetails>>;
+    public getUser(userName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserDetails>>;
+    public getUser(userName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getUser.');
-        }
-
-        if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling getUser.');
+        if (userName === null || userName === undefined) {
+            throw new Error('Required parameter userName was null or undefined when calling getUser.');
         }
 
         let headers = this.defaultHeaders;
@@ -209,7 +194,7 @@ export class UsersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<UserDetails>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/users/${encodeURIComponent(String(userId))}`,
+        return this.httpClient.request<UserDetails>('get',`${this.basePath}/users/${encodeURIComponent(String(userName))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -222,18 +207,13 @@ export class UsersService {
     /**
      * List All users
      * Gets a list of all &#x60;User&#x60; entities.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUsers(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<User>>;
-    public getUsers(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<User>>>;
-    public getUsers(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<User>>>;
-    public getUsers(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getUsers.');
-        }
+    public getUsers(observe?: 'body', reportProgress?: boolean): Observable<Array<User>>;
+    public getUsers(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<User>>>;
+    public getUsers(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<User>>>;
+    public getUsers(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -257,7 +237,7 @@ export class UsersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<User>>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/users`,
+        return this.httpClient.request<Array<User>>('get',`${this.basePath}/users`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -271,26 +251,21 @@ export class UsersService {
      * Update a User
      * Updates an existing &#x60;User&#x60;.
      * @param body Updated &#x60;User&#x60; information.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
-     * @param userId A unique identifier for a &#x60;User&#x60;.
+     * @param userName A unique identifier for a &#x60;User&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUser(body: UserDetails, companyId: number, userId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUser(body: UserDetails, companyId: number, userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUser(body: UserDetails, companyId: number, userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateUser(body: UserDetails, companyId: number, userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateUser(body: UserDetails, userName: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateUser(body: UserDetails, userName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateUser(body: UserDetails, userName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUser(body: UserDetails, userName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateUser.');
         }
 
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateUser.');
-        }
-
-        if (userId === null || userId === undefined) {
-            throw new Error('Required parameter userId was null or undefined when calling updateUser.');
+        if (userName === null || userName === undefined) {
+            throw new Error('Required parameter userName was null or undefined when calling updateUser.');
         }
 
         let headers = this.defaultHeaders;
@@ -319,7 +294,7 @@ export class UsersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/users/${encodeURIComponent(String(userId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/users/${encodeURIComponent(String(userName))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

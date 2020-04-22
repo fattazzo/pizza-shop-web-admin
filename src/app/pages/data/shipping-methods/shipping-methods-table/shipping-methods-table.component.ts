@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ShippingMethod, ShippingmethodsService } from 'src/app/open-api';
-import { SessionService } from 'src/app/services/session.service';
 import { ShippingMethodsComponentService } from '../services/shipping-methods-component.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class ShippingMethodsTableComponent implements OnInit {
   loading = false;
 
   constructor(
-    private sessionService: SessionService,
     private shippingMethodsService: ShippingmethodsService,
     private shippingMethodsComponentService: ShippingMethodsComponentService
   ) { }
@@ -24,8 +22,7 @@ export class ShippingMethodsTableComponent implements OnInit {
   ngOnInit(): void {
 
     this.loading = true;
-    this.shippingMethodsService
-      .getShippingMethods(this.sessionService.getCompanyId())
+    this.shippingMethodsService.getShippingMethods()
       .subscribe(result => {
         this.loading = false;
         this.shippingMethods = result;

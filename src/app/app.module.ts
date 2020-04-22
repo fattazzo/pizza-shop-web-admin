@@ -57,6 +57,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
 import { BranchesComponent } from './pages/data/branches/branches.component';
+import { BranchesTableComponent } from './pages/data/branches/branches-table/branches-table.component';
+import { BranchesFormComponent } from './pages/data/branches/branches-form/branches-form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -103,7 +105,9 @@ export function appInitializerFactory(
     ShippingMethodsTableComponent,
     ShippingMethodsFormComponent,
     CompanyComponent,
-    BranchesComponent
+    BranchesComponent,
+    BranchesTableComponent,
+    BranchesFormComponent
   ],
   imports: [
     BrowserModule,

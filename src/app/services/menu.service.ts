@@ -34,17 +34,13 @@ export class MenuService {
       this.authService.currentUserValue.value.user.groups.map(g => allRoles = allRoles.concat(g.roles));
     }
 
-    // COMPANY
-    if (allRoles.indexOf(Role.COMPANYVIEW) >= 0) {
+    // COMPANY & BRANCHES
+    if (allRoles.indexOf(Role.COMPANY) >= 0) {
       menu.push({
         label: this.translate.instant('company', { count: 1 }),
         icon: 'pi pi-table',
         command: () => this.router.navigate(['company'])
       });
-    }
-
-    // BRANCHES
-    if (allRoles.indexOf(Role.COMPANYVIEW) >= 0) {
       menu.push({
         label: this.translate.instant('branch', { count: 2 }),
         icon: 'pi pi-table',
@@ -53,7 +49,7 @@ export class MenuService {
     }
 
     // SHIPPING METHODS
-    if (allRoles.indexOf(Role.SHIPPINGMETHODSVIEW) >= 0) {
+    if (allRoles.indexOf(Role.SHIPPINGMETHODS) >= 0) {
       menu.push(
         {
           label: this.translate.instant('shippingMethod', { count: 2 }),
@@ -64,7 +60,7 @@ export class MenuService {
     }
 
     // SECURITY
-    if (allRoles.indexOf(Role.SECURITYVIEW) >= 0) {
+    if (allRoles.indexOf(Role.SECURITY) >= 0) {
       menu.push(
         {
           label: this.translate.instant('user', { count: 2 }),

@@ -1,0 +1,85 @@
+import { Component, OnInit } from '@angular/core';
+import { BranchDetails, BranchesService, Role, ShippingMethod, ShippingmethodsService } from 'src/app/open-api';
+import { AuthService } from 'src/app/pages/auth/auth.service';
+import { AppMessageService } from 'src/app/services/app-message.service';
+import { AuthUtils } from 'src/app/utils/auth-utils';
+import { BranchesComponentService } from '../services/shipping-methods-component.service';
+
+@Component({
+  selector: 'app-branches-form',
+  templateUrl: './branches-form.component.html',
+  styleUrls: ['./branches-form.component.scss']
+})
+export class BranchesFormComponent implements OnInit {
+
+  branch: BranchDetails;
+
+  shippingMethodsAvailable: ShippingMethod[];
+
+  constructor(
+    private branchsComponentService: BranchesComponentService,
+    private branchService: BranchesService,
+    private shippingmethodsService: ShippingmethodsService,
+    private authUtils: AuthUtils,
+    private appMessageService: AppMessageService,
+    public authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.onNew();
+
+    this.shippingmethodsService.getShippingMethods().subscribe(s => this.shippingMethodsAvailable = s);
+
+    this.branchsComponentService.branchSelected.subscribe(b => {
+      this.branchService.getBranch(b.id).subscribe(bd => {
+        this.branch = bd;
+      })
+    });
+  }
+
+  onNew() {
+    this.branch = {
+      id: null, shippingMethods: [], primary: false, enabled: true,
+      address: { streetAddress: null, place: null }
+    };
+  }
+
+  onSubmit() {
+    if (this.branch.id) {
+      this.editBranch();
+    } else {
+      this.createBranch();
+    }
+  }
+
+  onDelete() {
+    var deleteFunc = function () {
+      this.branchService.deleteBranch(this.session.getCompanyId(), this.branch.id)
+        .subscribe(() => {
+          this.branchsComponentService.deleteBranch(this.branch)
+          this.onNew();
+        });
+    }
+
+    this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', deleteFunc);
+  }
+
+  hasEditRole(): boolean {
+    return this.authUtils.isInRole([Role.COMPANY])
+  }
+
+  private createBranch() {
+    this.branchService.createBranch(this.branch).subscribe(result => {
+      this.branch = result;
+      this.branchsComponentService.modifyBranch(this.branch);
+    })
+  }
+
+  private editBranch() {
+    this.branchService.updateBranch(this.branch, this.branch.id).subscribe(result => {
+      this.branch = result;
+      this.branchsComponentService.modifyBranch(this.branch);
+    })
+  }
+
+}

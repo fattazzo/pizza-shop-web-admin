@@ -6,7 +6,7 @@
         <div class="p-col-6 form-label" translate>name</div>
         <div class="p-col-6">
           <input required pInputText name="name" type="text" [(ngModel)]="group.name"
-            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!hasEditRole()" />
+            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
         </div>
       </div>
       <!-- roles -->
@@ -15,14 +15,14 @@
         <p-pickList class="p-col-12" [source]="rolesAvailable" [target]="group.roles"
           sourceHeader="{{'available' | translate:&quot;{ count: 2 }&quot;}}"
           targetHeader="{{'selected' | translate:&quot;{ gender: 'other' }&quot;}}" [responsive]="true"
-          [showSourceControls]="false" [showTargetControls]="false" [disabled]="!hasEditRole()">
+          [showSourceControls]="false" [showTargetControls]="false">
           <ng-template let-role pTemplate="item">
             {{'Role.'+role | translate}}
           </ng-template>
         </p-pickList>
       </div>
     </div>
-    <div class="p-grid" *ngIf="hasEditRole()">
+    <div class="p-grid">
       <div class="p-col ui-fluid">
         <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
           (click)="onNew()"></button>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Branch, Company } from '../open-api';
+import { Branch, BranchDetails, Company } from '../open-api';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { Branch, Company } from '../open-api';
 export class SessionService {
 
   private _company: BehaviorSubject<Company> = new BehaviorSubject(null);
-  private _branch: BehaviorSubject<Branch> = new BehaviorSubject(null);
+  private _branch: BehaviorSubject<BranchDetails> = new BehaviorSubject(null);
 
   private _branches: BehaviorSubject<Branch[]> = new BehaviorSubject([]);
 
@@ -29,10 +29,6 @@ export class SessionService {
     sessionStorage.removeItem('branches');
   }
 
-  getCompanyId(): number {
-    return this._company.value.id;
-  }
-
   getCompany(): Observable<Company> {
     return this._company.asObservable();
   }
@@ -42,11 +38,15 @@ export class SessionService {
     sessionStorage.setItem('company', JSON.stringify(company));
   }
 
-  getBranch(): Observable<Branch> {
+  getBranchId(): number {
+    return this._branch.value.id;
+  }
+
+  getBranch(): Observable<BranchDetails> {
     return this._branch.asObservable();
   }
 
-  setBranch(branch: Branch) {
+  setBranch(branch: BranchDetails) {
     this._branch.next(branch);
     sessionStorage.setItem('branch', JSON.stringify(branch));
   }

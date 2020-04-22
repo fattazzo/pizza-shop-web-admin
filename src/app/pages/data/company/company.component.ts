@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompaniesService, Company, Role } from 'src/app/open-api';
+import { CompaniesService, Company } from 'src/app/open-api';
 import { SessionService } from 'src/app/services/session.service';
 import { AuthUtils } from 'src/app/utils/auth-utils';
 
@@ -22,12 +22,8 @@ export class CompanyComponent implements OnInit {
     this.session.getCompany().subscribe(comp => this.company = comp);
   }
 
-  hasEditRole(): boolean {
-    return this.authUtils.isInRole([Role.COMPANYEDIT]);
-  }
-
   onSubmit() {
-    this.companiesService.updateCompany(this.company, this.company.id)
+    this.companiesService.updateCompany(this.company)
       .subscribe(result => {
         this.company = result;
         this.session.setCompany(this.company);

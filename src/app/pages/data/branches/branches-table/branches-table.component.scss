@@ -1,0 +1,11 @@
+:host {
+  ::ng-deep .ui-chkbox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  ::ng-deep .ui-chkbox-box {
+    opacity: 1;
+  }
+}

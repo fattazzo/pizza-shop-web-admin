@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group, GroupsService, Role } from 'src/app/open-api';
 import { AppMessageService } from 'src/app/services/app-message.service';
-import { SessionService } from 'src/app/services/session.service';
 import { AuthUtils } from 'src/app/utils/auth-utils';
 import { GroupsComponentService } from '../services/groups-component.service';
 
@@ -21,7 +20,6 @@ export class GroupsFormComponent implements OnInit {
     private groupsComponentService: GroupsComponentService,
     private groupService: GroupsService,
     private authUtils: AuthUtils,
-    private session: SessionService,
     private appMessageService: AppMessageService,
   ) { }
 
@@ -59,19 +57,15 @@ export class GroupsFormComponent implements OnInit {
     this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', deleteFunc);
   }
 
-  hasEditRole(): boolean {
-    return this.authUtils.isInRole([Role.SECURITYEDIT])
-  }
-
   private createGroup() {
-    this.groupService.createGroup(this.group, this.session.getCompanyId()).subscribe(result => {
+    this.groupService.createGroup(this.group).subscribe(result => {
       this.group = result;
       this.groupsComponentService.modifyGroup(this.group);
     })
   }
 
   private editGroup() {
-    this.groupService.updateGroup(this.group, this.session.getCompanyId(), this.group.id).subscribe(result => {
+    this.groupService.updateGroup(this.group, this.group.id).subscribe(result => {
       this.group = result;
       this.groupsComponentService.modifyGroup(this.group);
     })

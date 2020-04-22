@@ -15,11 +15,11 @@ import { HomeComponent } from './pages/home/home.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { roles: [Role.WEBADMIN] } },
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITYVIEW] } },
-  { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITYVIEW] } },
-  { path: 'shipping-methods', component: ShippingMethodsComponent, canActivate: [AuthGuard], data: { roles: [Role.SHIPPINGMETHODSVIEW] } },
-  { path: 'company', component: CompanyComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANYVIEW] } },
-  { path: 'branches', component: BranchesComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANYVIEW] } },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITY] } },
+  { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITY] } },
+  { path: 'shipping-methods', component: ShippingMethodsComponent, canActivate: [AuthGuard], data: { roles: [Role.SHIPPINGMETHODS] } },
+  { path: 'company', component: CompanyComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANY] } },
+  { path: 'branches', component: BranchesComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANY] } },
   { path: 'login', component: LoginComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
 ];

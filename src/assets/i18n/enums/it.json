@@ -1,12 +1,9 @@
 {
   "Role": {
     "WEB_ADMIN": "Accesso web admin",
-    "SECURITY_EDIT": "Modifica anag. sicurezza",
-    "SECURITY_VIEW": "Visualizzazione anag. sicurezza",
-    "SHIPPING_METHODS_VIEW": "Visualizzazione metodi di pagamento",
-    "SHIPPING_METHODS_EDIT": "Modifica metodi di pagamento",
-    "COMPANY_VIEW": "Visualizzazione azienda e sedi",
-    "COMPANY_EDIT": "Modifica azienda e sedi"
+    "SECURITY": "Gestione sicurezza",
+    "SHIPPING_METHODS": "Gestione metodi di pagamento",
+    "COMPANY": "Gestione azienda e sedi"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

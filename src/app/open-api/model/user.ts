@@ -12,10 +12,6 @@
 
 export interface User { 
     /**
-     * Unique identifier for the resource
-     */
-    id: number;
-    /**
      * Login name
      */
     username: string;

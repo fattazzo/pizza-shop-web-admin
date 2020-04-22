@@ -17,5 +17,7 @@
   "shippingMethod": "Shipping method{count, plural, =0{} one{} other{s}}",
   "type": "Type{count, plural, =0{} one{} other{s}}",
   "description": "Description{count, plural, =0{} one{} other{s}}",
-  "webUrl": "Web url{count, plural, =0{} one{} other{s}}"
+  "webUrl": "Web url{count, plural, =0{} one{} other{s}}",
+  "primary": "Primar{gender, select, male{y} female{y} other{ies}}",
+  "phone": "Phone number{count, plural, =0{} one{} other{s}}"
 }

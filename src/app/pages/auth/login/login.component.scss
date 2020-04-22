@@ -11,16 +11,24 @@
 
 .title {
   text-align: center;
+  margin: 0;
 }
 
-.google {
-  background-color: #db3236;
-  border: 1px solid #db3236;
-  color: white;
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.facebook {
-  background-color: #3b5998;
-  border: 1px solid #3b5998;
-  color: white;
+.image-item {
+  width: 100%;
+  object-fit: contain;
+  padding: 1em 2em;
+}
+
+@media (max-width: 576px) {
+  .image-item {
+    padding: 1em 5em;
+  }
 }

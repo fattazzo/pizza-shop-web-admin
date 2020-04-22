@@ -59,21 +59,16 @@ export class ShippingmethodsService {
      * Create a ShippingMethod
      * Creates a new instance of a &#x60;ShippingMethod&#x60;.
      * @param body A new &#x60;ShippingMethod&#x60; to be created.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createShippingMethod(body: ShippingMethod, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createShippingMethod(body: ShippingMethod, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createShippingMethod(body: ShippingMethod, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createShippingMethod(body: ShippingMethod, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createShippingMethod(body: ShippingMethod, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createShippingMethod(body: ShippingMethod, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createShippingMethod(body: ShippingMethod, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createShippingMethod(body: ShippingMethod, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createShippingMethod.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling createShippingMethod.');
         }
 
         let headers = this.defaultHeaders;
@@ -102,7 +97,7 @@ export class ShippingmethodsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/shippingmethods`,
+        return this.httpClient.request<any>('post',`${this.basePath}/shippingmethods`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -117,21 +112,16 @@ export class ShippingmethodsService {
      * Delete a ShippingMethod
      * Deletes an existing &#x60;ShippingMethod&#x60;.
      * @param shippingmethodId A unique identifier for a &#x60;ShippingMethod&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteShippingMethod(shippingmethodId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteShippingMethod(shippingmethodId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteShippingMethod(shippingmethodId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteShippingMethod(shippingmethodId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteShippingMethod(shippingmethodId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteShippingMethod(shippingmethodId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteShippingMethod(shippingmethodId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteShippingMethod(shippingmethodId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (shippingmethodId === null || shippingmethodId === undefined) {
             throw new Error('Required parameter shippingmethodId was null or undefined when calling deleteShippingMethod.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling deleteShippingMethod.');
         }
 
         let headers = this.defaultHeaders;
@@ -155,7 +145,7 @@ export class ShippingmethodsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
+        return this.httpClient.request<any>('delete',`${this.basePath}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -169,21 +159,16 @@ export class ShippingmethodsService {
      * Get a ShippingMethod
      * Gets the details of a single instance of a &#x60;ShippingMethod&#x60;.
      * @param shippingmethodId A unique identifier for a &#x60;ShippingMethod&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getShippingMethod(shippingmethodId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingMethod>;
-    public getShippingMethod(shippingmethodId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingMethod>>;
-    public getShippingMethod(shippingmethodId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingMethod>>;
-    public getShippingMethod(shippingmethodId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getShippingMethod(shippingmethodId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingMethod>;
+    public getShippingMethod(shippingmethodId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingMethod>>;
+    public getShippingMethod(shippingmethodId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingMethod>>;
+    public getShippingMethod(shippingmethodId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (shippingmethodId === null || shippingmethodId === undefined) {
             throw new Error('Required parameter shippingmethodId was null or undefined when calling getShippingMethod.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getShippingMethod.');
         }
 
         let headers = this.defaultHeaders;
@@ -208,7 +193,7 @@ export class ShippingmethodsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<ShippingMethod>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
+        return this.httpClient.request<ShippingMethod>('get',`${this.basePath}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -221,18 +206,13 @@ export class ShippingmethodsService {
     /**
      * List All shippingmethods
      * Gets a list of all &#x60;ShippingMethod&#x60; entities.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getShippingMethods(companyId: number, observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingMethod>>;
-    public getShippingMethods(companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingMethod>>>;
-    public getShippingMethods(companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingMethod>>>;
-    public getShippingMethods(companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling getShippingMethods.');
-        }
+    public getShippingMethods(observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingMethod>>;
+    public getShippingMethods(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingMethod>>>;
+    public getShippingMethods(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingMethod>>>;
+    public getShippingMethods(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -256,7 +236,7 @@ export class ShippingmethodsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<ShippingMethod>>('get',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/shippingmethods`,
+        return this.httpClient.request<Array<ShippingMethod>>('get',`${this.basePath}/shippingmethods`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -271,14 +251,13 @@ export class ShippingmethodsService {
      * Updates an existing &#x60;ShippingMethod&#x60;.
      * @param body Updated &#x60;ShippingMethod&#x60; information.
      * @param shippingmethodId A unique identifier for a &#x60;ShippingMethod&#x60;.
-     * @param companyId A unique identifier for a &#x60;Company&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, companyId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, companyId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, companyId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, companyId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateShippingMethod.');
@@ -286,10 +265,6 @@ export class ShippingmethodsService {
 
         if (shippingmethodId === null || shippingmethodId === undefined) {
             throw new Error('Required parameter shippingmethodId was null or undefined when calling updateShippingMethod.');
-        }
-
-        if (companyId === null || companyId === undefined) {
-            throw new Error('Required parameter companyId was null or undefined when calling updateShippingMethod.');
         }
 
         let headers = this.defaultHeaders;
@@ -318,7 +293,7 @@ export class ShippingmethodsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/companies/${encodeURIComponent(String(companyId))}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
+        return this.httpClient.request<any>('put',`${this.basePath}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

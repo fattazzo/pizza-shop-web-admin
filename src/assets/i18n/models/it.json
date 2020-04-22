@@ -17,5 +17,7 @@
   "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione",
   "type": "Tip{count, plural, =0{o} one{o} other{i}}",
   "description": "Descrizion{count, plural, =0{e} one{e} other{i}}",
-  "webUrl": "Indirizz{count, plural, =0{o} one{o} other{i}} web"
+  "webUrl": "Indirizz{count, plural, =0{o} one{o} other{i}} web",
+  "primary": "Primar{gender, select, male{io} female{ia} other{i}}",
+  "phone": "Numer{count, plural, =0{o} one{o} other{i}} di telefono"
 }

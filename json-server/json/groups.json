@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "roles": ["SECURITY", "WEB_ADMIN", "COMPANY", "SHIPPING_METHODS"]
+  },
+  {
+    "id": 51,
+    "name": "Worker",
+    "roles": ["SECURITY", "WEB_ADMIN"]
+  }
+]

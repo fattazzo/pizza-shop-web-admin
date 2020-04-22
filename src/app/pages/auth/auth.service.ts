@@ -23,22 +23,24 @@ export class AuthService {
     return this.currentUserSubject$;
   }
 
-  login(username: string, password: string, companyId: number): Observable<LoggedUser> {
+  login(username: string, password: string): Observable<LoggedUser> {
 
     // TODO change
     // this.usersService.getUser(companyId,1)
     // with authentication endpoint
 
-    return this.usersService.getUser(companyId, +username).pipe(switchMap(data => {
+    return this.usersService.getUser(username).pipe(switchMap(data => {
 
-      let cs = this.companiesService.getCompany(companyId);
-      let bs = this.branchesService.getBranches(companyId);
-      let ud = this.usersService.getUser(companyId, data.id);
+      let cs = this.companiesService.getCompany();
+      let bs = this.branchesService.getBranches();
+      let ud = this.usersService.getUser(username);
 
       return forkJoin([cs, bs, ud]).pipe(map((results: any[]) => {
         this.sessionService.setCompany(results[0]);
         this.sessionService.setBranches(results[1]);
-        this.sessionService.setBranch(results[1][0])
+        this.sessionService.setBranch(Object.assign({}, results[1][0]));
+        this.branchesService.getBranch(results[1][0].id)
+          .subscribe(b => this.sessionService.setBranch(b));
 
         let user = new LoggedUser();
         user.user = results[2];

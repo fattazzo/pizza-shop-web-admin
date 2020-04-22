@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Group, GroupsService } from 'src/app/open-api';
-import { SessionService } from 'src/app/services/session.service';
 import { GroupsComponentService } from '../services/groups-component.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class GroupsTablesComponent implements OnInit {
   loading = false;
 
   constructor(
-    private sessionService: SessionService,
     private groupsService: GroupsService,
     private groupsComponentService: GroupsComponentService
   ) { }
@@ -25,7 +23,7 @@ export class GroupsTablesComponent implements OnInit {
 
     this.loading = true;
     this.groupsService
-      .getGroups(this.sessionService.getCompanyId())
+      .getGroups()
       .subscribe(result => {
         this.loading = false;
         this.groups = result;
