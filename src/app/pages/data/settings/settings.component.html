@@ -1,0 +1,25 @@
+<div class="p-grid" *ngIf="settings else loading">
+  <form #form="ngForm" class="p-grid p-col-12 p-sm-8 p-md-6" (ngSubmit)="onSubmit()">
+    <!-- currencySymbol -->
+    <div class="p-col-12 p-sm-6 form-label" translate>currencySymbol</div>
+    <div class="p-col-12 p-sm-6 ui-fluid">
+      <input required pInputText name="currencySymbol" type="text" [(ngModel)]="settings.currencySymbol"
+        placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+    </div>
+    <!-- currencyDecimals -->
+    <div class="p-col-12 p-sm-6 form-label" translate>currencyDecimals</div>
+    <div class="p-col-12 p-sm-6 ui-fluid">
+      <input required numeric decimals=0 pInputText name="currencyDecimals" type="text"
+        [(ngModel)]="settings.currencyDecimals"
+        placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+    </div>
+    <div class="p-col-12 p-sm-6 p-sm-offset-6 ui-fluid">
+      <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+        [disabled]="!form.valid"></button>
+    </div>
+  </form>
+</div>
+
+<ng-template #loading>
+  <span translate>loading</span>...
+</ng-template>

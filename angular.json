@@ -25,7 +25,9 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss",
+              "src/css/styles.scss",
+              "src/css/tables.scss",
+              "src/css/forms.scss",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.css",
               "node_modules/primeicons/primeicons.css"
@@ -88,7 +90,11 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/css/styles.scss",
+              "src/css/tables.scss",
+              "src/css/forms.scss"
+            ],
             "scripts": []
           }
         },

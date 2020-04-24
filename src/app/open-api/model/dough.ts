@@ -15,4 +15,5 @@ export interface Dough {
     name: string;
     description?: string;
     extra: number;
+    enabled: boolean;
 }

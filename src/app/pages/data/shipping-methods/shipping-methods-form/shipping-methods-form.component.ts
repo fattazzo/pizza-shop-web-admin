@@ -66,7 +66,7 @@ export class ShippingMethodsFormComponent implements OnInit {
         });
     }
 
-    this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', deleteFunc);
+    this.appMessageService.confirmDelete(deleteFunc);
   }
 
   private createShippingMethod() {

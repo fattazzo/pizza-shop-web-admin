@@ -1,0 +1,76 @@
+<div class="p-grid">
+  <!--Table -->
+  <div class="p-col-12 p-sm-8 p-md-6">
+    <p-table #categorysTable [value]="categories" [responsive]="true" selectionMode="single"
+      [(selection)]="categorySelected" dataKey="id" [loading]="loading" autoLayout="true"
+      (onRowSelect)="onRowSelect($event)">
+      <ng-template pTemplate="caption">
+        <div class="p-grid">
+          <div class="p-col table-title">
+            <h2 style="margin: 0;" translate [translateParams]="{ count: 2 }">category</h2>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-category>
+        <tr>
+          <th pSortableColumn="title" translate>
+            name
+            <p-sortIcon field="title"></p-sortIcon>
+          </th>
+          <th translate [translateParams]="{ count: 1}">description</th>
+          <th translate [translateParams]="{ gender: 'female'}">enabled</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-category>
+        <tr [pSelectableRow]="category">
+          <td>{{ category.name}}</td>
+          <td>{{ category.description}}</td>
+          <td>
+            <p-checkbox styleClass="table-checkbox" binary="true" [ngModel]="category.enabled" disabled="true">
+            </p-checkbox>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+  <!-- Form -->
+  <div class="p-col-12 p-sm-4 p-md-6">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <p-panel header="{{categoryForm?.name || ('new' | translate:&quot;{ gender: 'female' }&quot;) }}">
+        <div class="p-grid ui-fluid" style="margin: 10px 0px">
+          <!-- name -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <input required pInputText name="name" type="text" [(ngModel)]="categoryForm.name"
+              placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+          </div>
+          <!-- description -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ count: 1}">description</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <input pInputText name="description" type="text" [(ngModel)]="categoryForm.description" />
+          </div>
+          <!-- enable -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ gender: 'female'}">enabled</div>
+          <div class="p-col-12 p-sm-7 p-lg-8">
+            <p-checkbox binary="true" [(ngModel)]="categoryForm.enabled" name="enabled"></p-checkbox>
+          </div>
+        </div>
+        <div class="p-grid" *ngIf="hasEditRole()">
+          <div class="p-col ui-fluid">
+            <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}"
+              icon="pi pi-file-o" (click)="onNew()"></button>
+          </div>
+          <div class="p-col ui-fluid">
+            <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+              [disabled]="!form.valid"></button>
+          </div>
+          <div class="p-col ui-fluid">
+            <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash"
+              [disabled]="categoryForm.id == null" (click)="onDelete()" class="ui-button-danger"></button>
+          </div>
+        </div>
+      </p-panel>
+    </form>
+  </div>
+</div>

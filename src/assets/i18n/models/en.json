@@ -3,6 +3,14 @@
   "user": "User{count, plural, =0{} one{} other{s}}",
   "group": "Group{count, plural, =0{} one{} other{s}}",
   "branch": "Branch{count, plural, =0{} one{} other{es}}",
+  "variation": "Variation{count, plural, =0{} one{} other{s}}",
+  "dough": "Dough{count, plural, =0{} one{} other{s}}",
+  "size": "Size{count, plural, =0{} one{} other{s}}",
+  "topping": "Topping{count, plural, =0{} one{} other{s}}",
+  "product": "Product{count, plural, =0{} one{} other{s}}",
+  "productAndCategory": "Product{count, plural, =0{} one{} other{s}} e Categor{count, plural, =0{y} one{y} other{ies}}",
+  "category": "Categor{count, plural, =0{y} one{y} other{ies}}",
+  "configuration": "Configuration{count, plural, =0{} one{} other{s}}",
 
   "name": "Name",
   "role": "Role{count, plural, =0{} one{} other{s}}",
@@ -24,5 +32,9 @@
   "general": "General",
   "zone": "Zon{count, plural, =0{e} one{e} other{es}}",
   "companyLogo": "Company logo",
-  "companyLogoDescription": "Click on the logo to be able to select another image to upload.\n\nImage features:\nFormat: PNG\nShape: square\nOptimal size: 320x320px"
+  "companyLogoDescription": "Click on the logo to be able to select another image to upload.\n\nImage features:\nFormat: PNG\nShape: square\nOptimal size: 320x320px",
+  "extra": "Extra{count, plural, =0{} one{} other{s}}",
+
+  "currencySymbol": "Currency symbol",
+  "currencyDecimals": "Currency decimals"
 }

@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { BranchesService } from './api/branches.service';
 import { CompaniesService } from './api/companies.service';
 import { GroupsService } from './api/groups.service';
+import { ProductsService } from './api/products.service';
 import { SessionService } from './api/session.service';
+import { SettingsService } from './api/settings.service';
 import { ShippingmethodsService } from './api/shippingmethods.service';
 import { UsersService } from './api/users.service';
 import { VariationsService } from './api/variations.service';
@@ -19,7 +21,9 @@ import { VariationsService } from './api/variations.service';
     BranchesService,
     CompaniesService,
     GroupsService,
+    ProductsService,
     SessionService,
+    SettingsService,
     ShippingmethodsService,
     UsersService,
     VariationsService ]

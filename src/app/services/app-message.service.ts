@@ -25,6 +25,10 @@ export class AppMessageService {
     });
   }
 
+  confirmDelete(onAccept: () => void) {
+    this.confirm('confirmDeleteTitle', 'confirmDeleteResource', onAccept);
+  }
+
   addSuccessfullInsert(titleKey: string = 'message.insert.title', detailKey: string = 'message.insert.detail') {
     this.add('success', titleKey, detailKey)
   }

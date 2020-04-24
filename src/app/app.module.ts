@@ -24,6 +24,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { PickListModule } from 'primeng/picklist';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
@@ -32,6 +33,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CurrencyDirective } from './directive/currency.directive';
+import { NumericDirective } from './directive/numeric.directive';
 import { HttpConfigInterceptor } from './http/http-config-interceptor';
 import { ApiModule, Configuration, ConfigurationParameters } from './open-api';
 import { AuthGuard } from './pages/auth/auth.guard';
@@ -49,13 +52,22 @@ import { DeliveryAdressesComponent } from './pages/data/delivery-adresses/delive
 import { GroupsFormComponent } from './pages/data/groups/groups-form/groups-form.component';
 import { GroupsTablesComponent } from './pages/data/groups/groups-tables/groups-tables.component';
 import { GroupsComponent } from './pages/data/groups/groups.component';
+import { ProductCategoriesComponent } from './pages/data/products-categories/product-categories/product-categories.component';
+import { ProductsCategoriesComponent } from './pages/data/products-categories/products-categories.component';
+import { ProductsComponent } from './pages/data/products-categories/products/products.component';
+import { SettingsComponent } from './pages/data/settings/settings.component';
 import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
 import { ShippingMethodsTableComponent } from './pages/data/shipping-methods/shipping-methods-table/shipping-methods-table.component';
 import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping-methods.component';
 import { UsersFormComponent } from './pages/data/users/users-form/users-form.component';
 import { UsersTableComponent } from './pages/data/users/users-table/users-table.component';
 import { UsersComponent } from './pages/data/users/users.component';
+import { DoughsComponent } from './pages/data/variations/doughs/doughs.component';
+import { SizesComponent } from './pages/data/variations/sizes/sizes.component';
+import { ToppingsComponent } from './pages/data/variations/toppings/toppings.component';
+import { VariationsComponent } from './pages/data/variations/variations.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MyCurrencyPipe } from './pipes/my-currency.pipe';
 import { AppMessageService } from './services/app-message.service';
 import { MenuService } from './services/menu.service';
 import { SessionService } from './services/session.service';
@@ -64,7 +76,6 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
-
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -102,6 +113,9 @@ export function apiConfigFactory(): Configuration {
 
 @NgModule({
   declarations: [
+    MyCurrencyPipe,
+    NumericDirective,
+    CurrencyDirective,
     AppComponent,
     TopBarComponent,
     HomeComponent,
@@ -123,7 +137,15 @@ export function apiConfigFactory(): Configuration {
     BranchesTableComponent,
     BranchesFormComponent,
     BranchZoneFormComponent,
-    BranchGeneralFormComponent
+    BranchGeneralFormComponent,
+    VariationsComponent,
+    DoughsComponent,
+    SizesComponent,
+    ToppingsComponent,
+    SettingsComponent,
+    ProductsCategoriesComponent,
+    ProductsComponent,
+    ProductCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +184,8 @@ export function apiConfigFactory(): Configuration {
     TooltipModule,
     ListboxModule,
     TabViewModule,
-    DialogModule
+    DialogModule,
+    SelectButtonModule
   ],
   exports: [TranslateModule],
   providers: [

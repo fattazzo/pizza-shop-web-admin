@@ -52,5 +52,7 @@
       "title": "Success",
       "detail": "Data deleted successfully"
     }
-  }
+  },
+
+  "loading": "Loading"
 }

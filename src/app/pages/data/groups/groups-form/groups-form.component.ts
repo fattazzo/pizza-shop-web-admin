@@ -53,7 +53,7 @@ export class GroupsFormComponent implements OnInit {
         });
     }
 
-    this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', deleteFunc);
+    this.appMessageService.confirmDelete(deleteFunc);
   }
 
   private createGroup() {

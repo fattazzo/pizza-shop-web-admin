@@ -75,7 +75,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -129,7 +129,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -183,7 +183,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -237,7 +237,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -284,7 +284,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -331,7 +331,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -378,7 +378,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -421,7 +421,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -469,7 +469,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -512,7 +512,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -560,7 +560,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -603,7 +603,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -656,7 +656,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -715,7 +715,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -774,7 +774,7 @@ export class VariationsService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()

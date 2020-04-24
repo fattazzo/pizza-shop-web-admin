@@ -67,7 +67,7 @@ export class BranchesFormComponent implements OnInit {
         });
     }
 
-    this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', deleteFunc);
+    this.appMessageService.confirmDelete(deleteFunc);
   }
 
   hasEditRole(): boolean {

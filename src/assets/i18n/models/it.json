@@ -3,6 +3,14 @@
   "user": "Utent{count, plural, =0{} one{e} other{i}}",
   "group": "Grupp{count, plural, =0{} one{o} other{i}}",
   "branch": "Sed{count, plural, =0{e} one{e} other{i}}",
+  "variation": "Variazion{count, plural, =0{e} one{e} other{i}}",
+  "dough": "Impast{count, plural, =0{o} one{o} other{i}}",
+  "size": "Dimension{count, plural, =0{e} one{e} other{i}}",
+  "topping": "Ingredient{count, plural, =0{e} one{e} other{i}}",
+  "product": "Prodott{count, plural, =0{o} one{o} other{i}}",
+  "productAndCategory": "Prodott{count, plural, =0{o} one{o} other{i}} e Categori{count, plural, =0{a} one{a} other{e}}",
+  "category": "Categori{count, plural, =0{a} one{a} other{e}}",
+  "configuration": "Configurazion{count, plural, =0{e} one{e} other{i}}",
 
   "name": "Nome",
   "role": "Permess{count, plural, =0{} one{o} other{i}}",
@@ -24,5 +32,9 @@
   "general": "Dati",
   "zone": "Zon{count, plural, =0{a} one{a} other{e}}",
   "companyLogo": "Logo azienda",
-  "companyLogoDescription": "Cliccare sul logo presente per poter selezionare un'altra immagine da caricare.\n\nCaratteristiche immagine:\nFormato: PNG\nForma: quadrato\nDimensioni ottimali: 320x320px"
+  "companyLogoDescription": "Cliccare sul logo presente per poter selezionare un'altra immagine da caricare.\n\nCaratteristiche immagine:\nFormato: PNG\nForma: quadrato\nDimensioni ottimali: 320x320px",
+  "extra": "Extra{count, plural, =0{} one{} other{}}",
+
+  "currencySymbol": "Simbolo valuta",
+  "currencyDecimals": "Decimali valuta"
 }

@@ -75,7 +75,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -129,7 +129,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -176,7 +176,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -219,7 +219,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -267,7 +267,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()
@@ -320,7 +320,7 @@ export class BranchesService {
 
         let headers = this.defaultHeaders;
 
-        // authentication (Authentication) required
+        // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
             const accessToken = typeof this.configuration.accessToken === 'function'
                 ? this.configuration.accessToken()

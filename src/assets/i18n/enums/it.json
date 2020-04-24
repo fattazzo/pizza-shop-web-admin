@@ -4,7 +4,9 @@
     "SECURITY": "Gestione sicurezza",
     "SHIPPING_METHODS": "Gestione metodi di pagamento",
     "COMPANY": "Gestione azienda e sedi",
-    "EDIT_ACCOUNT": "Modifica account"
+    "EDIT_ACCOUNT": "Modifica account",
+    "VARIATIONS": "Gestione variazioni",
+    "PRODUCTS": "Gestione prodotti"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

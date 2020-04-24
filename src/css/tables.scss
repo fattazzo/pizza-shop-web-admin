@@ -1,0 +1,13 @@
+.table-checkbox.ui-chkbox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  > .ui-chkbox-box {
+    opacity: 1;
+  }
+}
+
+.table-column-number {
+  text-align: right;
+}

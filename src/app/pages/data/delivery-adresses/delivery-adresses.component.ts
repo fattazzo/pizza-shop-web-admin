@@ -35,7 +35,7 @@ export class DeliveryAdressesComponent implements OnInit, OnDestroy {
   }
 
   removeAddress(addressId: number) {
-    this.appMessageService.confirm('confirmDeleteTitle', 'confirmDeleteResource', () => {
+    this.appMessageService.confirmDelete(() => {
       this.deliveryAddresses = this.deliveryAddresses.filter(a => a.id !== addressId);
       this.addressesChange.emit(this.deliveryAddresses);
     });

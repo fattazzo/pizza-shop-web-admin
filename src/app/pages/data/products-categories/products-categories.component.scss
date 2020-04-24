@@ -1,0 +1,15 @@
+.image-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 576px) {
+  .image-container {
+    justify-content: center;
+  }
+}

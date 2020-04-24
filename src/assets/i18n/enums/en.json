@@ -4,7 +4,9 @@
     "SECURITY": "Security management",
     "SHIPPING_METHODS": "Shipping methods management",
     "COMPANY": "Company and branches management",
-    "EDIT_ACCOUNT": "Account management"
+    "EDIT_ACCOUNT": "Account management",
+    "VARIATIONS": "Variations management",
+    "PRODUCTS": "Products management"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

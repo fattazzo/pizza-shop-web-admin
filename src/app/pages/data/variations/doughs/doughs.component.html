@@ -1,0 +1,89 @@
+<div class="p-grid">
+  <!--Table -->
+  <div class="p-col-12 p-md-7">
+    <p-table #toppingsTable [value]="doughs" [responsive]="true" selectionMode="single" [(selection)]="doughSelected"
+      dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+      <ng-template pTemplate="caption">
+        <div class="p-grid">
+          <div class="p-col table-title">
+            <h2 style="margin: 0;" translate [translateParams]="{ count: 2 }">dough</h2>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-dough>
+        <tr>
+          <th pSortableColumn="title" translate>
+            name
+            <p-sortIcon field="title"></p-sortIcon>
+          </th>
+          <th translate [translateParams]="{ count: 1}">description</th>
+          <th translate [translateParams]="{ gender: 'male'}">enabled</th>
+          <th translate [translateParams]="{ count: 1}" pSortableColumn="extra">
+            extra
+            <p-sortIcon field="extra"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dough>
+        <tr [pSelectableRow]="dough">
+          <td>{{ dough.name}}</td>
+          <td>{{ dough.description}}</td>
+          <td>
+            <p-checkbox styleClass="table-checkbox" binary="true" [ngModel]="dough.enabled" disabled="true">
+            </p-checkbox>
+          </td>
+          <td class="table-column-number">{{ dough.extra | mycurrency}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+  <!-- Form -->
+  <div class="p-col-12 p-md-5">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <p-panel header="{{doughForm?.name || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
+        <div class="p-grid ui-fluid" style="margin: 10px 0px">
+          <!-- name -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <input required pInputText name="name" type="text" [(ngModel)]="doughForm.name"
+              placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+          </div>
+          <!-- description -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ count: 1}">description</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <input pInputText name="description" type="text" [(ngModel)]="doughForm.description" />
+          </div>
+          <!-- extra -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ count: 1}">extra</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">{{session.getSettingsValue().currencySymbol}}</span>
+              <input pInputText currency name="extra" type="number" [(ngModel)]="doughForm.extra"
+                class="form-inputfield-numeric" />
+            </div>
+          </div>
+          <!-- enable -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ gender: 'male'}">enabled</div>
+          <div class="p-col-12 p-sm-7 p-lg-8">
+            <p-checkbox binary="true" [(ngModel)]="doughForm.enabled" name="enabled"></p-checkbox>
+          </div>
+        </div>
+        <div class="p-grid" *ngIf="hasEditRole()">
+          <div class="p-col ui-fluid">
+            <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}"
+              icon="pi pi-file-o" (click)="onNew()"></button>
+          </div>
+          <div class="p-col ui-fluid">
+            <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+              [disabled]="!form.valid"></button>
+          </div>
+          <div class="p-col ui-fluid">
+            <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash"
+              [disabled]="doughForm.id == null" (click)="onDelete()" class="ui-button-danger"></button>
+          </div>
+        </div>
+      </p-panel>
+    </form>
+  </div>
+</div>

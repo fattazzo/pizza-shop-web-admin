@@ -7,8 +7,11 @@ import { UnauthorizedComponent } from './pages/auth/unauthorized/unauthorized.co
 import { BranchesComponent } from './pages/data/branches/branches.component';
 import { CompanyComponent } from './pages/data/company/company.component';
 import { GroupsComponent } from './pages/data/groups/groups.component';
+import { ProductsCategoriesComponent } from './pages/data/products-categories/products-categories.component';
+import { SettingsComponent } from './pages/data/settings/settings.component';
 import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping-methods.component';
 import { UsersComponent } from './pages/data/users/users.component';
+import { VariationsComponent } from './pages/data/variations/variations.component';
 import { HomeComponent } from './pages/home/home.component';
 
 // Layouts
@@ -20,6 +23,9 @@ export const routes: Routes = [
   { path: 'shipping-methods', component: ShippingMethodsComponent, canActivate: [AuthGuard], data: { roles: [Role.SHIPPINGMETHODS] } },
   { path: 'company', component: CompanyComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANY] } },
   { path: 'branches', component: BranchesComponent, canActivate: [AuthGuard], data: { roles: [Role.COMPANY] } },
+  { path: 'variations', component: VariationsComponent, canActivate: [AuthGuard], data: { roles: [Role.VARIATIONS] } },
+  { path: 'products', component: ProductsCategoriesComponent, canActivate: [AuthGuard], data: { roles: [Role.PRODUCTS] } },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { roles: [Role.SECURITY] } },
   { path: 'login', component: LoginComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
 ];

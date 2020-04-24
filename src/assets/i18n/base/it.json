@@ -52,5 +52,7 @@
       "title": "Cancellazione",
       "detail": "Dato cancellato correttamente"
     }
-  }
+  },
+
+  "loading": "Caricamento in corso"
 }

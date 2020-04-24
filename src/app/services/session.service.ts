@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Branch, BranchDetails, Company, UserDetails } from '../open-api';
+import { Settings } from '../open-api/model/settings';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +15,14 @@ export class SessionService {
 
   private _branches: BehaviorSubject<Branch[]> = new BehaviorSubject([]);
 
+  private _settings: BehaviorSubject<Settings> = new BehaviorSubject(null);
+
   constructor() {
     this._user.next(JSON.parse(sessionStorage.getItem('user')));
     this._company.next(JSON.parse(sessionStorage.getItem('company')));
     this._branch.next(JSON.parse(sessionStorage.getItem('branch')));
     this._branches.next(JSON.parse(sessionStorage.getItem('branches')));
+    this._settings.next(JSON.parse(sessionStorage.getItem('settings')));
   }
 
   clearData() {
@@ -33,6 +37,9 @@ export class SessionService {
 
     this._user.next(null);
     sessionStorage.removeItem('user');
+
+    this._settings.next(null);
+    sessionStorage.removeItem('settings')
   }
 
   getUser(): Observable<UserDetails> {
@@ -77,5 +84,18 @@ export class SessionService {
   setBranches(branches: Branch[]) {
     this._branches.next(branches);
     sessionStorage.setItem('branches', JSON.stringify(branches));
+  }
+
+  getSettings(): Observable<Settings> {
+    return this._settings.asObservable();
+  }
+
+  getSettingsValue(): Settings {
+    return this._settings.value;
+  }
+
+  setSettings(settings: Settings) {
+    this._settings.next(settings);
+    sessionStorage.setItem('settings', JSON.stringify(settings));
   }
 }

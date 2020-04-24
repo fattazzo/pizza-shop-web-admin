@@ -1,0 +1,14 @@
+<div class="p-grid">
+  <div class="p-col-12 p-sm-6 title-container">
+    <h1 translate [translateParams]="{ count: 2 }">variation</h1>
+    <p-selectButton [options]="variationTypes" [(ngModel)]="currentVariationType"></p-selectButton>
+  </div>
+  <div class="p-col-12 p-sm-6 image-container">
+    <img [src]="'assets/images/' + currentVariationType + '.png'" style="height:100px;width: auto;">
+  </div>
+  <div class="p-col-12">
+    <app-doughs *ngIf="currentVariationType === 'dough'"></app-doughs>
+    <app-sizes *ngIf="currentVariationType === 'size'"></app-sizes>
+    <app-toppings *ngIf="currentVariationType === 'topping'"></app-toppings>
+  </div>
+</div>
