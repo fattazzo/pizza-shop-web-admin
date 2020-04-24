@@ -4,10 +4,10 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { SelectItem } from 'primeng/api/selectitem';
 import { map } from 'rxjs/operators';
+import { CompaniesService } from '../open-api';
 import { AuthService } from '../pages/auth/auth.service';
 import { MenuService } from '../services/menu.service';
 import { SessionService } from '../services/session.service';
-import { ThemeService } from '../services/theme/theme.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -26,10 +26,10 @@ export class TopBarComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    private themeService: ThemeService,
     public authService: AuthService,
     private router: Router,
     public session: SessionService,
+    public companiesService: CompaniesService,
     private menuService: MenuService) { }
 
   ngOnInit(): void {

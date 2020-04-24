@@ -1,6 +1,6 @@
 <div class='ui-toolbar p-align-center main-toolbar'>
   <div class="title-container">
-    <img src="http://localhost:8080/pizza-shop-api/company/logo" class="image-logo">
+    <img [src]="(session.getCompany() |async).logoUrl" class="image-logo">
     <h1 class='title'>{{appTitle}}</h1>
   </div>
 
