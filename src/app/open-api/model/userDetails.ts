@@ -12,8 +12,21 @@
 import { DeliveryAddress } from './deliveryAddress';
 import { Group } from './group';
 import { User } from './user';
+import { UserType } from './userType';
 
 export interface UserDetails extends User { 
+    /**
+     * Login password
+     */
+    password?: string;
+    /**
+     * First name
+     */
+    firstName?: string;
+    /**
+     * Last name
+     */
+    lastName?: string;
     /**
      * List of assigned `Group`
      */

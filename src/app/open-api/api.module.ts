@@ -6,8 +6,10 @@ import { HttpClient } from '@angular/common/http';
 import { BranchesService } from './api/branches.service';
 import { CompaniesService } from './api/companies.service';
 import { GroupsService } from './api/groups.service';
+import { SessionService } from './api/session.service';
 import { ShippingmethodsService } from './api/shippingmethods.service';
 import { UsersService } from './api/users.service';
+import { VariationsService } from './api/variations.service';
 
 @NgModule({
   imports:      [],
@@ -17,8 +19,10 @@ import { UsersService } from './api/users.service';
     BranchesService,
     CompaniesService,
     GroupsService,
+    SessionService,
     ShippingmethodsService,
-    UsersService ]
+    UsersService,
+    VariationsService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

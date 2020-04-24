@@ -11,7 +11,20 @@
  */
 
 export interface Company { 
+    /**
+     * Unique identifier
+     */
     id: number;
+    /**
+     * Company name
+     */
     name: string;
+    /**
+     * Company web url
+     */
     webUrl?: string;
+    /**
+     * Url of `Company` logo
+     */
+    logoUrl?: string;
 }

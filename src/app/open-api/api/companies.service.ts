@@ -99,19 +99,116 @@ export class CompaniesService {
     }
 
     /**
+     * Company logo
+     * Get a &#x60;Company&#x60; logo image
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getLogo(observe?: 'body', reportProgress?: boolean): Observable<Blob>;
+    public getLogo(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Blob>>;
+    public getLogo(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Blob>>;
+    public getLogo(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (Authentication) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'image/png'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Blob>('get',`${this.basePath}/company/logo`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Update a Company
      * Updates an existing &#x60;Company&#x60;.
      * @param body Updated &#x60;Company&#x60; information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateCompany(body: Company, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateCompany(body: Company, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateCompany(body: Company, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateCompany(body: Company, observe?: 'body', reportProgress?: boolean): Observable<Company>;
+    public updateCompany(body: Company, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Company>>;
+    public updateCompany(body: Company, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Company>>;
     public updateCompany(body: Company, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateCompany.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (Authentication) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<Company>('put',`${this.basePath}/company`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update a Company logo
+     * Updates an existing &#x60;Company&#x60; logo.
+     * @param file 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateLogo(file: Blob, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateLogo(file: Blob, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateLogo(file: Blob, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateLogo(file: Blob, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (file === null || file === undefined) {
+            throw new Error('Required parameter file was null or undefined when calling updateLogo.');
         }
 
         let headers = this.defaultHeaders;
@@ -133,16 +230,30 @@ export class CompaniesService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json'
+            'multipart/form-data'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): void; };
+        let useForm = false;
+        let convertFormParamsToString = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/company`,
+        if (file !== undefined) {
+            formParams = formParams.append('file', <any>file) as any || formParams;
+        }
+
+        return this.httpClient.request<any>('put',`${this.basePath}/company/logo`,
             {
-                body: body,
+                body: convertFormParamsToString ? formParams.toString() : formParams,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

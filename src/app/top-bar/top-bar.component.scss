@@ -16,10 +16,21 @@
   margin-left: 10px;
 }
 
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   color: var(--toolbar-text-color);
   margin-block-start: 0em;
   margin-block-end: 0em;
+}
+
+.image-logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 1em;
 }
 
 .topbar-menu {

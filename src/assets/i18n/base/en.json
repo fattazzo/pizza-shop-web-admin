@@ -20,6 +20,8 @@
   "new": "New{gender, select, male{} female{} other{}}",
   "delete": "Delete",
   "edit": "Edit",
+  "add": "Add",
+  "remove": "Remove",
 
   "available": "Available{count, plural, =0{} one{} other{}}",
   "selected": "Selected{gender, select, male{} female{} other{}}",
@@ -31,5 +33,24 @@
   "no": "No",
 
   "enabled": "Enabled{gender, select, male{} female{} other{}}",
-  "disabled": "Disabled{gender, select, male{} female{} other{}}"
+  "disabled": "Disabled{gender, select, male{} female{} other{}}",
+  "editable": "Editable{count, plural, =0{} one{} other{}}",
+
+  "message": {
+    "error": {
+      "title": "Errore"
+    },
+    "insert": {
+      "title": "Success",
+      "detail": "Data saved successfully"
+    },
+    "update": {
+      "title": "Success",
+      "detail": "Data updated successfully"
+    },
+    "delete": {
+      "title": "Success",
+      "detail": "Data deleted successfully"
+    }
+  }
 }

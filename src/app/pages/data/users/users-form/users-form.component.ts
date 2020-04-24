@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryAddress, Group, GroupsService, ShippingMethod, UserDetails, UsersService } from 'src/app/open-api';
-import { AuthService } from 'src/app/pages/auth/auth.service';
+import { DeliveryAddress, Group, GroupsService, ShippingMethod, UserDetails, UsersService, UserType } from 'src/app/open-api';
 import { AppMessageService } from 'src/app/services/app-message.service';
 import { SessionService } from 'src/app/services/session.service';
 import { UsersComponentService } from '../services/users-component.service';
@@ -13,6 +12,7 @@ import { UsersComponentService } from '../services/users-component.service';
 export class UsersFormComponent implements OnInit {
 
   user: UserDetails;
+  newUser = true;
 
   groups: Group[] = [];
   groupsAvailable: Group[] = [];
@@ -23,15 +23,19 @@ export class UsersFormComponent implements OnInit {
     private usersComponentService: UsersComponentService,
     private userService: UsersService,
     private groupsService: GroupsService,
-    private session: SessionService,
+    public session: SessionService,
     private appMessageService: AppMessageService,
-    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.onNew();
 
-    this.session.getBranch().subscribe(b => this.shippingMethodsAvailable = b.shippingMethods);
+    this.session.getBranch().subscribe(b => {
+      this.shippingMethodsAvailable = [];
+      if (b && b.shippingMethods) {
+        this.shippingMethodsAvailable = b.shippingMethods
+      };
+    });
     this.groupsService.getGroups().subscribe(g => this.groups = g);
 
     this.usersComponentService.userSelected.subscribe(u => {
@@ -39,29 +43,32 @@ export class UsersFormComponent implements OnInit {
         this.user = ud;
         this.groupsAvailable = this.groups.
           filter(g => this.user.groups.findIndex(ug => ug.id === g.id) === -1);
+        this.newUser = false;
       })
     });
   }
 
   onNew() {
-    this.user = { username: null, password: null, groups: [] };
+    this.user = { username: null, password: null, groups: [], readOnly: false, type: UserType.WORKER };
     this.groupsAvailable = this.groups;
+    this.newUser = true;
   }
 
   onSubmit() {
-    if (this.user.username) {
-      this.editUser();
-    } else {
+    if (this.newUser) {
       this.createUser();
+    } else {
+      this.editUser();
     }
   }
 
   onDelete() {
-    var deleteFunc = function () {
-      this.userService.deleteUser(this.session.getCompanyId(), this.user.id)
+    var deleteFunc = () => {
+      this.userService.deleteUser(this.user.username)
         .subscribe(() => {
           this.usersComponentService.deleteUser(this.user)
           this.onNew();
+          this.appMessageService.addSuccessfullDelete();
         });
     }
 
@@ -72,6 +79,8 @@ export class UsersFormComponent implements OnInit {
     this.userService.createUser(this.user).subscribe(result => {
       this.user = result;
       this.usersComponentService.modifyUser(this.user);
+      this.appMessageService.addSuccessfullInsert();
+      this.newUser = false;
     })
   }
 
@@ -79,6 +88,8 @@ export class UsersFormComponent implements OnInit {
     this.userService.updateUser(this.user, this.user.username).subscribe(result => {
       this.user = result;
       this.usersComponentService.modifyUser(this.user);
+      this.appMessageService.addSuccessfullUpdate();
+      this.newUser = false;
     })
   }
 

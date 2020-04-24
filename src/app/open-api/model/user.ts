@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { UserType } from './userType';
 
 export interface User { 
     /**
@@ -16,19 +17,12 @@ export interface User {
      */
     username: string;
     /**
-     * Login password
-     */
-    password: string;
-    /**
      * The email address
      */
     email?: string;
     /**
-     * First name
+     * Read only users cannot be deleted
      */
-    firstName?: string;
-    /**
-     * Last name
-     */
-    lastName?: string;
+    readOnly: boolean;
+    type: UserType;
 }

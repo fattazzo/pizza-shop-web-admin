@@ -15,26 +15,34 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextModule } from 'primeng/inputtext';
+import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { PickListModule } from 'primeng/picklist';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ErrorInterceptor } from './http/error.interceptor';
-import { ApiModule, BASE_PATH } from './open-api';
+import { HttpConfigInterceptor } from './http/http-config-interceptor';
+import { ApiModule, Configuration, ConfigurationParameters } from './open-api';
 import { AuthGuard } from './pages/auth/auth.guard';
 import { AuthService } from './pages/auth/auth.service';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { UnauthorizedComponent } from './pages/auth/unauthorized/unauthorized.component';
+import { BranchGeneralFormComponent } from './pages/data/branches/branches-form/branch-general-form/branch-general-form.component';
+import { BranchZoneFormComponent } from './pages/data/branches/branches-form/branch-zone-form/branch-zone-form.component';
+import { BranchesFormComponent } from './pages/data/branches/branches-form/branches-form.component';
+import { BranchesTableComponent } from './pages/data/branches/branches-table/branches-table.component';
+import { BranchesComponent } from './pages/data/branches/branches.component';
 import { CompanyComponent } from './pages/data/company/company.component';
 import { DeliveryAdressesFormComponent } from './pages/data/delivery-adresses/delivery-adresses-form/delivery-adresses-form.component';
 import { DeliveryAdressesComponent } from './pages/data/delivery-adresses/delivery-adresses.component';
@@ -56,9 +64,7 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
-import { BranchesComponent } from './pages/data/branches/branches.component';
-import { BranchesTableComponent } from './pages/data/branches/branches-table/branches-table.component';
-import { BranchesFormComponent } from './pages/data/branches/branches-form/branches-form.component';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -86,6 +92,14 @@ export function appInitializerFactory(
   };
 }
 
+export function apiConfigFactory(): Configuration {
+  const params: ConfigurationParameters = {
+    basePath: environment.baseApiRestUrl,
+    accessToken: () => sessionStorage.getItem('access-token')
+  };
+  return new Configuration(params);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,13 +121,15 @@ export function appInitializerFactory(
     CompanyComponent,
     BranchesComponent,
     BranchesTableComponent,
-    BranchesFormComponent
+    BranchesFormComponent,
+    BranchZoneFormComponent,
+    BranchGeneralFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ApiModule,
+    ApiModule.forRoot(apiConfigFactory),
     TranslateModule.forRoot({
       defaultLanguage: 'it',
       loader: {
@@ -143,7 +159,10 @@ export function appInitializerFactory(
     ConfirmDialogModule,
     DynamicDialogModule,
     FieldsetModule,
-    TooltipModule
+    TooltipModule,
+    ListboxModule,
+    TabViewModule,
+    DialogModule
   ],
   exports: [TranslateModule],
   providers: [
@@ -153,11 +172,11 @@ export function appInitializerFactory(
       deps: [TranslateService, Injector, ThemeService],
       multi: true
     },
-    {
-      provide: BASE_PATH,
-      useValue: environment.baseApiRestUrl
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    //{
+    //  provide: BASE_PATH,
+    //  useValue: environment.baseApiRestUrl
+    //},
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, deps: [Injector], multi: true },
     { provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['it', 'en'] } },
     SideBarService,
     ThemeService,

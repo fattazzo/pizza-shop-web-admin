@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Role } from '../open-api';
-import { AuthService } from '../pages/auth/auth.service';
+import { SessionService } from '../services/session.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthUtils {
 
-  constructor(private authService: AuthService) { }
+  constructor(private sessionService: SessionService) { }
 
   isInRole(roles: Role[]): boolean {
 
     var rolesToCheck: Role[] = [];
     if (roles) { rolesToCheck = roles }
 
-    let user = this.authService.currentUserValue.value.user
+    let user = this.sessionService.getUserValue()
     if (!user || !user.groups) { return false }
 
     let userRoles: Role[] = [];

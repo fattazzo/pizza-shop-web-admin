@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Branch, BranchDetails, Company } from '../open-api';
+import { Branch, BranchDetails, Company, UserDetails } from '../open-api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
+
+  private _user: BehaviorSubject<UserDetails> = new BehaviorSubject(null);
 
   private _company: BehaviorSubject<Company> = new BehaviorSubject(null);
   private _branch: BehaviorSubject<BranchDetails> = new BehaviorSubject(null);
@@ -13,6 +15,7 @@ export class SessionService {
   private _branches: BehaviorSubject<Branch[]> = new BehaviorSubject([]);
 
   constructor() {
+    this._user.next(JSON.parse(sessionStorage.getItem('user')));
     this._company.next(JSON.parse(sessionStorage.getItem('company')));
     this._branch.next(JSON.parse(sessionStorage.getItem('branch')));
     this._branches.next(JSON.parse(sessionStorage.getItem('branches')));
@@ -27,6 +30,22 @@ export class SessionService {
 
     this._branches.next([]);
     sessionStorage.removeItem('branches');
+
+    this._user.next(null);
+    sessionStorage.removeItem('user');
+  }
+
+  getUser(): Observable<UserDetails> {
+    return this._user.asObservable();
+  }
+
+  getUserValue(): UserDetails {
+    return this._user.value;
+  }
+
+  setUser(user: UserDetails) {
+    this._user.next(user);
+    sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   getCompany(): Observable<Company> {

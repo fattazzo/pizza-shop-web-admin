@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -24,4 +25,39 @@ export class AppMessageService {
     });
   }
 
+  addSuccessfullInsert(titleKey: string = 'message.insert.title', detailKey: string = 'message.insert.detail') {
+    this.add('success', titleKey, detailKey)
+  }
+
+  addSuccessfullUpdate(titleKey: string = 'message.update.title', detailKey: string = 'message.update.detail') {
+    this.add('success', titleKey, detailKey)
+  }
+
+  addSuccessfullDelete(titleKey: string = 'message.delete.title', detailKey: string = 'message.delete.detail') {
+    this.add('success', titleKey, detailKey)
+  }
+
+  add(severity: string, titleKey: string, detailKey: string) {
+    const message = {
+      severity: severity,
+      summary: this.translate.instant(titleKey),
+      detail: this.translate.instant(detailKey)
+    };
+
+    this.messageService.add(message)
+  }
+
+  addRequestErrorMessage(request: HttpRequest<any>, err: HttpErrorResponse) {
+    const message = {
+      severity: 'error',
+      summary: this.translate.instant('message.error.title'),
+      detail: err.error.error
+    };
+
+    if (err.error.error && err.error.error.userMessage !== undefined && err.error.error.userMessage !== null) {
+      message.summary = err.error.error.userTitle;
+      message.detail = err.error.error.userMessage;
+    }
+    this.messageService.add(message)
+  }
 }

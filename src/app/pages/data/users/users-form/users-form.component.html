@@ -6,8 +6,7 @@
         <div class="p-col-6 form-label" translate>username</div>
         <div class="p-col-6">
           <input required pInputText name="username" type="text" [(ngModel)]="user.username"
-            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}"
-            [disabled]="authService.currentUserValue.value.user.username === user.username" />
+            placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!newUser" />
         </div>
       </div>
       <!-- password -->
@@ -16,9 +15,9 @@
         <div class="p-col-6 ui-inputgroup">
           <input required #password_field pInputText name="password" type="password" [(ngModel)]="user.password"
             placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}"
-            [disabled]="authService.currentUserValue.value.user.username !== user.username" />
+            [disabled]="user.type ==='CUSTOMER'" />
           <button pButton type="button" [icon]="(password_field.type=='password')?' pi pi-eye':' pi pi-eye-slash'"
-            class="ui-button-warn" *ngIf="authService.currentUserValue.value.user.username === user.username"
+            class="ui-button-warn" *ngIf="session.getUserValue().username === user.username"
             (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
         </div>
       </div>
@@ -27,28 +26,31 @@
         <div class="p-col-6 form-label" translate>email</div>
         <div class="p-col-6">
           <input required pInputText name="email" type="text" [(ngModel)]="user.email"
-            placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}" />
+            placeholder="{{'required' | translate:&quot;{ gender: 'female' }&quot;}}"
+            [disabled]="user.type ==='CUSTOMER'" />
         </div>
       </div>
       <!-- first name -->
       <div class="p-grid">
         <div class="p-col-6 form-label" translate>firstName</div>
         <div class="p-col-6">
-          <input pInputText name="firstName" type="text" [(ngModel)]="user.firstName" />
+          <input pInputText name="firstName" type="text" [(ngModel)]="user.firstName"
+            [disabled]="user.type ==='CUSTOMER'" />
         </div>
       </div>
       <!-- last name -->
       <div class="p-grid">
         <div class="p-col-6 form-label" translate>lastName</div>
         <div class="p-col-6">
-          <input pInputText name="lastName" type="text" [(ngModel)]="user.lastName" />
+          <input pInputText name="lastName" type="text" [(ngModel)]="user.lastName"
+            [disabled]="user.type ==='CUSTOMER'" />
         </div>
       </div>
       <!-- groups -->
       <div class="p-grid">
         <div class="p-col-12" translate [translateParams]="{ count: 2 }">group</div>
         <p-pickList class="p-col-12" [source]="groupsAvailable" [target]="user.groups"
-          sourceHeader="{{'available' | translate:&quot;{ count: 2 }&quot;}}"
+          sourceHeader="{{'available' | translate:&quot;{ count: 2 }&quot;}}" [disabled]="user.type ==='CUSTOMER'"
           targetHeader="{{'selected' | translate:&quot;{ gender: 'other' }&quot;}}" [responsive]="true"
           [showSourceControls]="false" [showTargetControls]="false">
           <ng-template let-group pTemplate="item">
@@ -58,10 +60,11 @@
       </div>
       <!-- deliveryAddresses -->
       <app-delivery-adresses class="p-col-12" [deliveryAddresses]="user.deliveryAddresses"
-        [shippingMethods]="shippingMethodsAvailable" [editable]="true" (addressesChange)="updateAddress($event)">
+        [shippingMethods]="shippingMethodsAvailable" [editable]="user.type !=='CUSTOMER'"
+        (addressesChange)="updateAddress($event)">
       </app-delivery-adresses>
     </div>
-    <div class="p-grid">
+    <div class="p-grid" *ngIf="session.getUserValue().type === 'ADMIN' && user.type !=='CUSTOMER'">
       <div class="p-col ui-fluid">
         <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
           (click)="onNew()"></button>
@@ -72,7 +75,7 @@
       </div>
       <div class="p-col ui-fluid">
         <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash" (click)="onDelete()"
-          class="ui-button-danger"></button>
+          [disabled]="newUser" class="ui-button-danger"></button>
       </div>
     </div>
   </p-panel>

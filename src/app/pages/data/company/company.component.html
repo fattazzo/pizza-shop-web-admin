@@ -1,16 +1,32 @@
-<form #form="ngForm" class="p-grid p-col-12 p-md-8 p-lg-6" (ngSubmit)="onSubmit()">
-  <!-- name -->
-  <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
-  <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
-    <input required pInputText name="name" type="text" [(ngModel)]="company.name"
-      placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+<div class="p-grid">
+  <div class="p-col-12 p-md-8 p-lg-6">
+    <form #form="ngForm" class="p-grid" (ngSubmit)="onSubmit()">
+      <!-- name -->
+      <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
+      <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+        <input required pInputText name="name" type="text" [(ngModel)]="company.name"
+          placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+      </div>
+      <!-- webUrl -->
+      <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{count:1}">webUrl</div>
+      <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+        <input pInputText name="webUrl" type="text" [(ngModel)]="company.webUrl" />
+      </div>
+      <div class="p-col-12 p-sm-7 p-lg-8 p-offset-0 p-sm-offset-5 p-lg-offset-4 ui-fluid">
+        <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save"
+          [disabled]="!form.valid"></button>
+      </div>
+    </form>
   </div>
-  <!-- webUrl -->
-  <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{count:1}">webUrl</div>
-  <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
-    <input pInputText name="webUrl" type="text" [(ngModel)]="company.webUrl" />
+  <div class="p-col-12 p-md-4 p-lg-4">
+    <p-card header="{{'companyLogo' | translate}}" styleClass="ui-card-shadow">
+      <p-header>
+        <span style="height: 150px;display: flex;justify-content: center;padding-top: 1em;">
+          <img style="width: auto; height: 100%;" [src]="logoUrl" (click)="openFile()" />
+          <input class="inputUpload" type="file" style="display:none" (change)="handle($event)">
+        </span>
+      </p-header>
+      <span class="translated-paragraph" translate>companyLogoDescription</span>
+    </p-card>
   </div>
-  <div class="p-col-12 p-sm-7 p-lg-8 p-offset-0 p-sm-offset-5 p-lg-offset-4 ui-fluid">
-    <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"></button>
-  </div>
-</form>
+</div>

@@ -63,9 +63,9 @@ export class UsersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createUser(body: UserDetails, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createUser(body: UserDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createUser(body: UserDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createUser(body: UserDetails, observe?: 'body', reportProgress?: boolean): Observable<UserDetails>;
+    public createUser(body: UserDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserDetails>>;
+    public createUser(body: UserDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserDetails>>;
     public createUser(body: UserDetails, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -83,6 +83,7 @@ export class UsersService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -98,7 +99,7 @@ export class UsersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/users`,
+        return this.httpClient.request<UserDetails>('post',`${this.basePath}/users`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -255,9 +256,9 @@ export class UsersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateUser(body: UserDetails, userName: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateUser(body: UserDetails, userName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateUser(body: UserDetails, userName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateUser(body: UserDetails, userName: string, observe?: 'body', reportProgress?: boolean): Observable<UserDetails>;
+    public updateUser(body: UserDetails, userName: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserDetails>>;
+    public updateUser(body: UserDetails, userName: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserDetails>>;
     public updateUser(body: UserDetails, userName: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -279,6 +280,7 @@ export class UsersService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -294,7 +296,7 @@ export class UsersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/users/${encodeURIComponent(String(userName))}`,
+        return this.httpClient.request<UserDetails>('put',`${this.basePath}/users/${encodeURIComponent(String(userName))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

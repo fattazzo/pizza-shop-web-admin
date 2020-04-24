@@ -21,9 +21,9 @@
               class="ui-button-warn"
               (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
           </div>
-          <div class="p-col-12">
+          <!--<div class="p-col-12">
             <p-checkbox binary="true" label="{{'remember_me' | translate}}" disabled="true"></p-checkbox>
-          </div>
+          </div>-->
           <div class="p-col-12 ui-fluid">
             <button pButton label="{{'signin' | translate}}" type="submit" icon="pi pi-" class="ui-button"
               [disabled]="!form.valid"></button>

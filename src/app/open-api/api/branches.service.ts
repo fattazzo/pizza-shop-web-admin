@@ -64,9 +64,9 @@ export class BranchesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createBranch(body: BranchDetails, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createBranch(body: BranchDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createBranch(body: BranchDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createBranch(body: BranchDetails, observe?: 'body', reportProgress?: boolean): Observable<BranchDetails>;
+    public createBranch(body: BranchDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<BranchDetails>>;
+    public createBranch(body: BranchDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<BranchDetails>>;
     public createBranch(body: BranchDetails, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -84,6 +84,7 @@ export class BranchesService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -99,65 +100,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/branches`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Create a ShippingZone
-     * Creates a new instance of a &#x60;ShippingZone&#x60;.
-     * @param body A new &#x60;ShippingZone&#x60; to be created.
-     * @param branchId A unique identifier for a &#x60;Company&#x60;.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createShippingZone(body: ShippingZone, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createShippingZone(body: ShippingZone, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling createShippingZone.');
-        }
-
-        if (branchId === null || branchId === undefined) {
-            throw new Error('Required parameter branchId was null or undefined when calling createShippingZone.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<any>('post',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones`,
+        return this.httpClient.request<BranchDetails>('post',`${this.basePath}/branches`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -206,58 +149,6 @@ export class BranchesService {
         ];
 
         return this.httpClient.request<any>('delete',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Delete a ShippingZone
-     * Deletes an existing &#x60;ShippingZone&#x60;.
-     * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteShippingZone(shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteShippingZone(shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling deleteShippingZone.');
-        }
-
-        if (branchId === null || branchId === undefined) {
-            throw new Error('Required parameter branchId was null or undefined when calling deleteShippingZone.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('delete',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -359,62 +250,9 @@ export class BranchesService {
     }
 
     /**
-     * Get a ShippingZone
-     * Gets the details of a single instance of a &#x60;ShippingZone&#x60;.
-     * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingZone>;
-    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingZone>>;
-    public getShippingZone(shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingZone>>;
-    public getShippingZone(shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling getShippingZone.');
-        }
-
-        if (branchId === null || branchId === undefined) {
-            throw new Error('Required parameter branchId was null or undefined when calling getShippingZone.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<ShippingZone>('get',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * List All shippingzones
      * Gets a list of all &#x60;ShippingZone&#x60; entities.
-     * @param branchId A unique identifier for a &#x60;Company&#x60;.
+     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -467,9 +305,9 @@ export class BranchesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateBranch(body: BranchDetails, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateBranch(body: BranchDetails, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateBranch(body: BranchDetails, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<BranchDetails>;
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<BranchDetails>>;
+    public updateBranch(body: BranchDetails, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<BranchDetails>>;
     public updateBranch(body: BranchDetails, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -491,6 +329,7 @@ export class BranchesService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -506,70 +345,7 @@ export class BranchesService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Update a ShippingZone
-     * Updates an existing &#x60;ShippingZone&#x60;.
-     * @param body Updated &#x60;ShippingZone&#x60; information.
-     * @param shippingzoneId A unique identifier for a &#x60;ShippingZone&#x60;.
-     * @param branchId A unique identifier for a &#x60;Branch&#x60;.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateShippingZone(body: ShippingZone, shippingzoneId: number, branchId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateShippingZone.');
-        }
-
-        if (shippingzoneId === null || shippingzoneId === undefined) {
-            throw new Error('Required parameter shippingzoneId was null or undefined when calling updateShippingZone.');
-        }
-
-        if (branchId === null || branchId === undefined) {
-            throw new Error('Required parameter branchId was null or undefined when calling updateShippingZone.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Authentication) required
-        if (this.configuration.accessToken) {
-            const accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers = headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<any>('put',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}/shippingzones/${encodeURIComponent(String(shippingzoneId))}`,
+        return this.httpClient.request<BranchDetails>('put',`${this.basePath}/branches/${encodeURIComponent(String(branchId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

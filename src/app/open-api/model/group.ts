@@ -18,4 +18,8 @@ export interface Group {
      * List of assigned `Role'
      */
     roles?: Array<Role>;
+    /**
+     * Read only groups cannot be deleted
+     */
+    readOnly: boolean;
 }

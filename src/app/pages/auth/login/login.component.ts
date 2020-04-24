@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { SelectItem } from 'primeng/api/selectitem';
-import { CompaniesService } from 'src/app/open-api';
+import { SessionService } from 'src/app/services/session.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -24,12 +24,12 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private router: Router,
-    private companiesService: CompaniesService,
+    private session: SessionService,
     private messageService: MessageService,
     private translate: TranslateService
   ) {
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
+    if (this.session.getUserValue()) {
       this.router.navigate(['/']);
     }
   }

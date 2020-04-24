@@ -4,7 +4,6 @@ import { SelectItem } from 'primeng/api/selectitem';
 import { ShippingMethod, ShippingmethodsService } from 'src/app/open-api';
 import { ShippingMethodType } from 'src/app/open-api/model/shippingMethodType';
 import { AppMessageService } from 'src/app/services/app-message.service';
-import { AuthUtils } from 'src/app/utils/auth-utils';
 import { ShippingMethodsComponentService } from '../services/shipping-methods-component.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class ShippingMethodsFormComponent implements OnInit {
   constructor(
     private shippingMethodsComponentService: ShippingMethodsComponentService,
     private shippingMethodService: ShippingmethodsService,
-    private authUtils: AuthUtils,
     private appMessageService: AppMessageService,
     private translate: TranslateService
   ) { }
@@ -47,7 +45,7 @@ export class ShippingMethodsFormComponent implements OnInit {
   }
 
   onNew() {
-    this.shippingMethod = { id: null, title: null, description: null, type: null, enabled: false };
+    this.shippingMethod = { id: null, title: null, description: null, type: null, enabled: true };
   }
 
   onSubmit() {
@@ -59,11 +57,12 @@ export class ShippingMethodsFormComponent implements OnInit {
   }
 
   onDelete() {
-    var deleteFunc = function () {
-      this.shippingMethodService.deleteShippingMethod(this.session.getCompanyId(), this.shippingMethod.id)
+    var deleteFunc = () => {
+      this.shippingMethodService.deleteShippingMethod(this.shippingMethod.id)
         .subscribe(() => {
           this.shippingMethodsComponentService.deleteShippingMethod(this.shippingMethod)
           this.onNew();
+          this.appMessageService.addSuccessfullDelete();
         });
     }
 
@@ -74,6 +73,7 @@ export class ShippingMethodsFormComponent implements OnInit {
     this.shippingMethodService.createShippingMethod(this.shippingMethod).subscribe(result => {
       this.shippingMethod = result;
       this.shippingMethodsComponentService.modifyShippingMethod(this.shippingMethod);
+      this.appMessageService.addSuccessfullInsert();
     })
   }
 
@@ -81,6 +81,7 @@ export class ShippingMethodsFormComponent implements OnInit {
     this.shippingMethodService.updateShippingMethod(this.shippingMethod, this.shippingMethod.id).subscribe(result => {
       this.shippingMethod = result;
       this.shippingMethodsComponentService.modifyShippingMethod(this.shippingMethod);
+      this.appMessageService.addSuccessfullUpdate();
     })
   }
 

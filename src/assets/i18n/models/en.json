@@ -19,5 +19,10 @@
   "description": "Description{count, plural, =0{} one{} other{s}}",
   "webUrl": "Web url{count, plural, =0{} one{} other{s}}",
   "primary": "Primar{gender, select, male{y} female{y} other{ies}}",
-  "phone": "Phone number{count, plural, =0{} one{} other{s}}"
+  "phone": "Phone number{count, plural, =0{} one{} other{s}}",
+  "status": "Status",
+  "general": "General",
+  "zone": "Zon{count, plural, =0{e} one{e} other{es}}",
+  "companyLogo": "Company logo",
+  "companyLogoDescription": "Click on the logo to be able to select another image to upload.\n\nImage features:\nFormat: PNG\nShape: square\nOptimal size: 320x320px"
 }

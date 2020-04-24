@@ -1,5 +1,5 @@
 <p-table #usersTable [value]="users" [responsive]="true" selectionMode="single" [(selection)]="userSelected"
-  dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+  dataKey="username" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div class="p-grid">
       <div class="p-col table-title">
@@ -13,11 +13,39 @@
         username
         <p-sortIcon field="username"></p-sortIcon>
       </th>
+      <th translate [translateParams]="{count: 1}">type</th>
+      <th translate>status</th>
+    </tr>
+    <tr>
+      <th class="ui-fluid">
+        <input pInputText type="text" (input)="usersTable.filter($event.target.value, 'username', 'contains')"
+          class="ui-column-filter">
+      </th>
+      <th class="ui-fluid">
+        <p-dropdown [options]="userTypes" (onChange)="usersTable.filter($event.value, 'type', 'equals')"
+          appendTo="body">
+          <ng-template let-option pTemplate="item">
+            <span>{{option.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </th>
+      <th class="ui-fluid">
+        <p-dropdown [options]="userStatuses" (onChange)="usersTable.filter($event.value, 'status', 'equals')"
+          appendTo="body">
+          <ng-template let-option pTemplate="item">
+            <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-user>
     <tr [pSelectableRow]="user">
       <td>{{ user.username}}</td>
+      <td style="text-align: center;" translate>{{'UserType.'+user.type}}</td>
+      <td style="text-align: center;">
+        <span [class]="'customer-badge status-' + user.status" translate>{{'UserStatus.'+user.status}}</span>
+      </td>
     </tr>
   </ng-template>
 </p-table>

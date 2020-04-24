@@ -1,9 +1,12 @@
 <div class='ui-toolbar p-align-center main-toolbar'>
-  <h1 class='title'>{{appTitle}}</h1>
+  <div class="title-container">
+    <img src="http://localhost:8080/pizza-shop-api/company/logo" class="image-logo">
+    <h1 class='title'>{{appTitle}}</h1>
+  </div>
 
   <div>
     <ul class='topbar-menu'>
-      <li *ngIf="(authService.currentUserValue | async)" (click)='menuData.toggle($event)'><a translate>data</a>
+      <li *ngIf="(session.getUser() | async)" (click)='menuData.toggle($event)'><a translate>data</a>
       </li>
       <li (click)='menuOptions.toggle($event)'><a translate>settings</a></li>
     </ul>
@@ -18,9 +21,9 @@
     <p-dropdown *ngIf="(session.getBranch() | async)" [options]=" branchesItems" [ngModel]="session.getBranch() |async">
     </p-dropdown>
   </div>
-  <div *ngIf="(authService.currentUserValue | async) as user" class="user-container">
+  <div *ngIf="(session.getUser() | async) as user" class="user-container">
     <a (click)='menuUser.toggle($event)' class="user-item-menu">
-      {{user.user.username}}
+      {{user.username}}
       <fa-icon [icon]="['fas', 'user']" class="user-icon" size="1x"></fa-icon>
     </a>
     <p-slideMenu #menuUser [model]='itemsUser' [popup]='true'></p-slideMenu>

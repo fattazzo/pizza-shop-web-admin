@@ -62,9 +62,9 @@ export class GroupsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createGroup(body: Group, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createGroup(body: Group, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createGroup(body: Group, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createGroup(body: Group, observe?: 'body', reportProgress?: boolean): Observable<Group>;
+    public createGroup(body: Group, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Group>>;
+    public createGroup(body: Group, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Group>>;
     public createGroup(body: Group, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -82,6 +82,7 @@ export class GroupsService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -97,7 +98,7 @@ export class GroupsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/groups`,
+        return this.httpClient.request<Group>('post',`${this.basePath}/groups`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -254,9 +255,9 @@ export class GroupsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateGroup(body: Group, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateGroup(body: Group, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateGroup(body: Group, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateGroup(body: Group, groupId: number, observe?: 'body', reportProgress?: boolean): Observable<Group>;
+    public updateGroup(body: Group, groupId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Group>>;
+    public updateGroup(body: Group, groupId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Group>>;
     public updateGroup(body: Group, groupId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -278,6 +279,7 @@ export class GroupsService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -293,7 +295,7 @@ export class GroupsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/groups/${encodeURIComponent(String(groupId))}`,
+        return this.httpClient.request<Group>('put',`${this.basePath}/groups/${encodeURIComponent(String(groupId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

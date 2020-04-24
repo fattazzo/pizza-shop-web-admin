@@ -1,0 +1,18 @@
+.customer-badge {
+  border-radius: 2px;
+  padding: 0.25em 0.5em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: black;
+
+  &.status-Active {
+    background-color: var(--success-color);
+  }
+
+  &.status-ToConfirm {
+    background-color: var(--warning-color);
+  }
+}

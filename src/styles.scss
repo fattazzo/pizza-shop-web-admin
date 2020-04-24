@@ -3,15 +3,9 @@ body {
   padding: 0;
 }
 
-:root {
-  --ok-color: #42a948;
-  --warning-color: #ffb300;
-  --error-color: #e40303;
-}
-
 .ng-valid[required],
 .ng-valid.required {
-  border-left: 5px solid var(--ok-color);
+  border-left: 5px solid #42a948;
   border-left-width: 5px !important;
 }
 
@@ -26,13 +20,13 @@ p-selectbutton.ng-valid.required {
   .ui-calendar input,
   .ui-dropdown,
   .ui-selectbutton {
-    border-left: 5px solid var(--ok-color);
+    border-left: 5px solid #42a948;
     border-left-width: 5px !important;
   }
 }
 
 .ng-invalid:not(form) {
-  border-left: 5px solid var(--error-color);
+  border-left: 5px solid #e40303;
   border-left-width: 5px !important;
 }
 
@@ -44,7 +38,7 @@ p-selectbutton.ng-invalid {
   .ui-calendar input,
   .ui-dropdown,
   .ui-selectbutton {
-    border-left: 5px solid var(--error-color);
+    border-left: 5px solid #e40303;
     border-left-width: 5px !important;
   }
 }

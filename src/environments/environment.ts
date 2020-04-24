@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  baseApiRestUrl: 'http://localhost:3000'
+  baseApiRestUrl: 'http://localhost:8080/pizza-shop-api'
+  //baseApiRestUrl: 'https://pizza-shop-rest-api.herokuapp.com/pizza-shop-api'
 };
 
 /*

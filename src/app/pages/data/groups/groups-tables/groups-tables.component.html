@@ -13,11 +13,15 @@
         name
         <p-sortIcon field="name"></p-sortIcon>
       </th>
+      <th translate [translateParams]="{ count: 1}">editable</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-group>
     <tr [pSelectableRow]="group">
       <td>{{ group.name}}</td>
+      <td>
+        <p-checkbox binary="true" [ngModel]="!group.readOnly" disabled="true"></p-checkbox>
+      </td>
     </tr>
   </ng-template>
 </p-table>

@@ -1,63 +1,25 @@
 <form #form="ngForm">
-  <p-panel header="{{branch.address?.streetAddress || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
-    <div class="p-grid ui-fluid">
-      <!-- enabled -->
-      <div class="p-col-6 form-label" translate [translateParams]="{ gender: 'female'}">enabled</div>
-      <div class="p-col-6">
-        <p-checkbox binary="true" [(ngModel)]="branch.enabled" name="enabled"></p-checkbox>
-      </div>
-      <!-- primary -->
-      <div class="p-col-6 form-label" translate [translateParams]="{ gender: 'female'}">primary</div>
-      <div class="p-col-6">
-        <p-checkbox binary="true" [(ngModel)]="branch.primary" name="primary"></p-checkbox>
-      </div>
-      <!-- streetAddress -->
-      <div class="p-col-6 form-label" translate>streetAddress</div>
-      <div class="p-col-6">
-        <input required pInputText name="streetAddress" type="text" [(ngModel)]="branch.address.streetAddress"
-          placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!hasEditRole()" />
-      </div>
-      <!-- number -->
-      <div class="p-col-6 form-label" translate [translateParams]="{count:1}">number</div>
-      <div class="p-col-3">
-        <input pInputText name="number" type="text" [(ngModel)]="branch.address.number" [disabled]="!hasEditRole()" />
-      </div>
-      <!-- place -->
-      <div class="p-col-6 form-label" translate>place</div>
-      <div class="p-col-6">
-        <input required pInputText name="place" type="text" [(ngModel)]="branch.address.place"
-          placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="!hasEditRole()" />
-      </div>
-      <!-- postalCode -->
-      <div class="p-col-6 form-label" translate [translateParams]="{count:1}">postalCode</div>
-      <div class="p-col-3">
-        <input pInputText name="postalCode" type="text" [(ngModel)]="branch.address.postalCode"
-          [disabled]="!hasEditRole()" />
-      </div>
-      <!-- phone -->
-      <div class="p-col-6 form-label" translate [translateParams]="{count:1}">phone</div>
-      <div class="p-col-3">
-        <input pInputText name="phone" type="text" [(ngModel)]="branch.phone" [disabled]="!hasEditRole()" />
-      </div>
-      <!-- webUrl -->
-      <div class="p-col-6 form-label" translate [translateParams]="{count:1}">webUrl</div>
-      <div class="p-col-6">
-        <input pInputText name="webUrl" type="text" [(ngModel)]="branch.webUrl" [disabled]="!hasEditRole()" />
-      </div>
+  <p-tabView>
+    <p-tabPanel header="{{'general' | translate}}">
+      <app-branch-general-form [branch]="branch" [shippingMethodsAvailable]="shippingMethodsAvailable"
+        [disabled]="!hasEditRole()"></app-branch-general-form>
+    </p-tabPanel>
+    <p-tabPanel header="{{'zone' | translate:&quot;{ count: 2 }&quot;}}">
+      <app-branch-zone-form [branch]="branch" [disabled]="!hasEditRole()"></app-branch-zone-form>
+    </p-tabPanel>
+  </p-tabView>
+  <div class="p-grid" *ngIf="hasEditRole()">
+    <div class="p-col ui-fluid">
+      <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
+        (click)="onNew()"></button>
     </div>
-    <div class="p-grid" *ngIf="hasEditRole()">
-      <div class="p-col ui-fluid">
-        <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
-          (click)="onNew()"></button>
-      </div>
-      <div class="p-col ui-fluid">
-        <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"
-          (click)="onSubmit()"></button>
-      </div>
-      <div class="p-col ui-fluid">
-        <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash"
-          [disabled]="branch.id == null" (click)="onDelete()" class="ui-button-danger"></button>
-      </div>
+    <div class="p-col ui-fluid">
+      <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"
+        (click)="onSubmit()"></button>
     </div>
-  </p-panel>
+    <div class="p-col ui-fluid">
+      <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash" [disabled]="branch.id == null"
+        (click)="onDelete()" class="ui-button-danger"></button>
+    </div>
+  </div>
 </form>

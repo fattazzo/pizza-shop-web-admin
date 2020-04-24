@@ -14,9 +14,9 @@ export interface ShippingZone {
     /**
      * Unique identifier for the resource
      */
-    id?: number;
+    id: number;
     /**
      * Shipping zone name
      */
-    name?: string;
+    name: string;
 }

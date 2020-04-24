@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group, GroupsService, Role } from 'src/app/open-api';
 import { AppMessageService } from 'src/app/services/app-message.service';
-import { AuthUtils } from 'src/app/utils/auth-utils';
 import { GroupsComponentService } from '../services/groups-component.service';
 
 @Component({
@@ -19,8 +18,7 @@ export class GroupsFormComponent implements OnInit {
   constructor(
     private groupsComponentService: GroupsComponentService,
     private groupService: GroupsService,
-    private authUtils: AuthUtils,
-    private appMessageService: AppMessageService,
+    private appMessageService: AppMessageService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +31,7 @@ export class GroupsFormComponent implements OnInit {
   }
 
   onNew() {
-    this.group = { id: null, name: null, roles: [] };
+    this.group = { id: null, name: null, roles: [], readOnly: false };
     this.rolesAvailable = this.roles;
   }
 
@@ -46,11 +44,12 @@ export class GroupsFormComponent implements OnInit {
   }
 
   onDelete() {
-    var deleteFunc = function () {
-      this.groupService.deleteGroup(this.session.getCompanyId(), this.group.id)
+    var deleteFunc = () => {
+      this.groupService.deleteGroup(this.group.id)
         .subscribe(() => {
           this.groupsComponentService.deleteGroup(this.group)
           this.onNew();
+          this.appMessageService.addSuccessfullDelete();
         });
     }
 
@@ -61,6 +60,7 @@ export class GroupsFormComponent implements OnInit {
     this.groupService.createGroup(this.group).subscribe(result => {
       this.group = result;
       this.groupsComponentService.modifyGroup(this.group);
+      this.appMessageService.addSuccessfullInsert();
     })
   }
 
@@ -68,6 +68,7 @@ export class GroupsFormComponent implements OnInit {
     this.groupService.updateGroup(this.group, this.group.id).subscribe(result => {
       this.group = result;
       this.groupsComponentService.modifyGroup(this.group);
+      this.appMessageService.addSuccessfullUpdate();
     })
   }
 

@@ -62,9 +62,9 @@ export class ShippingmethodsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createShippingMethod(body: ShippingMethod, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createShippingMethod(body: ShippingMethod, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createShippingMethod(body: ShippingMethod, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createShippingMethod(body: ShippingMethod, observe?: 'body', reportProgress?: boolean): Observable<ShippingMethod>;
+    public createShippingMethod(body: ShippingMethod, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingMethod>>;
+    public createShippingMethod(body: ShippingMethod, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingMethod>>;
     public createShippingMethod(body: ShippingMethod, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -82,6 +82,7 @@ export class ShippingmethodsService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -97,7 +98,7 @@ export class ShippingmethodsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/shippingmethods`,
+        return this.httpClient.request<ShippingMethod>('post',`${this.basePath}/shippingmethods`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -254,9 +255,9 @@ export class ShippingmethodsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'body', reportProgress?: boolean): Observable<ShippingMethod>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ShippingMethod>>;
+    public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ShippingMethod>>;
     public updateShippingMethod(body: ShippingMethod, shippingmethodId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -278,6 +279,7 @@ export class ShippingmethodsService {
         }
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -293,7 +295,7 @@ export class ShippingmethodsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
+        return this.httpClient.request<ShippingMethod>('put',`${this.basePath}/shippingmethods/${encodeURIComponent(String(shippingmethodId))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

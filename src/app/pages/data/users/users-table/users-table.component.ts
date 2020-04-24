@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { SelectItem } from 'primeng/api/selectitem';
+import { UserStatusHandler } from 'src/app/handler/user-status.handler';
+import { UserTypeHandler } from 'src/app/handler/user-type.handler';
 import { User, UsersService } from 'src/app/open-api';
 import { UsersComponentService } from '../services/users-component.service';
 
@@ -14,9 +18,13 @@ export class UsersTableComponent implements OnInit {
 
   loading = false;
 
+  userStatuses: SelectItem[] = [];
+  userTypes: SelectItem[] = [];
+
   constructor(
     private usersService: UsersService,
-    private usersComponentService: UsersComponentService
+    private usersComponentService: UsersComponentService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +41,13 @@ export class UsersTableComponent implements OnInit {
 
     this.usersComponentService.userDeleted.subscribe(user => this.removeUser(user));
     this.usersComponentService.userModified.subscribe(user => this.addUser(user));
+
+    this.buildUserStatuses();
+    this.buildUserTypes();
+    this.translate.onLangChange.subscribe((_event: LangChangeEvent) => {
+      this.buildUserStatuses();
+      this.buildUserTypes();
+    });
   }
 
   onRowSelect(event) {
@@ -54,5 +69,13 @@ export class UsersTableComponent implements OnInit {
     } else {
       this.users.push(user);
     }
+  }
+
+  private buildUserStatuses() {
+    this.userStatuses = [{ label: 'Tutti', value: null }, ...UserStatusHandler.createSelectedItems(this.translate)];
+  }
+
+  private buildUserTypes() {
+    this.userTypes = [{ label: 'Tutti', value: null }, ...UserTypeHandler.createSelectedItems(this.translate)];
   }
 }

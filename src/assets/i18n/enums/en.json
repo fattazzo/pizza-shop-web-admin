@@ -3,10 +3,20 @@
     "WEB_ADMIN": "Web admin access",
     "SECURITY": "Security management",
     "SHIPPING_METHODS": "Shipping methods management",
-    "COMPANY": "Company and branches management"
+    "COMPANY": "Company and branches management",
+    "EDIT_ACCOUNT": "Account management"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",
     "CASH_ON_DELIVERY": "Cash on delivery"
+  },
+  "UserType": {
+    "ADMIN": "Admin",
+    "WORKER": "Dipendente",
+    "CUSTOMER": "Cliente"
+  },
+  "UserStatus": {
+    "Active": "Active",
+    "ToConfirm": "Confirmation pending"
   }
 }

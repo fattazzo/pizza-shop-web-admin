@@ -1,0 +1,56 @@
+<div class="p-grid ui-fluid">
+  <!-- enabled -->
+  <div class="p-col-6 form-label" translate [translateParams]="{ gender: 'female'}">enabled</div>
+  <div class="p-col-6">
+    <p-checkbox binary="true" [(ngModel)]="branch.enabled" name="enabled"></p-checkbox>
+  </div>
+  <!-- primary -->
+  <div class="p-col-6 form-label" translate [translateParams]="{ gender: 'female'}">primary</div>
+  <div class="p-col-6">
+    <p-checkbox binary="true" [(ngModel)]="branch.primary" name="primary"></p-checkbox>
+  </div>
+  <!-- streetAddress -->
+  <div class="p-col-6 form-label" translate>streetAddress</div>
+  <div class="p-col-6">
+    <input required pInputText name="streetAddress" type="text" [(ngModel)]="branch.address.streetAddress"
+      placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="disabled" />
+  </div>
+  <!-- number -->
+  <div class="p-col-6 form-label" translate [translateParams]="{count:1}">number</div>
+  <div class="p-col-3">
+    <input pInputText name="number" type="text" [(ngModel)]="branch.address.number" [disabled]="disabled" />
+  </div>
+  <!-- place -->
+  <div class="p-col-6 form-label" translate>place</div>
+  <div class="p-col-6">
+    <input required pInputText name="place" type="text" [(ngModel)]="branch.address.place"
+      placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" [disabled]="disabled" />
+  </div>
+  <!-- postalCode -->
+  <div class="p-col-6 form-label" translate [translateParams]="{count:1}">postalCode</div>
+  <div class="p-col-3">
+    <input pInputText name="postalCode" type="text" [(ngModel)]="branch.address.postalCode" [disabled]="disabled" />
+  </div>
+  <!-- phone -->
+  <div class="p-col-6 form-label" translate [translateParams]="{count:1}">phone</div>
+  <div class="p-col-3">
+    <input pInputText name="phone" type="text" [(ngModel)]="branch.phone" [disabled]="disabled" />
+  </div>
+  <!-- webUrl -->
+  <div class="p-col-6 form-label" translate [translateParams]="{count:1}">webUrl</div>
+  <div class="p-col-6">
+    <input pInputText name="webUrl" type="text" [(ngModel)]="branch.webUrl" [disabled]="disabled" />
+  </div>
+  <!-- shipping methods -->
+  <div class="p-col-12">
+    <p-listbox [options]="shippingMethodsAvailable" [(ngModel)]="branch.shippingMethods" [multiple]="true"
+      [checkbox]="true" name="shippingMethods">
+      <p-header translate [translateParams]="{count: 2}">
+        shippingMethod
+      </p-header>
+      <ng-template let-method pTemplate="item">
+        <span>{{method.value.title}} - {{method.value.description}}</span>
+      </ng-template>
+    </p-listbox>
+  </div>
+</div>

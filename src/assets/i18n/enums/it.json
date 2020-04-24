@@ -3,10 +3,20 @@
     "WEB_ADMIN": "Accesso web admin",
     "SECURITY": "Gestione sicurezza",
     "SHIPPING_METHODS": "Gestione metodi di pagamento",
-    "COMPANY": "Gestione azienda e sedi"
+    "COMPANY": "Gestione azienda e sedi",
+    "EDIT_ACCOUNT": "Modifica account"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",
     "CASH_ON_DELIVERY": "Pagamento alla consegna"
+  },
+  "UserType": {
+    "ADMIN": "Admin",
+    "WORKER": "Dipendente",
+    "CUSTOMER": "Cliente"
+  },
+  "UserStatus": {
+    "Active": "Attivo",
+    "ToConfirm": "Da confermare"
   }
 }

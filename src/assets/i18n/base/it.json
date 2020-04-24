@@ -20,6 +20,8 @@
   "new": "Nuov{gender, select, male{o} female{a} other{i}}",
   "delete": "Cancella",
   "edit": "Modifica",
+  "add": "Aggiungi",
+  "remove": "Rimuovi",
 
   "available": "Disponibil{count, plural, =0{} one{e} other{i}}",
   "selected": "Selezionat{gender, select, male{o} female{a} other{i}}",
@@ -31,5 +33,24 @@
   "no": "No",
 
   "enabled": "Abilitat{gender, select, male{o} female{a} other{i}}",
-  "disabled": "Disabilitat{gender, select, male{o} female{a} other{i}}"
+  "disabled": "Disabilitat{gender, select, male{o} female{a} other{i}}",
+  "editable": "Modificabil{count, plural, =0{} one{e} other{i}}",
+
+  "message": {
+    "error": {
+      "title": "Errore"
+    },
+    "insert": {
+      "title": "Inserimento",
+      "detail": "Dato inserito correttamente"
+    },
+    "update": {
+      "title": "Modifica",
+      "detail": "Dato modificato correttamente"
+    },
+    "delete": {
+      "title": "Cancellazione",
+      "detail": "Dato cancellato correttamente"
+    }
+  }
 }

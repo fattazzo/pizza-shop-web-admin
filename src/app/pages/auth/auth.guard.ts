@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { Role } from 'src/app/open-api';
+import { SessionService } from 'src/app/services/session.service';
 import { AuthUtils } from 'src/app/utils/auth-utils';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(
-    private authService: AuthService,
+    private sessionService: SessionService,
     private authUtils: AuthUtils,
     private router: Router) { }
 
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string, roles: Role[]): boolean {
-    if (this.authService.currentUserValue.value) {
+    if (this.sessionService.getUserValue()) {
       if (roles && !this.authUtils.isInRole(roles)) {
         this.router.navigate(['unauthorized']);
         return false;

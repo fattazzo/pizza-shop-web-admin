@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BranchDetails, BranchesService, Role, ShippingMethod, ShippingmethodsService } from 'src/app/open-api';
+import { SelectItem } from 'primeng/api/selectitem';
+import { map } from 'rxjs/operators';
+import { BranchDetails, BranchesService, Role, ShippingmethodsService } from 'src/app/open-api';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AppMessageService } from 'src/app/services/app-message.service';
 import { AuthUtils } from 'src/app/utils/auth-utils';
@@ -14,7 +16,7 @@ export class BranchesFormComponent implements OnInit {
 
   branch: BranchDetails;
 
-  shippingMethodsAvailable: ShippingMethod[];
+  shippingMethodsAvailable: SelectItem[];
 
   constructor(
     private branchsComponentService: BranchesComponentService,
@@ -28,7 +30,9 @@ export class BranchesFormComponent implements OnInit {
   ngOnInit(): void {
     this.onNew();
 
-    this.shippingmethodsService.getShippingMethods().subscribe(s => this.shippingMethodsAvailable = s);
+    this.shippingmethodsService.getShippingMethods()
+      .pipe(map(ss => ss.map(s => { return { label: s.title, value: s } })))
+      .subscribe(s => this.shippingMethodsAvailable = s);
 
     this.branchsComponentService.branchSelected.subscribe(b => {
       this.branchService.getBranch(b.id).subscribe(bd => {
@@ -40,7 +44,8 @@ export class BranchesFormComponent implements OnInit {
   onNew() {
     this.branch = {
       id: null, shippingMethods: [], primary: false, enabled: true,
-      address: { streetAddress: null, place: null }
+      address: { streetAddress: null, place: null },
+      shippingZones: []
     };
   }
 
@@ -53,11 +58,12 @@ export class BranchesFormComponent implements OnInit {
   }
 
   onDelete() {
-    var deleteFunc = function () {
-      this.branchService.deleteBranch(this.session.getCompanyId(), this.branch.id)
+    var deleteFunc = () => {
+      this.branchService.deleteBranch(this.branch.id)
         .subscribe(() => {
           this.branchsComponentService.deleteBranch(this.branch)
           this.onNew();
+          this.appMessageService.addSuccessfullDelete();
         });
     }
 
@@ -72,6 +78,7 @@ export class BranchesFormComponent implements OnInit {
     this.branchService.createBranch(this.branch).subscribe(result => {
       this.branch = result;
       this.branchsComponentService.modifyBranch(this.branch);
+      this.appMessageService.addSuccessfullInsert();
     })
   }
 
@@ -79,6 +86,7 @@ export class BranchesFormComponent implements OnInit {
     this.branchService.updateBranch(this.branch, this.branch.id).subscribe(result => {
       this.branch = result;
       this.branchsComponentService.modifyBranch(this.branch);
+      this.appMessageService.addSuccessfullUpdate();
     })
   }
 
