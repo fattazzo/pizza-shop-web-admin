@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
+import { AppPage } from './app.po';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('pizzaroad-web-app app is running!');
+    expect(page.getTitleText()).toEqual('pizza-shop-web-app app is running!');
   });
 
   afterEach(async () => {

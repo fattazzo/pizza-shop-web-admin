@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pizzaroad-web-app": {
+    "pizza-shop-web-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pizzaroad-web-app",
+            "outputPath": "dist/pizza-shop-web-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pizzaroad-web-app:build"
+            "browserTarget": "pizza-shop-web-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pizzaroad-web-app:build:production"
+              "browserTarget": "pizza-shop-web-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pizzaroad-web-app:build"
+            "browserTarget": "pizza-shop-web-app:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pizzaroad-web-app:serve"
+            "devServerTarget": "pizza-shop-web-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pizzaroad-web-app:serve:production"
+              "devServerTarget": "pizza-shop-web-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "pizzaroad-web-app"
+  "defaultProject": "pizza-shop-web-app"
 }
