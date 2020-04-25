@@ -411,13 +411,20 @@ export class VariationsService {
     /**
      * List All doughs
      * Gets a list of all &#x60;Dough&#x60; entities.
+     * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Dough&#x60;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDoughs(observe?: 'body', reportProgress?: boolean): Observable<Array<Dough>>;
-    public getDoughs(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Dough>>>;
-    public getDoughs(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Dough>>>;
-    public getDoughs(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getDoughs(includeDisabled?: boolean, observe?: 'body', reportProgress?: boolean): Observable<Array<Dough>>;
+    public getDoughs(includeDisabled?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Dough>>>;
+    public getDoughs(includeDisabled?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Dough>>>;
+    public getDoughs(includeDisabled?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (includeDisabled !== undefined && includeDisabled !== null) {
+            queryParameters = queryParameters.set('includeDisabled', <any>includeDisabled);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -443,6 +450,7 @@ export class VariationsService {
 
         return this.httpClient.request<Array<Dough>>('get',`${this.basePath}/variations/doughs`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -502,13 +510,20 @@ export class VariationsService {
     /**
      * List All sizes
      * Gets a list of all &#x60;Size&#x60; entities.
+     * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Size&#x60;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getSizes(observe?: 'body', reportProgress?: boolean): Observable<Array<Size>>;
-    public getSizes(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Size>>>;
-    public getSizes(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Size>>>;
-    public getSizes(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getSizes(includeDisabled?: boolean, observe?: 'body', reportProgress?: boolean): Observable<Array<Size>>;
+    public getSizes(includeDisabled?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Size>>>;
+    public getSizes(includeDisabled?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Size>>>;
+    public getSizes(includeDisabled?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (includeDisabled !== undefined && includeDisabled !== null) {
+            queryParameters = queryParameters.set('includeDisabled', <any>includeDisabled);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -534,6 +549,7 @@ export class VariationsService {
 
         return this.httpClient.request<Array<Size>>('get',`${this.basePath}/variations/sizes`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -593,13 +609,20 @@ export class VariationsService {
     /**
      * List All toppings
      * Gets a list of all &#x60;Topping&#x60; entities.
+     * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Topping&#x60;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getToppings(observe?: 'body', reportProgress?: boolean): Observable<Array<Topping>>;
-    public getToppings(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Topping>>>;
-    public getToppings(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Topping>>>;
-    public getToppings(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getToppings(includeDisabled?: boolean, observe?: 'body', reportProgress?: boolean): Observable<Array<Topping>>;
+    public getToppings(includeDisabled?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Topping>>>;
+    public getToppings(includeDisabled?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Topping>>>;
+    public getToppings(includeDisabled?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (includeDisabled !== undefined && includeDisabled !== null) {
+            queryParameters = queryParameters.set('includeDisabled', <any>includeDisabled);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -625,6 +648,7 @@ export class VariationsService {
 
         return this.httpClient.request<Array<Topping>>('get',`${this.basePath}/variations/toppings`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

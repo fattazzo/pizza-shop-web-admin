@@ -30,7 +30,7 @@ export class SizesComponent implements OnInit {
     this.onNew()
 
     this.loading = true;
-    this.variationsService.getSizes()
+    this.variationsService.getSizes(true)
       .subscribe(result => {
         this.loading = false;
         this.sizes = result;

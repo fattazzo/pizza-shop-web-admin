@@ -21,6 +21,7 @@ export class TopBarComponent implements OnInit {
   itemsUser: MenuItem[];
 
   appTitle: string = 'Pizza shop web app';
+  appLogo: string = null;
 
   branchesItems: SelectItem[];
 
@@ -44,6 +45,7 @@ export class TopBarComponent implements OnInit {
 
     this.session.getCompany().subscribe(c => {
       this.appTitle = c !== null ? c.name : 'Pizza shop web app';
+      this.appLogo = c !== null ? c.logoUrl : 'assets/images/pizza.png'
     });
 
     this.session.getBranches().pipe(map(bs => {

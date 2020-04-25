@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { UserStatus } from './userStatus';
 import { UserType } from './userType';
 
 export interface User { 
@@ -25,4 +26,5 @@ export interface User {
      */
     readOnly: boolean;
     type: UserType;
+    status: UserStatus;
 }

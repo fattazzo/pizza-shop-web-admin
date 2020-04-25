@@ -12,6 +12,7 @@
 import { DeliveryAddress } from './deliveryAddress';
 import { Group } from './group';
 import { User } from './user';
+import { UserStatus } from './userStatus';
 import { UserType } from './userType';
 
 export interface UserDetails extends User { 

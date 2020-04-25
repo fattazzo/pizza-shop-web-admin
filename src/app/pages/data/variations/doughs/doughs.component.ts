@@ -30,7 +30,7 @@ export class DoughsComponent implements OnInit {
     this.onNew()
 
     this.loading = true;
-    this.variationsService.getDoughs()
+    this.variationsService.getDoughs(true)
       .subscribe(result => {
         this.loading = false;
         this.doughs = result;

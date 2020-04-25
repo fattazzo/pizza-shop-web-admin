@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryAddress, Group, GroupsService, ShippingMethod, UserDetails, UsersService, UserType } from 'src/app/open-api';
+import { DeliveryAddress, Group, GroupsService, ShippingMethod, UserDetails, UsersService, UserStatus, UserType } from 'src/app/open-api';
 import { AppMessageService } from 'src/app/services/app-message.service';
 import { SessionService } from 'src/app/services/session.service';
 import { UsersComponentService } from '../services/users-component.service';
@@ -49,7 +49,7 @@ export class UsersFormComponent implements OnInit {
   }
 
   onNew() {
-    this.user = { username: null, password: null, groups: [], readOnly: false, type: UserType.WORKER };
+    this.user = { username: null, password: null, groups: [], readOnly: false, type: UserType.WORKER, status: UserStatus.ToConfirm };
     this.groupsAvailable = this.groups;
     this.newUser = true;
   }

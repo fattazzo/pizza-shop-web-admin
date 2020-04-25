@@ -28,7 +28,7 @@ export class ToppingsComponent implements OnInit {
     this.onNew()
 
     this.loading = true;
-    this.variationsService.getToppings()
+    this.variationsService.getToppings(true)
       .subscribe(result => {
         this.loading = false;
         this.toppings = result;
