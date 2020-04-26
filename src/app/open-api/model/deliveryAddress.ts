@@ -13,7 +13,7 @@ import { Address } from './address';
 import { ShippingMethod } from './shippingMethod';
 
 export interface DeliveryAddress { 
-    id: number;
+    id?: number;
     address?: Address;
     shippingMethod?: ShippingMethod;
 }

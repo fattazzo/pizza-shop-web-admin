@@ -11,7 +11,7 @@
  */
 
 export interface Size { 
-    id: number;
+    id?: number;
     name: string;
     description?: string;
     extra: number;

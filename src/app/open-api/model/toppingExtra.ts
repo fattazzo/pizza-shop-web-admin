@@ -9,14 +9,18 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Dough } from './dough';
+import { Size } from './size';
+import { Topping } from './topping';
 
-export interface ShippingZone { 
-    /**
-     * Unique identifier for the resource
-     */
+/**
+ * Price of the topping based on a dough and size
+ */
+export interface ToppingExtra { 
     id?: number;
-    /**
-     * Shipping zone name
-     */
-    name: string;
+    topping: Topping;
+    dough: Dough;
+    size: Size;
+    extra: number;
+    enabled: boolean;
 }

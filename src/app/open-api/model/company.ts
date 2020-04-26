@@ -14,7 +14,7 @@ export interface Company {
     /**
      * Unique identifier
      */
-    id: number;
+    id?: number;
     /**
      * Company name
      */

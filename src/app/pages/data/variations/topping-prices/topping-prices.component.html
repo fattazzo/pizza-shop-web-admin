@@ -1,0 +1,80 @@
+<div class="p-grid">
+  <!-- Parameters -->
+  <div class="p-col-12 p-md-5">
+    <div class="p-grid">
+      <span class="p-col-6" translate [translateParams]="{ count:2}">dough</span>
+      <div class="p-col-6 ui-fluid">
+        <p-dropdown [options]="doughs" [(ngModel)]="doughSelected" placeholder="{{'selectADough'|translate}}"
+          optionLabel="name" (onChange)="onParametersChange()">
+          <ng-template let-item pTemplate="selectedItem">
+            <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.label}}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <span class="p-col-6" translate [translateParams]="{ count:2}">size</span>
+      <div class="p-col-6 ui-fluid">
+        <p-dropdown [options]="sizes" [(ngModel)]="sizeSelected" placeholder="{{'selectASize'|translate}}"
+          optionLabel="name" (onChange)="onParametersChange()">
+          <ng-template let-item pTemplate="selectedItem">
+            <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.label}}</span>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </div>
+    </div>
+  </div>
+  <!-- Table -->
+  <div class="p-col-12 p-md-7">
+    <p-table #toppingsTable [value]="toppingExtras" [responsive]="true" selectionMode="single" dataKey="id"
+      [loading]="loading" autoLayout="true">
+      <ng-template pTemplate="caption">
+        <div class="p-grid">
+          <div class="p-col table-title" style="display: flex;justify-content: space-between;">
+            <h2 style="margin: 0;flex-grow: 1;" translate [translateParams]="{ count: 2 }">extra</h2>
+            <button pButton label="{{ 'save' | translate }}" icon="pi pi-save"
+              [disabled]="!toppingExtras || toppingExtras.length === 0" (click)="saveExtras()"></button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-extra>
+        <tr>
+          <th translate [translateParams]="{ count: 1}">name</th>
+          <th translate [translateParams]="{ count: 1}">description</th>
+          <th translate [translateParams]="{ gender: 'male'}">enabled</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-extra>
+        <tr [pSelectableRow]="extra">
+          <td [ngClass]="{'entity-disabled': !extra.topping.enabled}">{{ extra.topping.name}}</td>
+          <td pEditableColumn class="table-column-number">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText currency type="number" class="table-column-number" [(ngModel)]="extra.extra">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{extra.extra| mycurrency}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-checkbox styleClass="table-checkbox" binary="true" [(ngModel)]="extra.enabled">
+                </p-checkbox>
+              </ng-template>
+              <ng-template pTemplate="output">
+                <p-checkbox styleClass="table-checkbox" binary="true" [ngModel]="extra.enabled" disabled="true">
+                </p-checkbox>
+              </ng-template>
+            </p-cellEditor>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

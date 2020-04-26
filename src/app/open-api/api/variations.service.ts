@@ -20,6 +20,7 @@ import { Observable }                                        from 'rxjs';
 import { Dough } from '../model/dough';
 import { Size } from '../model/size';
 import { Topping } from '../model/topping';
+import { ToppingExtra } from '../model/toppingExtra';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -607,6 +608,107 @@ export class VariationsService {
     }
 
     /**
+     * Get a ToppingExtra
+     * Gets the details of a single instance of a &#x60;ToppingExtra&#x60;.
+     * @param toppingextraId A unique identifier for a &#x60;ToppingExtra&#x60;.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getToppingExtra(toppingextraId: number, observe?: 'body', reportProgress?: boolean): Observable<ToppingExtra>;
+    public getToppingExtra(toppingextraId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ToppingExtra>>;
+    public getToppingExtra(toppingextraId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ToppingExtra>>;
+    public getToppingExtra(toppingextraId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (toppingextraId === null || toppingextraId === undefined) {
+            throw new Error('Required parameter toppingextraId was null or undefined when calling getToppingExtra.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<ToppingExtra>('get',`${this.basePath}/toppingextras/${encodeURIComponent(String(toppingextraId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * List All ToppingExtras
+     * Gets a list of all &#x60;ToppingExtra&#x60; entities.
+     * @param doughId Work with &#x60;sizeId&#x60; parameter
+     * @param sizeId Work with &#x60;doughId&#x60; parameter
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getToppingExtras(doughId?: number, sizeId?: number, observe?: 'body', reportProgress?: boolean): Observable<Array<ToppingExtra>>;
+    public getToppingExtras(doughId?: number, sizeId?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ToppingExtra>>>;
+    public getToppingExtras(doughId?: number, sizeId?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ToppingExtra>>>;
+    public getToppingExtras(doughId?: number, sizeId?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+
+        let headers = this.defaultHeaders;
+        if (doughId !== undefined && doughId !== null) {
+            headers = headers.set('doughId', String(doughId));
+        }
+        if (sizeId !== undefined && sizeId !== null) {
+            headers = headers.set('sizeId', String(sizeId));
+        }
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Array<ToppingExtra>>('get',`${this.basePath}/toppingextras`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * List All toppings
      * Gets a list of all &#x60;Topping&#x60; entities.
      * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Topping&#x60;
@@ -824,6 +926,119 @@ export class VariationsService {
         }
 
         return this.httpClient.request<Topping>('put',`${this.basePath}/variations/toppings/${encodeURIComponent(String(toppingId))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update a ToppingExtra
+     * Updates an existing &#x60;ToppingExtra&#x60;.
+     * @param body Updated &#x60;ToppingExtra&#x60; information.
+     * @param toppingextraId A unique identifier for a &#x60;ToppingExtra&#x60;.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateToppingExtra(body: ToppingExtra, toppingextraId: number, observe?: 'body', reportProgress?: boolean): Observable<ToppingExtra>;
+    public updateToppingExtra(body: ToppingExtra, toppingextraId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ToppingExtra>>;
+    public updateToppingExtra(body: ToppingExtra, toppingextraId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ToppingExtra>>;
+    public updateToppingExtra(body: ToppingExtra, toppingextraId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling updateToppingExtra.');
+        }
+
+        if (toppingextraId === null || toppingextraId === undefined) {
+            throw new Error('Required parameter toppingextraId was null or undefined when calling updateToppingExtra.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<ToppingExtra>('put',`${this.basePath}/toppingextras/${encodeURIComponent(String(toppingextraId))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update All ToppingExtras
+     * Updates existing &#x60;ToppingExtra&#x60;.
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateToppingExtras(body: Array<ToppingExtra>, observe?: 'body', reportProgress?: boolean): Observable<Array<ToppingExtra>>;
+    public updateToppingExtras(body: Array<ToppingExtra>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ToppingExtra>>>;
+    public updateToppingExtras(body: Array<ToppingExtra>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ToppingExtra>>>;
+    public updateToppingExtras(body: Array<ToppingExtra>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling updateToppingExtras.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<Array<ToppingExtra>>('put',`${this.basePath}/toppingextras`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

@@ -10,13 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface ShippingZone { 
-    /**
-     * Unique identifier for the resource
-     */
+export interface Product { 
     id?: number;
-    /**
-     * Shipping zone name
-     */
     name: string;
+    description?: string;
+    enabled: boolean;
+    price: number;
 }

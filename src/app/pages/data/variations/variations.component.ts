@@ -26,7 +26,8 @@ export class VariationsComponent implements OnInit {
     this.variationTypes = [
       { label: this.translate.instant('dough', [{ count: 2 }]), value: 'dough' },
       { label: this.translate.instant('size', [{ count: 2 }]), value: 'size' },
-      { label: this.translate.instant('topping', [{ count: 2 }]), value: 'topping' }
+      { label: this.translate.instant('topping', [{ count: 2 }]), value: 'topping' },
+      { label: this.translate.instant('extra', [{ count: 2 }]), value: 'topping-extra' }
     ]
   }
 

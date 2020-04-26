@@ -12,7 +12,7 @@
 import { Address } from './address';
 
 export interface Branch { 
-    id: number;
+    id?: number;
     phone?: string;
     webUrl?: string;
     primary: boolean;

@@ -30,6 +30,7 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
+import { TreeTableModule } from 'primeng/treetable';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -64,6 +65,7 @@ import { UsersTableComponent } from './pages/data/users/users-table/users-table.
 import { UsersComponent } from './pages/data/users/users.component';
 import { DoughsComponent } from './pages/data/variations/doughs/doughs.component';
 import { SizesComponent } from './pages/data/variations/sizes/sizes.component';
+import { ToppingPricesComponent } from './pages/data/variations/topping-prices/topping-prices.component';
 import { ToppingsComponent } from './pages/data/variations/toppings/toppings.component';
 import { VariationsComponent } from './pages/data/variations/variations.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -145,7 +147,8 @@ export function apiConfigFactory(): Configuration {
     SettingsComponent,
     ProductsCategoriesComponent,
     ProductsComponent,
-    ProductCategoriesComponent
+    ProductCategoriesComponent,
+    ToppingPricesComponent
   ],
   imports: [
     BrowserModule,
@@ -185,7 +188,8 @@ export function apiConfigFactory(): Configuration {
     ListboxModule,
     TabViewModule,
     DialogModule,
-    SelectButtonModule
+    SelectButtonModule,
+    TreeTableModule
   ],
   exports: [TranslateModule],
   providers: [

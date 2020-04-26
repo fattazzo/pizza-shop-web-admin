@@ -14,7 +14,7 @@
  * Any ingredient that can be added extra to the standard pizza
  */
 export interface Topping { 
-    id: number;
+    id?: number;
     name: string;
     description?: string;
     enabled: boolean;

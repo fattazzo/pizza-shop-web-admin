@@ -54,5 +54,8 @@
     }
   },
 
-  "loading": "Loading"
+  "loading": "Loading",
+
+  "selectADough": "Select a dough",
+  "selectASize": "Select a size"
 }

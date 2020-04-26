@@ -15,7 +15,7 @@ export interface ShippingMethod {
     /**
      * Method ID
      */
-    id: number;
+    id?: number;
     /**
      * Shipping method title
      */

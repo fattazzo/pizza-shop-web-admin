@@ -12,7 +12,7 @@
 import { Role } from './role';
 
 export interface Group { 
-    id: number;
+    id?: number;
     name: string;
     /**
      * List of assigned `Role'

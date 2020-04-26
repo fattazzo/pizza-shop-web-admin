@@ -9,14 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Product } from './product';
+import { ProductCategory } from './productCategory';
 
-export interface ShippingZone { 
-    /**
-     * Unique identifier for the resource
-     */
-    id?: number;
-    /**
-     * Shipping zone name
-     */
-    name: string;
+export interface ProductDetails extends Product { 
+    category: ProductCategory;
 }
