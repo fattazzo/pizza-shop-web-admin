@@ -32,8 +32,12 @@
   "general": "Dati",
   "zone": "Zon{count, plural, =0{a} one{a} other{e}}",
   "companyLogo": "Logo azienda",
-  "companyLogoDescription": "Cliccare sul logo presente per poter selezionare un'altra immagine da caricare.\n\nCaratteristiche immagine:\nFormato: PNG\nForma: quadrato\nDimensioni ottimali: 320x320px",
+  "imageAction": "Cliccare sul logo presente per poter selezionare un'altra immagine da caricare.",
+  "imageFormatDescription": "Caratteristiche immagine:\nFormato: PNG\nForma: quadrato\nDimensioni ottimali: 320x320px",
   "extra": "Extra{count, plural, =0{} one{} other{}}",
+  "price": "Prezz{count, plural, =0{o} one{o} other{i}}",
+  "image": "Immagin{count, plural, =0{e} one{e} other{i}}",
+  "order": "Ordin{count, plural, =0{e} one{e} other{i}}",
 
   "currencySymbol": "Simbolo valuta",
   "currencyDecimals": "Decimali valuta"

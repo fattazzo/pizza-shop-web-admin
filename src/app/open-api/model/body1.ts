@@ -9,13 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ProductCategory } from './productCategory';
 
-export interface Product { 
-    id?: number;
-    name: string;
-    description?: string;
-    enabled: boolean;
-    price: number;
-    category: ProductCategory;
+export interface Body1 { 
+    file?: Blob;
 }

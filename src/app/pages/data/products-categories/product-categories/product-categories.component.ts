@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Role } from 'src/app/open-api';
+import { SelectItem } from 'primeng/api/selectitem';
+import { map } from 'rxjs/operators';
+import { ProductCategoryDetails, Role, VariationsService } from 'src/app/open-api';
 import { ProductsService } from 'src/app/open-api/api/products.service';
 import { ProductCategory } from 'src/app/open-api/model/productCategory';
 import { AppMessageService } from 'src/app/services/app-message.service';
@@ -16,16 +18,27 @@ export class ProductCategoriesComponent implements OnInit {
 
   categories: ProductCategory[] = [];
   categorySelected: ProductCategory;
-  categoryForm: ProductCategory;
+  categoryForm: ProductCategoryDetails;
+
+  doughs: SelectItem[];
+  sizes: SelectItem[];
 
   constructor(
     private productsService: ProductsService,
+    private variationsService: VariationsService,
     private authUtils: AuthUtils,
     private appMessageService: AppMessageService
   ) { }
 
   ngOnInit(): void {
     this.onNew()
+
+    this.variationsService.getDoughs(true)
+      .pipe(map(doughs => doughs.map(d => { return { label: d.name, value: d } })))
+      .subscribe(d => this.doughs = d);
+    this.variationsService.getSizes(true)
+      .pipe(map(sizes => sizes.map(s => { return { label: s.name, value: s } })))
+      .subscribe(s => this.sizes = s);
 
     this.loading = true;
     this.productsService.getProductCategories(true)
@@ -38,7 +51,8 @@ export class ProductCategoriesComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    this.categoryForm = Object.assign({}, event.data);
+    this.productsService.getProductCategory(event.data.id)
+      .subscribe(c => this.categoryForm = c);
   }
 
   onNew() {

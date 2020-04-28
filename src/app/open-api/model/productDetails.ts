@@ -9,9 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Dough } from './dough';
 import { Product } from './product';
 import { ProductCategory } from './productCategory';
+import { Size } from './size';
+import { ToppingExtra } from './toppingExtra';
 
 export interface ProductDetails extends Product { 
-    category: ProductCategory;
+    readonly doughs?: Array<Dough>;
+    readonly sizes?: Array<Size>;
+    readonly toppingExtras?: Array<ToppingExtra>;
 }

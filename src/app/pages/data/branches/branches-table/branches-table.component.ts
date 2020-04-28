@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Branch, BranchesService } from 'src/app/open-api';
-import { BranchesComponentService } from '../services/shipping-methods-component.service';
+import { BranchesComponentService } from '../services/branches-component.service';
 
 @Component({
   selector: 'app-branches-table',

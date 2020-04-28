@@ -32,8 +32,12 @@
   "general": "General",
   "zone": "Zon{count, plural, =0{e} one{e} other{es}}",
   "companyLogo": "Company logo",
-  "companyLogoDescription": "Click on the logo to be able to select another image to upload.\n\nImage features:\nFormat: PNG\nShape: square\nOptimal size: 320x320px",
+  "imageAction": "Click on the logo to be able to select another image to upload.",
+  "imageFormatDescription": "Image features:\nFormat: PNG\nShape: square\nOptimal size: 320x320px",
   "extra": "Extra{count, plural, =0{} one{} other{s}}",
+  "price": "Price{count, plural, =0{} one{} other{s}}",
+  "image": "Image{count, plural, =0{} one{} other{s}}",
+  "order": "Order{count, plural, =0{} one{} other{s}}",
 
   "currencySymbol": "Currency symbol",
   "currencyDecimals": "Currency decimals"

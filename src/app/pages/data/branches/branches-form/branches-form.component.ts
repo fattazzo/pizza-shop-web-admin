@@ -5,7 +5,7 @@ import { BranchDetails, BranchesService, Role, ShippingmethodsService } from 'sr
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AppMessageService } from 'src/app/services/app-message.service';
 import { AuthUtils } from 'src/app/utils/auth-utils';
-import { BranchesComponentService } from '../services/shipping-methods-component.service';
+import { BranchesComponentService } from '../services/branches-component.service';
 
 @Component({
   selector: 'app-branches-form',

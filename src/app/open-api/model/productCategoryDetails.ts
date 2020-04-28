@@ -9,13 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Dough } from './dough';
 import { ProductCategory } from './productCategory';
+import { Size } from './size';
 
-export interface Product { 
-    id?: number;
-    name: string;
-    description?: string;
-    enabled: boolean;
-    price: number;
-    category: ProductCategory;
+export interface ProductCategoryDetails extends ProductCategory { 
+    doughs?: Array<Dough>;
+    sizes?: Array<Size>;
 }

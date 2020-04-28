@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { Product } from '../model/product';
 import { ProductCategory } from '../model/productCategory';
+import { ProductCategoryDetails } from '../model/productCategoryDetails';
 import { ProductDetails } from '../model/productDetails';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -118,10 +119,10 @@ export class ProductsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createProductCategory(body: ProductCategory, observe?: 'body', reportProgress?: boolean): Observable<ProductCategory>;
-    public createProductCategory(body: ProductCategory, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategory>>;
-    public createProductCategory(body: ProductCategory, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategory>>;
-    public createProductCategory(body: ProductCategory, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createProductCategory(body: ProductCategoryDetails, observe?: 'body', reportProgress?: boolean): Observable<ProductCategoryDetails>;
+    public createProductCategory(body: ProductCategoryDetails, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategoryDetails>>;
+    public createProductCategory(body: ProductCategoryDetails, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategoryDetails>>;
+    public createProductCategory(body: ProductCategoryDetails, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling createProductCategory.');
@@ -154,7 +155,7 @@ export class ProductsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<ProductCategory>('post',`${this.basePath}/productcategories`,
+        return this.httpClient.request<ProductCategoryDetails>('post',`${this.basePath}/productcategories`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -172,10 +173,10 @@ export class ProductsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteProduct(productId: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteProduct(productId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteProduct(productId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteProduct(productId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteProduct(productId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteProduct(productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteProduct(productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteProduct(productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (productId === null || productId === undefined) {
             throw new Error('Required parameter productId was null or undefined when calling deleteProduct.');
@@ -260,16 +261,63 @@ export class ProductsService {
     }
 
     /**
+     * Delete a Product image
+     * Deletes an existing &#x60;Product&#x60; image.
+     * @param productId A unique identifier for a &#x60;Product&#x60;.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public deleteProductImage(productId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteProductImage(productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteProductImage(productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteProductImage(productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (productId === null || productId === undefined) {
+            throw new Error('Required parameter productId was null or undefined when calling deleteProductImage.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('delete',`${this.basePath}/products/${encodeURIComponent(String(productId))}/image`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Get a Product
      * Gets the details of a single instance of a &#x60;Product&#x60;.
      * @param productId A unique identifier for a &#x60;Product&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getProduct(productId: string, observe?: 'body', reportProgress?: boolean): Observable<ProductDetails>;
-    public getProduct(productId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductDetails>>;
-    public getProduct(productId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductDetails>>;
-    public getProduct(productId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getProduct(productId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductDetails>;
+    public getProduct(productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductDetails>>;
+    public getProduct(productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductDetails>>;
+    public getProduct(productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (productId === null || productId === undefined) {
             throw new Error('Required parameter productId was null or undefined when calling getProduct.');
@@ -365,9 +413,9 @@ export class ProductsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getProductCategory(productcategoryId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductCategory>;
-    public getProductCategory(productcategoryId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategory>>;
-    public getProductCategory(productcategoryId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategory>>;
+    public getProductCategory(productcategoryId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductCategoryDetails>;
+    public getProductCategory(productcategoryId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategoryDetails>>;
+    public getProductCategory(productcategoryId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategoryDetails>>;
     public getProductCategory(productcategoryId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (productcategoryId === null || productcategoryId === undefined) {
@@ -396,7 +444,55 @@ export class ProductsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<ProductCategory>('get',`${this.basePath}/productcategories/${encodeURIComponent(String(productcategoryId))}`,
+        return this.httpClient.request<ProductCategoryDetails>('get',`${this.basePath}/productcategories/${encodeURIComponent(String(productcategoryId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get a Product image
+     * Gets a &#x60;Product&#x60; image.
+     * @param productId A unique identifier for a &#x60;Product&#x60;.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getProductImage(productId: number, observe?: 'body', reportProgress?: boolean): Observable<Blob>;
+    public getProductImage(productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Blob>>;
+    public getProductImage(productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Blob>>;
+    public getProductImage(productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (productId === null || productId === undefined) {
+            throw new Error('Required parameter productId was null or undefined when calling getProductImage.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'image/png'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<Blob>('get',`${this.basePath}/products/${encodeURIComponent(String(productId))}/image`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -409,15 +505,20 @@ export class ProductsService {
     /**
      * List All products
      * Gets a list of all &#x60;Product&#x60; entities.
+     * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Product&#x60;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getproducts(observe?: 'body', reportProgress?: boolean): Observable<Array<Product>>;
-    public getproducts(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Product>>>;
-    public getproducts(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Product>>>;
-    public getproducts(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getProducts(includeDisabled?: boolean, observe?: 'body', reportProgress?: boolean): Observable<Array<Product>>;
+    public getProducts(includeDisabled?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Product>>>;
+    public getProducts(includeDisabled?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Product>>>;
+    public getProducts(includeDisabled?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
 
         let headers = this.defaultHeaders;
+        if (includeDisabled !== undefined && includeDisabled !== null) {
+            headers = headers.set('includeDisabled', String(includeDisabled));
+        }
 
         // authentication (BearerAuth) required
         if (this.configuration.accessToken) {
@@ -457,10 +558,10 @@ export class ProductsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateProduct(body: ProductDetails, productId: string, observe?: 'body', reportProgress?: boolean): Observable<ProductDetails>;
-    public updateProduct(body: ProductDetails, productId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductDetails>>;
-    public updateProduct(body: ProductDetails, productId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductDetails>>;
-    public updateProduct(body: ProductDetails, productId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateProduct(body: ProductDetails, productId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductDetails>;
+    public updateProduct(body: ProductDetails, productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductDetails>>;
+    public updateProduct(body: ProductDetails, productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductDetails>>;
+    public updateProduct(body: ProductDetails, productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateProduct.');
@@ -516,10 +617,10 @@ export class ProductsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateProductCategory(body: ProductCategory, productcategoryId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductCategory>;
-    public updateProductCategory(body: ProductCategory, productcategoryId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategory>>;
-    public updateProductCategory(body: ProductCategory, productcategoryId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategory>>;
-    public updateProductCategory(body: ProductCategory, productcategoryId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public updateProductCategory(body: ProductCategoryDetails, productcategoryId: number, observe?: 'body', reportProgress?: boolean): Observable<ProductCategoryDetails>;
+    public updateProductCategory(body: ProductCategoryDetails, productcategoryId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ProductCategoryDetails>>;
+    public updateProductCategory(body: ProductCategoryDetails, productcategoryId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ProductCategoryDetails>>;
+    public updateProductCategory(body: ProductCategoryDetails, productcategoryId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling updateProductCategory.');
@@ -556,9 +657,81 @@ export class ProductsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<ProductCategory>('put',`${this.basePath}/productcategories/${encodeURIComponent(String(productcategoryId))}`,
+        return this.httpClient.request<ProductCategoryDetails>('put',`${this.basePath}/productcategories/${encodeURIComponent(String(productcategoryId))}`,
             {
                 body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update a Product image
+     * Updates an existing &#x60;Product&#x60; image.
+     * @param file 
+     * @param productId A unique identifier for a &#x60;Product&#x60;.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public updateProductImage(file: Blob, productId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateProductImage(file: Blob, productId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateProductImage(file: Blob, productId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateProductImage(file: Blob, productId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (file === null || file === undefined) {
+            throw new Error('Required parameter file was null or undefined when calling updateProductImage.');
+        }
+
+        if (productId === null || productId === undefined) {
+            throw new Error('Required parameter productId was null or undefined when calling updateProductImage.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (BearerAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'multipart/form-data'
+        ];
+
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): void; };
+        let useForm = false;
+        let convertFormParamsToString = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        }
+
+        if (file !== undefined) {
+            formParams = formParams.append('file', <any>file) as any || formParams;
+        }
+
+        return this.httpClient.request<any>('put',`${this.basePath}/products/${encodeURIComponent(String(productId))}/image`,
+            {
+                body: convertFormParamsToString ? formParams.toString() : formParams,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

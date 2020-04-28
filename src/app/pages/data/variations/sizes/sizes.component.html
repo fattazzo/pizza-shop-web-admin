@@ -1,8 +1,8 @@
 <div class="p-grid">
   <!--Table -->
   <div class="p-col-12 p-md-7">
-    <p-table #toppingsTable [value]="sizes" [responsive]="true" selectionMode="single" [(selection)]="sizeSelected"
-      dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+    <p-table #toppingsTable [value]="sizes" selectionMode="single" [(selection)]="sizeSelected" dataKey="id"
+      [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
       <ng-template pTemplate="caption">
         <div class="p-grid">
           <div class="p-col table-title">
@@ -12,11 +12,14 @@
       </ng-template>
       <ng-template pTemplate="header" let-size>
         <tr>
-          <th pSortableColumn="title" translate>
-            name
-            <p-sortIcon field="title"></p-sortIcon>
+          <th pSortableColumn="order" translate [translateParams]="{ count: 1 }">
+            order
+            <p-sortIcon field="order"></p-sortIcon>
           </th>
-          <th translate [translateParams]="{ count: 1}">description</th>
+          <th pSortableColumn="name" translate>
+            name
+            <p-sortIcon field="name"></p-sortIcon>
+          </th>
           <th translate [translateParams]="{ gender: 'male'}">enabled</th>
           <th translate [translateParams]="{ count: 1}" pSortableColumn="extra">
             extra
@@ -26,8 +29,8 @@
       </ng-template>
       <ng-template pTemplate="body" let-size>
         <tr [pSelectableRow]="size">
+          <td>{{ size.order}}</td>
           <td>{{ size.name}}</td>
-          <td>{{ size.description}}</td>
           <td>
             <p-checkbox styleClass="table-checkbox" binary="true" [ngModel]="size.enabled" disabled="true">
             </p-checkbox>
@@ -43,6 +46,11 @@
     <form #form="ngForm" (ngSubmit)="onSubmit()">
       <p-panel header="{{sizeForm?.name || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
         <div class="p-grid ui-fluid" style="margin: 10px 0px">
+          <!-- enable -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ gender: 'male'}">enabled</div>
+          <div class="p-col-12 p-sm-7 p-lg-8">
+            <p-checkbox binary="true" [(ngModel)]="sizeForm.enabled" name="enabled"></p-checkbox>
+          </div>
           <!-- name -->
           <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate>name</div>
           <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
@@ -63,10 +71,11 @@
                 class="form-inputfield-numeric" />
             </div>
           </div>
-          <!-- enable -->
-          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ gender: 'male'}">enabled</div>
-          <div class="p-col-12 p-sm-7 p-lg-8">
-            <p-checkbox binary="true" [(ngModel)]="sizeForm.enabled" name="enabled"></p-checkbox>
+          <!-- order -->
+          <div class="p-col-12 p-sm-5 p-lg-4 form-label" translate [translateParams]="{ count: 1}">order</div>
+          <div class="p-col-12 p-sm-7 p-lg-8 ui-fluid">
+            <input pInputText numeric decimals="0" name="order" type="number" [(ngModel)]="sizeForm.order"
+              class="form-inputfield-numeric" />
           </div>
         </div>
         <div class="p-grid" *ngIf="hasEditRole()">

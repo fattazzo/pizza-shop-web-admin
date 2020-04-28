@@ -78,6 +78,9 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
+import { ProductsTableComponent } from './pages/data/products-categories/products/products-table/products-table.component';
+import { ProductFormComponent } from './pages/data/products-categories/products/product-form/product-form.component';
+import { ProductExtrasSummaryComponent } from './pages/data/products-categories/products/product-extras-summary/product-extras-summary.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -148,7 +151,10 @@ export function apiConfigFactory(): Configuration {
     ProductsCategoriesComponent,
     ProductsComponent,
     ProductCategoriesComponent,
-    ToppingPricesComponent
+    ToppingPricesComponent,
+    ProductsTableComponent,
+    ProductFormComponent,
+    ProductExtrasSummaryComponent
   ],
   imports: [
     BrowserModule,

@@ -16,4 +16,5 @@ export interface Size {
     description?: string;
     extra: number;
     enabled: boolean;
+    order?: number;
 }

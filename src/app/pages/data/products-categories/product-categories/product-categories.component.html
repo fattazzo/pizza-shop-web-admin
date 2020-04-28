@@ -55,6 +55,30 @@
           <div class="p-col-12 p-sm-7 p-lg-8">
             <p-checkbox binary="true" [(ngModel)]="categoryForm.enabled" name="enabled"></p-checkbox>
           </div>
+          <!-- doughs -->
+          <div class="p-col-12">
+            <p-listbox [options]="doughs" [(ngModel)]="categoryForm.doughs" [multiple]="true" [checkbox]="true"
+              name="doughs">
+              <p-header translate [translateParams]="{count: 2}">
+                dough
+              </p-header>
+              <ng-template let-item pTemplate="item">
+                <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.value.name}}</span>
+              </ng-template>
+            </p-listbox>
+          </div>
+          <!-- sizes -->
+          <div class="p-col-12">
+            <p-listbox [options]="sizes" [(ngModel)]="categoryForm.sizes" [multiple]="true" [checkbox]="true"
+              name="sizes">
+              <p-header translate [translateParams]="{count: 2}">
+                size
+              </p-header>
+              <ng-template let-item pTemplate="item">
+                <span [ngClass]="{'entity-disabled': !item.value.enabled}">{{item.value.name}}</span>
+              </ng-template>
+            </p-listbox>
+          </div>
         </div>
         <div class="p-grid" *ngIf="hasEditRole()">
           <div class="p-col ui-fluid">

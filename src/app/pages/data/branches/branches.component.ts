@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BranchesComponentService } from './services/shipping-methods-component.service';
+import { BranchesComponentService } from './services/branches-component.service';
 
 @Component({
   selector: 'app-branches',

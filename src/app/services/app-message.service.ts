@@ -58,6 +58,11 @@ export class AppMessageService {
       detail: err.error.error
     };
 
+    if (err.error && err.error.userMessage !== undefined && err.error.userMessage !== null) {
+      message.summary = err.error.userTitle;
+      message.detail = err.error.userMessage;
+    }
+
     if (err.error.error && err.error.error.userMessage !== undefined && err.error.error.userMessage !== null) {
       message.summary = err.error.error.userTitle;
       message.detail = err.error.error.userMessage;

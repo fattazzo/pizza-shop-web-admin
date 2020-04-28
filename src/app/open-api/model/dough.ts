@@ -16,4 +16,5 @@ export interface Dough {
     description?: string;
     extra: number;
     enabled: boolean;
+    order?: number;
 }
