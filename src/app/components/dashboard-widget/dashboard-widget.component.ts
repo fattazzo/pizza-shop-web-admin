@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-widget',
@@ -21,9 +22,11 @@ export class DashboardWidgetComponent implements OnInit {
 
   @Input() color: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  openLink() {
+    this.router.navigate([this.appRoutingLink])
   }
-
 }

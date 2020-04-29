@@ -12,11 +12,11 @@
       <span>{{subtitleDescription}}</span>
     </div>
 
-    <div class="router-link-container">
-      <a [href]="appRoutingLink" translate>
-        <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
-        show
-      </a>
+    <div class="router-link-container" (click)="openLink()" translate>
+      <!--<a [href]="appRoutingLink" translate>-->
+      <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
+      show
+      <!--</a>-->
     </div>
 
   </div>
