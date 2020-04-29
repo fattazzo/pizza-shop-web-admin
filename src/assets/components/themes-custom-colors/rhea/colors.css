@@ -10,6 +10,8 @@
   --primary-color: #7b95a3;
   --success-color: #a3e2c6;
   --warning-color: #feedbc;
+  --info-color: #a3def8;
+  --danger-color: #f4b6b6;
 
   --toolbar-text-color: var(--text-color);
   --toolbar-background-color: #7b95a3;

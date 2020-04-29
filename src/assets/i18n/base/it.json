@@ -57,5 +57,7 @@
   "loading": "Caricamento in corso",
 
   "selectADough": "Seleziona un impasto",
-  "selectASize": "Seleziona una dimensione"
+  "selectASize": "Seleziona una dimensione",
+
+  "show": "Visualizza"
 }

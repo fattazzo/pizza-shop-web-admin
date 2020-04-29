@@ -38,6 +38,8 @@
   "price": "Prezz{count, plural, =0{o} one{o} other{i}}",
   "image": "Immagin{count, plural, =0{e} one{e} other{i}}",
   "order": "Ordin{count, plural, =0{e} one{e} other{i}}",
+  "customer": "Client{count, plural, =0{i} one{e} other{i}}",
+  "customerWaitConfirmation": "Client{count, plural, =0{i} one{e} other{i}} in attesa di conferma",
 
   "currencySymbol": "Simbolo valuta",
   "currencyDecimals": "Decimali valuta"

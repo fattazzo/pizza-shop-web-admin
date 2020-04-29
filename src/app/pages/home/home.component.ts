@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Dashboard, DashboardService } from 'src/app/open-api';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  dashboard: Dashboard;
+
+  loading = false;
+
+  constructor(
+    private dashboardService: DashboardService
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.dashboardService.getDashboard().subscribe(d => {
+      this.dashboard = d;
+      this.loading = false;
+    },
+      _error => this.loading = false);
   }
 
 }

@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons';
-import { faMapMarkedAlt as fasMapMarkedAlt, faMoneyCheckAlt, faQuestionCircle, faTrashAlt as fasTrashAlt, faUser as fasUser } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faMapMarkedAlt as fasMapMarkedAlt, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TranslateCompiler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MESSAGE_FORMAT_CONFIG, TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
@@ -34,6 +34,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardWidgetComponent } from './components/dashboard-widget/dashboard-widget.component';
 import { CurrencyDirective } from './directive/currency.directive';
 import { NumericDirective } from './directive/numeric.directive';
 import { HttpConfigInterceptor } from './http/http-config-interceptor';
@@ -55,6 +56,9 @@ import { GroupsTablesComponent } from './pages/data/groups/groups-tables/groups-
 import { GroupsComponent } from './pages/data/groups/groups.component';
 import { ProductCategoriesComponent } from './pages/data/products-categories/product-categories/product-categories.component';
 import { ProductsCategoriesComponent } from './pages/data/products-categories/products-categories.component';
+import { ProductExtrasSummaryComponent } from './pages/data/products-categories/products/product-extras-summary/product-extras-summary.component';
+import { ProductFormComponent } from './pages/data/products-categories/products/product-form/product-form.component';
+import { ProductsTableComponent } from './pages/data/products-categories/products/products-table/products-table.component';
 import { ProductsComponent } from './pages/data/products-categories/products/products.component';
 import { SettingsComponent } from './pages/data/settings/settings.component';
 import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
@@ -78,9 +82,6 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
-import { ProductsTableComponent } from './pages/data/products-categories/products/products-table/products-table.component';
-import { ProductFormComponent } from './pages/data/products-categories/products/product-form/product-form.component';
-import { ProductExtrasSummaryComponent } from './pages/data/products-categories/products/product-extras-summary/product-extras-summary.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -154,7 +155,8 @@ export function apiConfigFactory(): Configuration {
     ToppingPricesComponent,
     ProductsTableComponent,
     ProductFormComponent,
-    ProductExtrasSummaryComponent
+    ProductExtrasSummaryComponent,
+    DashboardWidgetComponent
   ],
   imports: [
     BrowserModule,
@@ -232,7 +234,8 @@ export class AppModule {
     // regular
     this.library.addIcons(farEdit);
     // solid
-    this.library.addIcons(fasUser, fasMapMarkedAlt, faQuestionCircle, fasTrashAlt, faMoneyCheckAlt);
+    this.library.addIcons(fasUser, fasMapMarkedAlt, faQuestionCircle, fasTrashAlt, faMoneyCheckAlt,
+      faChevronRight, faUserFriends, faPizzaSlice);
     // brand
     this.library.addIcons();
   }

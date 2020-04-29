@@ -6,6 +6,7 @@
 
   <div>
     <ul class='topbar-menu'>
+      <li routerLink="/home"><a>Home</a></li>
       <li *ngIf="(session.getUser() | async)" (click)='menuData.toggle($event)'><a translate>data</a>
       </li>
       <li (click)='menuOptions.toggle($event)'><a translate>settings</a></li>

@@ -57,5 +57,7 @@
   "loading": "Loading",
 
   "selectADough": "Select a dough",
-  "selectASize": "Select a size"
+  "selectASize": "Select a size",
+
+  "show": "Show"
 }

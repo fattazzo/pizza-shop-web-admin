@@ -1,0 +1,25 @@
+<div class="root">
+  <div class="root-container" [ngStyle]="{'background-color': color}">
+
+    <div class="title-container">
+      <label class="title-label">{{titleValue}}</label>
+      <span>{{titleDescription}}</span>
+    </div>
+
+    <div class="subtitle-container">
+      <label class="subtitle-label">{{subtitleValue}}</label>
+      <span>{{subtitleDescription}}</span>
+    </div>
+
+    <div class="router-link-container">
+      <a [href]="appRoutingLink" translate>
+        <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
+        show
+      </a>
+    </div>
+
+  </div>
+  <div class="image-container">
+    <fa-icon [icon]="image" class="image-item"></fa-icon>
+  </div>
+</div>
