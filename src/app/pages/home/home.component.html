@@ -1,13 +1,15 @@
 <div class="p-grid">
   <!-- Customers -->
-  <app-dashboard-widget class="p-col-3" [loading]="loading" [titleValue]="dashboard?.customers?.total"
+  <app-dashboard-widget class="p-col-12 p-sm-6 p-md-5 p-lg-4 p-xl-3" [loading]="loading"
+    [titleValue]="dashboard?.customers?.total"
     titleDescription="{{'customer' | translate:{ count: dashboard?.customers?.total } | lowercase}}"
     [subtitleValue]="dashboard?.customers?.toConfirm"
     subtitleDescription="{{'customerWaitConfirmation' | translate:{ count: dashboard?.customers?.toConfirm } | lowercase}}"
     color="var(--info-color)" appRoutingLink="/users" image="user-friends">
   </app-dashboard-widget>
   <!-- Products -->
-  <app-dashboard-widget class="p-col-3" [loading]="loading" [titleValue]="dashboard?.products?.totalEnable"
+  <app-dashboard-widget class="p-col-12 p-sm-6 p-md-5 p-lg-4 p-xl-3" [loading]="loading"
+    [titleValue]="dashboard?.products?.totalEnable"
     titleDescription="{{'product' | translate:{ count: dashboard?.products?.totalEnable } | lowercase}}"
     [subtitleValue]="dashboard?.products?.totalCategoriesEnable"
     subtitleDescription="{{'category' | translate:{ count: dashboard?.products?.totalCategoriesEnable } | lowercase}}"
