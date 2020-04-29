@@ -21,12 +21,12 @@
               class="ui-button-warn"
               (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
           </div>
-          <!--<div class="p-col-12">
-            <p-checkbox binary="true" label="{{'remember_me' | translate}}" disabled="true"></p-checkbox>
-          </div>-->
           <div class="p-col-12 ui-fluid">
             <button pButton label="{{'signin' | translate}}" type="submit" icon="pi pi-" class="ui-button"
-              [disabled]="!form.valid"></button>
+              [disabled]="!form.valid" *ngIf="!loading"></button>
+            <div style="display: flex;justify-content: center;" *ngIf="loading">
+              <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon>
+            </div>
           </div>
         </form>
       </div>

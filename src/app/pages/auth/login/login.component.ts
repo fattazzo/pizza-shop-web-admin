@@ -45,7 +45,10 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.userLogin.username, this.userLogin.password)
       .subscribe(
-        _data => this.router.navigate([this.returnUrl]),
+        _data => {
+          this.loading = false;
+          this.router.navigate([this.returnUrl]);
+        },
         error => {
           this.messageService.add({
             key: 'login-toast',
