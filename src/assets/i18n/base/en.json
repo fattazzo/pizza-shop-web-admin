@@ -3,12 +3,15 @@
   "themes": "Themes",
 
   "language": "Language",
+  "italian": "Italian",
+  "english": "English",
+
   "data": "Data",
 
   "back": "Back",
 
-  "username": "username",
-  "password": "password",
+  "username": "Username",
+  "password": "Password",
 
   "or": "o",
 
@@ -59,5 +62,7 @@
   "selectADough": "Select a dough",
   "selectASize": "Select a size",
 
-  "show": "Show"
+  "show": "Show",
+
+  "all": "All{gender, select, male{} female{} other{}}"
 }

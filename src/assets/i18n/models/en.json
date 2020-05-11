@@ -1,5 +1,6 @@
 {
   "company": "Compan{count, plural, =0{} one{y} other{ies}}",
+  "usergroup": "User{count, plural, =0{} one{} other{s}} and group{count, plural, =0{} one{} other{s}}",
   "user": "User{count, plural, =0{} one{} other{s}}",
   "group": "Group{count, plural, =0{} one{} other{s}}",
   "branch": "Branch{count, plural, =0{} one{} other{es}}",
@@ -7,8 +8,9 @@
   "dough": "Dough{count, plural, =0{} one{} other{s}}",
   "size": "Size{count, plural, =0{} one{} other{s}}",
   "topping": "Topping{count, plural, =0{} one{} other{s}}",
+  "pizza": "Pizza{count, plural, =0{} one{} other{s}}",
+  "pizzaAndCategory": "Pizza{count, plural, =0{} one{} other{s}} and Categor{count, plural, =0{y} one{y} other{ies}}",
   "product": "Product{count, plural, =0{} one{} other{s}}",
-  "productAndCategory": "Product{count, plural, =0{} one{} other{s}} e Categor{count, plural, =0{y} one{y} other{ies}}",
   "category": "Categor{count, plural, =0{y} one{y} other{ies}}",
   "configuration": "Configuration{count, plural, =0{} one{} other{s}}",
 
@@ -39,7 +41,7 @@
   "image": "Image{count, plural, =0{} one{} other{s}}",
   "order": "Order{count, plural, =0{} one{} other{s}}",
   "customer": "Customer{count, plural, =0{} one{} other{s}}",
-  "customerWaitConfirmation": "Customer{count, plural, =0{} one{} other{s}} waiting for confirmation",
+  "customerWaitConfirmation": "waiting for confirmation",
 
   "currencySymbol": "Currency symbol",
   "currencyDecimals": "Currency decimals"

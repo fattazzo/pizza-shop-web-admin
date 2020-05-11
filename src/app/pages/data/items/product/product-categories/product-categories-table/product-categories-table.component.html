@@ -1,0 +1,35 @@
+<p-table #categorysTable [value]="categories" selectionMode="single" [(selection)]="categorySelected" dataKey="id"
+  [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+  <ng-template pTemplate="caption">
+    <div class="p-grid">
+      <div class="p-col table-title">
+        <h2 style="margin: 0;" translate [translateParams]="{ count: 2 }">category</h2>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-category>
+    <tr>
+      <th pSortableColumn="order" translate [translateParams]="{ count: 1 }">
+        order
+        <p-sortIcon field="order"></p-sortIcon>
+      </th>
+      <th pSortableColumn="title" translate>
+        name
+        <p-sortIcon field="title"></p-sortIcon>
+      </th>
+      <th translate [translateParams]="{ count: 1}">description</th>
+      <th translate [translateParams]="{ gender: 'female'}">enabled</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-category>
+    <tr [pSelectableRow]="category">
+      <td>{{ category.order}}</td>
+      <td>{{ category.name}}</td>
+      <td>{{ category.description}}</td>
+      <td>
+        <p-checkbox styleClass="table-checkbox" binary="true" [ngModel]="category.enabled" disabled="true">
+        </p-checkbox>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

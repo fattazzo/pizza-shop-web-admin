@@ -3,6 +3,9 @@
   "themes": "Temi",
 
   "language": "Lingua",
+  "italian": "Italiano",
+  "english": "Inglese",
+
   "data": "Anagrafiche",
 
   "back": "Indietro",
@@ -59,5 +62,7 @@
   "selectADough": "Seleziona un impasto",
   "selectASize": "Seleziona una dimensione",
 
-  "show": "Visualizza"
+  "show": "Visualizza",
+
+  "all": "Tutt{gender, select, male{i} female{e} other{i}}"
 }

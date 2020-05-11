@@ -1,6 +1,21 @@
 <p-confirmDialog [style]="{width: '30vw'}"></p-confirmDialog>
 <app-top-bar></app-top-bar>
 <div class="container">
-  <p-toast [style]="{marginTop: '10px'}"></p-toast>
+  <p-toast [style]="{marginTop: '20px'}"></p-toast>
+  <p-toast [style]="{marginTop: '20px'}" key="html">
+    <ng-template let-message pTemplate="message">
+      <div class="ui-toast-message-content">
+        <ng-container>
+          <span class="ui-toast-icon pi"
+            [ngClass]="{'pi-info-circle': message.severity == 'info', 'pi-exclamation-triangle': message.severity == 'warn',
+                            'pi-times-circle': message.severity == 'error', 'pi-check' :message.severity == 'success'}"></span>
+          <div class="ui-toast-message-text-content">
+            <div [innerHTML]="message.summary"></div>
+            <div class="ui-toast-detail" [innerHTML]="message.detail"></div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+  </p-toast>
   <router-outlet></router-outlet>
 </div>

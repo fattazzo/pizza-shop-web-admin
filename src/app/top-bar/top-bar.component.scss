@@ -176,3 +176,20 @@
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+:host ::ng-deep .menuData .ui-slidemenu-content {
+  height: 250px !important;
+}
+
+:host ::ng-deep .menuSettings .ui-slidemenu-content {
+  //height: auto !important;
+  min-height: 170px;
+}
+
+:host ::ng-deep .ui-slidemenu-wrapper {
+  height: auto !important;
+}
+
+:host ::ng-deep .ui-slidemenu-backward {
+  bottom: auto !important;
+}

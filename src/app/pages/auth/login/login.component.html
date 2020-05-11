@@ -8,11 +8,13 @@
       <div class="p-col-12 p-sm-7 p-md-7 p-lg-7 p-xl-7">
         <h3 class="p-col-12 title" translate>login_account</h3>
         <form #form="ngForm" (ngSubmit)="onSubmit()">
+          <!-- username -->
           <div class="ui-inputgroup p-col-12 ui-fluid">
             <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
             <input required pInputText type="text" placeholder="{{'username' | translate}}" name="username"
               [(ngModel)]="userLogin.username">
           </div>
+          <!-- password -->
           <div class="ui-inputgroup p-col-12 ui-fluid">
             <span class="ui-inputgroup-addon"><i class="pi pi-key" style="line-height: 1.25;"></i></span>
             <input required pInputText #password_field type="password" placeholder="{{'password' | translate}}"
@@ -21,6 +23,12 @@
               class="ui-button-warn"
               (click)="password_field.type=password_field.type=='password'?'text':'password'"></button>
           </div>
+          <!-- languages -->
+          <div class="p-col-12 ui-fluid">
+            <p-dropdown required [options]="languages" [(ngModel)]="userLogin.locale" name="locale"
+              (onChange)="translate.use($event.value)"></p-dropdown>
+          </div>
+
           <div class="p-col-12 ui-fluid">
             <button pButton label="{{'signin' | translate}}" type="submit" icon="pi pi-" class="ui-button"
               [disabled]="!form.valid" *ngIf="!loading"></button>

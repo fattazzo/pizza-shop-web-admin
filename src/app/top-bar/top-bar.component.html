@@ -11,8 +11,10 @@
       </li>
       <li (click)='menuOptions.toggle($event)'><a translate>settings</a></li>
     </ul>
-    <p-menu #menuData [model]='itemsData' [popup]='true'></p-menu>
-    <p-slideMenu #menuOptions [model]='itemsSettings' [popup]='true' backLabel="{{'back' | translate}}">
+    <p-slideMenu #menuData [model]='itemsData' [popup]='true' styleClass="menuData" backLabel="{{'back' | translate}}">
+    </p-slideMenu>
+    <p-slideMenu #menuOptions [model]='itemsSettings' [popup]='true' styleClass="menuSettings"
+      backLabel="{{'back' | translate}}">
     </p-slideMenu>
   </div>
 </div>

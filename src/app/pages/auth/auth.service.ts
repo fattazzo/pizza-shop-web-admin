@@ -18,12 +18,13 @@ export class AuthService {
     private settingsService: SettingsService
   ) { }
 
-  login(username: string, password: string): Observable<void> {
+  login(username: string, password: string, locale: string): Observable<void> {
 
-    return this.sessionRestService.login({ username: username, password: password, locale: 'it' }).pipe(switchMap(session => {
+    return this.sessionRestService.login({ username: username, password: password, locale: locale }).pipe(switchMap(session => {
 
       sessionStorage.setItem("access-token", session.accessToken);
       sessionStorage.setItem("refresh-token", session.refreshToken);
+      sessionStorage.setItem("locale", locale);
 
       let cs = this.companiesService.getCompany();
       let bs = this.branchesService.getBranches();

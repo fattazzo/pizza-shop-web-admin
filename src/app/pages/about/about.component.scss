@@ -1,0 +1,21 @@
+.root-container {
+  margin-right: -1.25em;
+  margin-left: -1.25em;
+  margin-top: -1.25em;
+}
+
+.image-container {
+  padding: 0;
+  position: relative;
+}
+
+.image-item {
+  box-shadow: 0px 4px 6px -2px #333;
+}
+
+.title {
+  font-size: 6vw;
+  position: absolute;
+  top: 0.5em;
+  right: 0.25em;
+}

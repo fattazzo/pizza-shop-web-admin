@@ -1,7 +1,49 @@
 {
+  "warning": "Attenzione",
   "error": "Errore",
   "errorSummary": "Attenzione",
   "loginErrorDetail": "Errore imprevisto durante il login",
 
-  "notAuthorizedToView": "Non sei autorizzato a vedere questa pagina"
+  "notAuthorizedToView": "Non sei autorizzato a vedere questa pagina",
+
+  "variationAlreadyAdded": "Variazione è già presente",
+
+  "//": "Fields ( used only for serve validation error i18n )",
+  "field": {
+    "streetAddress": "Via",
+    "number": "Numero",
+    "place": "Città",
+    "postalCode": "Codice postale",
+    "phone": "Numero di telefono",
+    "webUrl": "Indirizzo web",
+    "primary": "Primario",
+    "address": "Indirizzo",
+    "enabled": "Abilitato",
+    "doughs": "Impasti",
+    "dough": "Impasto",
+    "sizes": "Dimensioni",
+    "size": "Dimensione",
+    "topping": "Ingradiente",
+    "name": "Nome",
+    "roles": "Ruoli",
+    "readOnly": "Sola lettura",
+    "description": "Descrizione",
+    "category": "Categoria",
+    "prices": "Prezzi",
+    "price": "Prezzo",
+    "variation": "Variazione",
+    "currencySymbol": "Simbolo valuta",
+    "currencyDecimals": "Decimali valuta",
+    "title": "Titolo",
+    "type": "Tipo",
+    "username": "Username",
+    "email": "Email",
+    "status": "Stato",
+    "password": "Password",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "groups": "Groups",
+    "deliveryAddresses": "Indirizzo di consegna",
+    "order": "Ordine"
+  }
 }

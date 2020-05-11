@@ -1,7 +1,49 @@
 {
+  "warning": "Warning",
   "error": "Error",
   "errorSummary": "Error",
   "loginErrorDetail": "Unexpected error while logging in",
 
-  "notAuthorizedToView": "You are not authorized to view this resource."
+  "notAuthorizedToView": "You are not authorized to view this resource.",
+
+  "variationAlreadyAdded": "Variation already added",
+
+  "//": "Fields ( used only for serve validation error i18n )",
+  "field": {
+    "streetAddress": "Street",
+    "number": "Number",
+    "place": "Place",
+    "postalCode": "Postal code",
+    "phone": "Phone",
+    "webUrl": "Web url",
+    "primary": "Primary",
+    "address": "Address",
+    "enabled": "Enable",
+    "doughs": "Doughs",
+    "dough": "Dough",
+    "sizes": "Sizes",
+    "size": "Size",
+    "topping": "Topping",
+    "name": "Name",
+    "roles": "Roles",
+    "readOnly": "Readonly",
+    "description": "Description",
+    "category": "Category",
+    "prices": "Prices",
+    "price": "Price",
+    "variation": "Variation",
+    "currencySymbol": "Currency symbol",
+    "currencyDecimals": "Currency decimals",
+    "title": "Title",
+    "type": "Type",
+    "username": "Username",
+    "email": "Email",
+    "status": "Status",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "groups": "Groups",
+    "deliveryAddresses": "Delivery address",
+    "order": "Order"
+  }
 }

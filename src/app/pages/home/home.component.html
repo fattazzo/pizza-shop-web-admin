@@ -9,9 +9,9 @@
   </app-dashboard-widget>
   <!-- Products -->
   <app-dashboard-widget class="p-col-12 p-sm-6 p-md-5 p-lg-4 p-xl-3" [loading]="loading"
-    [titleValue]="dashboard?.products?.totalEnable"
-    titleDescription="{{'product' | translate:{ count: dashboard?.products?.totalEnable } | lowercase}}"
-    [subtitleValue]="dashboard?.products?.totalCategoriesEnable"
-    subtitleDescription="{{'category' | translate:{ count: dashboard?.products?.totalCategoriesEnable } | lowercase}}"
-    color="var(--warning-color)" appRoutingLink="/products" image="pizza-slice">></app-dashboard-widget>
+    [titleValue]="dashboard?.pizzas?.totalEnable"
+    titleDescription="{{'pizza' | translate:{ count: dashboard?.pizzas?.totalEnable } | lowercase}}"
+    [subtitleValue]="dashboard?.pizzas?.totalCategoriesEnable"
+    subtitleDescription="{{'category' | translate:{ count: dashboard?.pizzas?.totalCategoriesEnable } | lowercase}}"
+    color="var(--warning-color)" appRoutingLink="/pizzas" image="pizza-slice">></app-dashboard-widget>
 </div>

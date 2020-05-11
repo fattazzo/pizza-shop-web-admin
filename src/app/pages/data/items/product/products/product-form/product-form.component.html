@@ -1,0 +1,71 @@
+<form #form="ngForm">
+  <p-panel header="{{product.name || ('new' | translate:&quot;{ gender: 'female' }&quot;) }}">
+    <div class="p-grid ui-fluid" style="margin: 10px 0px">
+      <!-- enabled -->
+      <div class="p-col-5 form-label" translate [translateParams]="{gender:'male'}">enabled</div>
+      <div class="p-col-7">
+        <p-checkbox binary="true" [(ngModel)]="product.enabled" name="enabled"></p-checkbox>
+      </div>
+      <!-- name -->
+      <div class="p-col-5 form-label" translate>name</div>
+      <div class="p-col-7">
+        <input required pInputText name="name" type="text" [(ngModel)]="product.name"
+          placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}" />
+      </div>
+      <!-- description -->
+      <div class="p-col-5 form-label" translate [translateParams]="{count:1}">description</div>
+      <div class="p-col-7">
+        <input pInputText name="description" type="text" [(ngModel)]="product.description" />
+      </div>
+      <!-- category -->
+      <div class="p-col-5 form-label" translate [translateParams]="{count:1}">category</div>
+      <div class="p-col-7">
+        <p-dropdown required [options]="categories" [(ngModel)]="product.category" name="category"
+          placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}"></p-dropdown>
+      </div>
+      <!-- prices -->
+      <div class="p-col-12 form-label" translate [translateParams]="{count:2}">price</div>
+      <div class="p-col-12">
+        <app-product-form-prices [product]="product"></app-product-form-prices>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'new' | translate:&quot;{ gender: 'male' }&quot; }}" icon="pi pi-file-o"
+          (click)="onNew()"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="submit" label="{{ 'save' | translate }}" icon="pi pi-save" [disabled]="!form.valid"
+          (click)="onSubmit()"></button>
+      </div>
+      <div class="p-col ui-fluid">
+        <button pButton type="button" label="{{ 'delete' | translate }}" icon="pi pi-trash"
+          [disabled]="product.id == null" (click)="onDelete()" class="ui-button-danger"></button>
+      </div>
+    </div>
+  </p-panel>
+</form>
+
+<div style="padding-top: .5em;">
+  <p-panel header="{{'image' | translate:&quot;{ count: 1 }&quot; }}">
+    <div class="p-grid ui-fluid" style="margin: 10px 0px">
+      <span class="p-col-7 image-container">
+        <div class="image-placeholder" (click)="openFile()">
+          <img style="width: 100%;height: 100%;" [src]="imageItem" *ngIf="imageItem" />
+        </div>
+        <input class="inputUpload" type="file" style="display:none" (change)="handle($event)">
+      </span>
+      <div class="p-col-5">
+        <p class="translated-paragraph" translate>imageAction</p>
+        <p class="translated-paragraph" translate>imageFormatDescription</p>
+      </div>
+      <div class="p-col-7" style="display: flex; justify-content: center;">
+        <span *ngIf="imageLoading" translate>loading</span>
+      </div>
+      <div class="p-col-5">
+        <button pButton label="{{ 'delete' | translate }}" icon="pi pi-trash" [disabled]="!imageItem || imageLoading"
+          class="ui-button-danger" (click)="onDeleteImage()"></button>
+      </div>
+    </div>
+  </p-panel>
+</div>

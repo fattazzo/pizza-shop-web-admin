@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faMapMarkedAlt as fasMapMarkedAlt, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faMapMarkedAlt as fasMapMarkedAlt, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faSpinner, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TranslateCompiler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MESSAGE_FORMAT_CONFIG, TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
@@ -39,6 +39,8 @@ import { CurrencyDirective } from './directive/currency.directive';
 import { NumericDirective } from './directive/numeric.directive';
 import { HttpConfigInterceptor } from './http/http-config-interceptor';
 import { ApiModule, Configuration, ConfigurationParameters } from './open-api';
+import { AboutWidgetComponent } from './pages/about/about-widget/about-widget.component';
+import { AboutComponent } from './pages/about/about.component';
 import { AuthGuard } from './pages/auth/auth.guard';
 import { AuthService } from './pages/auth/auth.service';
 import { LoginComponent } from './pages/auth/login/login.component';
@@ -54,12 +56,18 @@ import { DeliveryAdressesComponent } from './pages/data/delivery-adresses/delive
 import { GroupsFormComponent } from './pages/data/groups/groups-form/groups-form.component';
 import { GroupsTablesComponent } from './pages/data/groups/groups-tables/groups-tables.component';
 import { GroupsComponent } from './pages/data/groups/groups.component';
-import { ProductCategoriesComponent } from './pages/data/products-categories/product-categories/product-categories.component';
-import { ProductsCategoriesComponent } from './pages/data/products-categories/products-categories.component';
-import { ProductExtrasSummaryComponent } from './pages/data/products-categories/products/product-extras-summary/product-extras-summary.component';
-import { ProductFormComponent } from './pages/data/products-categories/products/product-form/product-form.component';
-import { ProductsTableComponent } from './pages/data/products-categories/products/products-table/products-table.component';
-import { ProductsComponent } from './pages/data/products-categories/products/products.component';
+import { PizzaCategoriesComponent } from './pages/data/items/pizza/pizza-categories/pizza-categories.component';
+import { DoughsComponent } from './pages/data/items/pizza/pizza-variations/doughs/doughs.component';
+import { VariationsComponent } from './pages/data/items/pizza/pizza-variations/pizza-variations.component';
+import { SizesComponent } from './pages/data/items/pizza/pizza-variations/sizes/sizes.component';
+import { ToppingPricesComponent } from './pages/data/items/pizza/pizza-variations/topping-prices/topping-prices.component';
+import { ToppingsComponent } from './pages/data/items/pizza/pizza-variations/toppings/toppings.component';
+import { PizzaExtrasSummaryComponent } from './pages/data/items/pizza/pizzas/pizza-extras-summary/pizza-extras-summary.component';
+import { PizzaFormPricesComponent } from './pages/data/items/pizza/pizzas/pizza-form-prices/pizza-form-prices.component';
+import { PizzaFormComponent } from './pages/data/items/pizza/pizzas/pizza-form/pizza-form.component';
+import { PizzasTableComponent } from './pages/data/items/pizza/pizzas/pizzas-table/pizzas-table.component';
+import { PizzasComponent } from './pages/data/items/pizza/pizzas/pizzas.component';
+import { ProductsComponent } from './pages/data/items/product/products/products.component';
 import { SettingsComponent } from './pages/data/settings/settings.component';
 import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
 import { ShippingMethodsTableComponent } from './pages/data/shipping-methods/shipping-methods-table/shipping-methods-table.component';
@@ -67,11 +75,6 @@ import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping
 import { UsersFormComponent } from './pages/data/users/users-form/users-form.component';
 import { UsersTableComponent } from './pages/data/users/users-table/users-table.component';
 import { UsersComponent } from './pages/data/users/users.component';
-import { DoughsComponent } from './pages/data/variations/doughs/doughs.component';
-import { SizesComponent } from './pages/data/variations/sizes/sizes.component';
-import { ToppingPricesComponent } from './pages/data/variations/topping-prices/topping-prices.component';
-import { ToppingsComponent } from './pages/data/variations/toppings/toppings.component';
-import { VariationsComponent } from './pages/data/variations/variations.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyCurrencyPipe } from './pipes/my-currency.pipe';
 import { AppMessageService } from './services/app-message.service';
@@ -82,6 +85,15 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
+import { ProductCategoriesComponent } from './pages/data/items/product/product-categories/product-categories.component';
+import { ProductVariationsComponent } from './pages/data/items/product/product-variations/product-variations.component';
+import { ProductCategoriesTableComponent } from './pages/data/items/product/product-categories/product-categories-table/product-categories-table.component';
+import { ProductCategoriesFormComponent } from './pages/data/items/product/product-categories/product-categories-form/product-categories-form.component';
+import { ProductVariationsTableComponent } from './pages/data/items/product/product-variations/product-variations-table/product-variations-table.component';
+import { ProductVariationsFormComponent } from './pages/data/items/product/product-variations/product-variations-form/product-variations-form.component';
+import { ProductsTableComponent } from './pages/data/items/product/products/products-table/products-table.component';
+import { ProductFormComponent } from './pages/data/items/product/products/product-form/product-form.component';
+import { ProductFormPricesComponent } from './pages/data/items/product/products/product-form-prices/product-form-prices.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -102,9 +114,19 @@ export function appInitializerFactory(
     await injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
 
     translate.addLangs(['en', 'it']);
-    translate.setDefaultLang('it');
+    translate.setDefaultLang('en');
     try {
-      await translate.use('it').toPromise();
+      var locale = null;
+      translate.getLangs().forEach((lang: string) => {
+        if (navigator.language.includes(lang)) {
+          locale = lang;
+        }
+      })
+      if (locale === null) {
+        locale = 'en';
+      }
+
+      await translate.use(locale).toPromise();
     } catch (err) { }
   };
 }
@@ -112,7 +134,7 @@ export function appInitializerFactory(
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
     basePath: environment.baseApiRestUrl,
-    accessToken: () => sessionStorage.getItem('access-token')
+    accessToken: () => sessionStorage.getItem('access-token'),
   };
   return new Configuration(params);
 }
@@ -149,14 +171,26 @@ export function apiConfigFactory(): Configuration {
     SizesComponent,
     ToppingsComponent,
     SettingsComponent,
-    ProductsCategoriesComponent,
+    PizzaCategoriesComponent,
+    PizzasComponent,
+    PizzasTableComponent,
+    PizzaFormComponent,
+    ToppingPricesComponent,
+    PizzaExtrasSummaryComponent,
+    DashboardWidgetComponent,
+    AboutComponent,
+    AboutWidgetComponent,
+    PizzaFormPricesComponent,
     ProductsComponent,
     ProductCategoriesComponent,
-    ToppingPricesComponent,
+    ProductVariationsComponent,
+    ProductCategoriesTableComponent,
+    ProductCategoriesFormComponent,
+    ProductVariationsTableComponent,
+    ProductVariationsFormComponent,
     ProductsTableComponent,
     ProductFormComponent,
-    ProductExtrasSummaryComponent,
-    DashboardWidgetComponent
+    ProductFormPricesComponent
   ],
   imports: [
     BrowserModule,
@@ -164,7 +198,6 @@ export function apiConfigFactory(): Configuration {
     HttpClientModule,
     ApiModule.forRoot(apiConfigFactory),
     TranslateModule.forRoot({
-      defaultLanguage: 'it',
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
@@ -235,7 +268,7 @@ export class AppModule {
     this.library.addIcons(farEdit);
     // solid
     this.library.addIcons(fasUser, fasMapMarkedAlt, faQuestionCircle, fasTrashAlt, faMoneyCheckAlt,
-      faChevronRight, faUserFriends, faPizzaSlice);
+      faChevronRight, faUserFriends, faPizzaSlice, faSpinner);
     // brand
     this.library.addIcons();
   }

@@ -1,5 +1,6 @@
 {
   "company": "Aziend{count, plural, =0{} one{a} other{e}}",
+  "usergroup": "Utent{count, plural, =0{} one{e} other{i}} e grupp{count, plural, =0{} one{o} other{i}}",
   "user": "Utent{count, plural, =0{} one{e} other{i}}",
   "group": "Grupp{count, plural, =0{} one{o} other{i}}",
   "branch": "Sed{count, plural, =0{e} one{e} other{i}}",
@@ -7,8 +8,9 @@
   "dough": "Impast{count, plural, =0{o} one{o} other{i}}",
   "size": "Dimension{count, plural, =0{e} one{e} other{i}}",
   "topping": "Ingredient{count, plural, =0{e} one{e} other{i}}",
+  "pizza": "Pizz{count, plural, =0{e} one{a} other{e}}",
+  "pizzaAndCategory": "Pizz{count, plural, =0{e} one{a} other{e}} e Categori{count, plural, =0{e} one{a} other{e}}",
   "product": "Prodott{count, plural, =0{o} one{o} other{i}}",
-  "productAndCategory": "Prodott{count, plural, =0{o} one{o} other{i}} e Categori{count, plural, =0{a} one{a} other{e}}",
   "category": "Categori{count, plural, =0{a} one{a} other{e}}",
   "configuration": "Configurazion{count, plural, =0{e} one{e} other{i}}",
 
@@ -39,7 +41,7 @@
   "image": "Immagin{count, plural, =0{e} one{e} other{i}}",
   "order": "Ordin{count, plural, =0{e} one{e} other{i}}",
   "customer": "Client{count, plural, =0{i} one{e} other{i}}",
-  "customerWaitConfirmation": "Client{count, plural, =0{i} one{e} other{i}} in attesa di conferma",
+  "customerWaitConfirmation": "in attesa di conferma",
 
   "currencySymbol": "Simbolo valuta",
   "currencyDecimals": "Decimali valuta"

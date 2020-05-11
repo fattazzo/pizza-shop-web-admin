@@ -67,24 +67,71 @@ export class MenuService {
       });
     }
 
+    if (allRoles.indexOf(Role.PRODUCTS) >= 0 || allRoles.indexOf(Role.VARIATIONS) >= 0) {
+
+      let children: MenuItem[] = []
+
+      // PIZZAS
+      if (allRoles.indexOf(Role.PRODUCTS) >= 0) {
+        children.push(
+          {
+            label: this.translate.instant('pizza', { count: 2 }),
+            icon: 'pi pi-table',
+            command: () => this.router.navigate(['pizzas'])
+          }
+        )
+        children.push(
+          {
+            label: this.translate.instant('category', { count: 2 }),
+            icon: 'pi pi-table',
+            command: () => this.router.navigate(['pizza/categories'])
+          }
+        )
+      }
+
+      // VARIATIONS
+      if (allRoles.indexOf(Role.VARIATIONS) >= 0) {
+        children.push(
+          {
+            label: this.translate.instant('variation', { count: 2 }),
+            icon: 'pi pi-table',
+            command: () => this.router.navigate(['pizza/variations'])
+          }
+        )
+      }
+
+      let pizzasItem: MenuItem = {
+        label: this.translate.instant('pizza', { count: 2 }),
+        icon: 'pi pi-table',
+        items: children
+      }
+
+      menu.push(pizzasItem)
+    }
+
     // PRODUCTS
     if (allRoles.indexOf(Role.PRODUCTS) >= 0) {
       menu.push(
         {
-          label: this.translate.instant('productAndCategory', { count: 2 }),
+          label: this.translate.instant('product', { count: 2 }),
           icon: 'pi pi-table',
-          command: () => this.router.navigate(['products'])
-        }
-      )
-    }
-
-    // VARIATIONS
-    if (allRoles.indexOf(Role.VARIATIONS) >= 0) {
-      menu.push(
-        {
-          label: this.translate.instant('variation', { count: 2 }),
-          icon: 'pi pi-table',
-          command: () => this.router.navigate(['variations'])
+          items: [
+            {
+              label: this.translate.instant('product', { count: 2 }),
+              icon: 'pi pi-table',
+              command: () => this.router.navigate(['products'])
+            },
+            {
+              label: this.translate.instant('category', { count: 2 }),
+              icon: 'pi pi-table',
+              command: () => this.router.navigate(['product/categories'])
+            },
+            {
+              label: this.translate.instant('variation', { count: 2 }),
+              icon: 'pi pi-table',
+              command: () => this.router.navigate(['product/variations'])
+            }
+          ]
         }
       )
     }
@@ -104,14 +151,20 @@ export class MenuService {
     if (allRoles.indexOf(Role.SECURITY) >= 0) {
       menu.push(
         {
-          label: this.translate.instant('user', { count: 2 }),
+          label: this.translate.instant('usergroup', { count: 2 }),
           icon: 'pi pi-table',
-          command: () => this.router.navigate(['users'])
-        },
-        {
-          label: this.translate.instant('group', { count: 2 }),
-          icon: 'pi pi-table',
-          command: () => this.router.navigate(['groups'])
+          items: [
+            {
+              label: this.translate.instant('user', { count: 2 }),
+              icon: 'pi pi-table',
+              command: () => this.router.navigate(['users'])
+            },
+            {
+              label: this.translate.instant('group', { count: 2 }),
+              icon: 'pi pi-table',
+              command: () => this.router.navigate(['groups'])
+            }
+          ]
         }
       );
     }
@@ -126,8 +179,18 @@ export class MenuService {
         label: this.translate.instant('language'),
         icon: 'pi pi-info',
         items: [
-          { label: 'IT', icon: 'pi pi-info', command: () => this.translate.use('it') },
-          { label: 'EN', icon: 'pi pi-info', command: () => this.translate.use('en') }
+          {
+            label: 'IT', icon: 'pi pi-info', command: () => {
+              this.translate.use('it')
+              sessionStorage.setItem('locale', 'it');
+            }
+          },
+          {
+            label: 'EN', icon: 'pi pi-info', command: () => {
+              this.translate.use('en');
+              sessionStorage.setItem('locale', 'en');
+            }
+          }
         ]
       },
       {
@@ -156,6 +219,14 @@ export class MenuService {
         }
       )
     }
+
+    menu.push(
+      {
+        label: 'About',
+        icon: 'pi pi-th-large',
+        command: () => this.router.navigate(['about'])
+      }
+    )
 
     this._settingsMenuItems.next(menu);
   }

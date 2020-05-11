@@ -1,7 +1,8 @@
 import { HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, Message, MessageService } from 'primeng/api';
+import { ErrorData, ErrorResponse } from '../open-api';
 
 @Injectable({
   providedIn: 'root',
@@ -52,21 +53,54 @@ export class AppMessageService {
   }
 
   addRequestErrorMessage(request: HttpRequest<any>, err: HttpErrorResponse) {
-    const message = {
+    var message: Message = {
       severity: 'error',
       summary: this.translate.instant('message.error.title'),
       detail: err.error.error
     };
 
-    if (err.error && err.error.userMessage !== undefined && err.error.userMessage !== null) {
-      message.summary = err.error.userTitle;
-      message.detail = err.error.userMessage;
+    if (err.error) {
+      try {
+        const respError: ErrorResponse = err;
+        if (respError.error.userTitle) {
+          message = this.convertToMessage(respError.error);
+        }
+      } catch (e) {
+        // Error, use standard message
+      }
     }
 
-    if (err.error.error && err.error.error.userMessage !== undefined && err.error.error.userMessage !== null) {
-      message.summary = err.error.error.userTitle;
-      message.detail = err.error.error.userMessage;
+    if (err.error.error) {
+      try {
+        const respError: ErrorResponse = err.error;
+        if (respError.error.userTitle) {
+          message = this.convertToMessage(respError.error);
+        }
+      } catch (e) {
+        // Error, use standard message
+      }
     }
     this.messageService.add(message)
+  }
+
+  private convertToMessage(error: ErrorData): Message {
+
+    var details = '';
+    if (error.constraintErrors) {
+      error.constraintErrors.forEach(ce => {
+        details += `<br/><b>${this.translate.instant(`field.${ce.fieldName}`)}</b><br/>`;
+
+        ce.constraintsNotRespected?.forEach(c => {
+          details += `- ${c}<br/>`
+        });
+      })
+    }
+
+    return {
+      key: 'html',
+      severity: 'error',
+      summary: `<b>${error.userTitle}</b><br/>${error.userMessage}`,
+      detail: details
+    }
   }
 }

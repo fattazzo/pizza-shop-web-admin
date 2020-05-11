@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { SelectItem } from 'primeng/api/selectitem';
 import { SessionService } from 'src/app/services/session.service';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   userLogin: any;
 
-  companies: SelectItem[] = [];
+  languages: SelectItem[] = [];
 
   returnUrl: string;
   loading = false;
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private session: SessionService,
     private messageService: MessageService,
-    private translate: TranslateService
+    public translate: TranslateService
   ) {
     // redirect to home if already logged in
     if (this.session.getUserValue()) {
@@ -38,26 +38,37 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-    this.userLogin = { username: null, password: null };
+    this.buildLanguages();
+    this.translate.onLangChange.subscribe((_event: LangChangeEvent) => {
+      this.buildLanguages();
+    })
+
+    this.userLogin = { username: null, password: null, locale: this.translate.currentLang };
   }
 
   onSubmit() {
     this.loading = true;
-    this.authService.login(this.userLogin.username, this.userLogin.password)
+    this.authService.login(this.userLogin.username, this.userLogin.password, this.userLogin.locale)
       .subscribe(
         _data => {
           this.loading = false;
           this.router.navigate([this.returnUrl]);
         },
-        error => {
+        () => {
+          this.loading = false;
           this.messageService.add({
             key: 'login-toast',
             severity: 'error',
             summary: this.translate.instant('errorSummary'),
             detail: this.translate.instant('loginErrorDetail')
           });
-          this.loading = false;
         });
+  }
+
+  private buildLanguages() {
+    this.languages = [];
+    this.languages.push({ label: this.translate.instant('italian'), value: 'it' })
+    this.languages.push({ label: this.translate.instant('english'), value: 'en' })
   }
 
 }

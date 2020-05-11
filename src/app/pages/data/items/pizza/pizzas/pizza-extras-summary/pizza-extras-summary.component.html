@@ -1,0 +1,44 @@
+<p-panel header="{{'extra' | translate:&quot;{ count: 2 }&quot; }}">
+  <div class="p-grid">
+    <!-- Doughs -->
+    <p-table #doughsTable class="p-col-12 p-md-6" [value]="pizza.doughs" selectionMode="single" dataKey="id"
+      autoLayout="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th colspan="2" translate [translateParams]="{count:2}">dough</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dough>
+        <tr [pSelectableRow]="dough">
+          <td [ngClass]="{'entity-disabled': !dough.enabled}">{{ dough.name}}</td>
+          <td class="table-column-number">{{ dough.extra | mycurrency}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <!-- Toppings -->
+    <p-table #toppingsTable class="p-col-12" [value]="pizza.toppingExtras" selectionMode="single" dataKey="id"
+      autoLayout="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th translate [translateParams]="{count:1}">dough</th>
+          <th translate [translateParams]="{count:1}">size</th>
+          <th translate [translateParams]="{count:1}">extra</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-toppingExtra let-rowIndex="rowIndex">
+        <tr class="ui-widget-header" *ngIf="rowGroupMetadata[toppingExtra.topping.id].index === rowIndex">
+          <td colspan="3">
+            <span class="topping-badge">{{toppingExtra.topping.name}}</span>
+          </td>
+        </tr>
+        <tr [pSelectableRow]="toppingExtra">
+          <td [ngClass]="{'entity-disabled': !toppingExtra.dough.enabled}">{{ toppingExtra.dough.name}}</td>
+          <td [ngClass]="{'entity-disabled': !toppingExtra.size.enabled}">{{ toppingExtra.size.name}}</td>
+          <td class="table-column-number" [ngClass]="{'price-zero-warning': toppingExtra.extra === 0 }">
+            {{ toppingExtra.extra | mycurrency}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-panel>

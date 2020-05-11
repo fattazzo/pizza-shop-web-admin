@@ -14,7 +14,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return next.handle(request).pipe(catchError((err: HttpErrorResponse) => {
+    const locale = sessionStorage.getItem('locale') || 'en';
+
+    const langReq = request.clone({
+      headers: request.headers.set('Accept-Language', locale)
+    });
+
+    return next.handle(langReq).pipe(catchError((err: HttpErrorResponse) => {
       switch (err.status) {
         case 401: {
           this.catchUnauthorizedError();
