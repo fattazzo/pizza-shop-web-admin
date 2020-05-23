@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about-widget',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-widget.component.scss']
 })
 export class AboutWidgetComponent implements OnInit {
+
+  @Input() i18nKey: string;
+
+  @Input() imageSrc: string = 'assets/images/pizza.png';
+
+  @Input() link: string = null
 
   constructor() { }
 

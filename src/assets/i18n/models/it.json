@@ -24,7 +24,8 @@
   "number": "Numer{count, plural, =0{} one{o} other{i}}",
   "postalCode": "Codic{count, plural, =0{} one{e} other{i}} postal{count, plural, =0{} one{e} other{i}}",
   "place": "Città",
-  "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di spedizione",
+  "shippingMethod": "Metod{count, plural, =0{} one{o} other{i}} di pagamento",
+  "shippingType": "Tip{count, plural, =0{} one{o} other{i}} di consegna",
   "type": "Tip{count, plural, =0{o} one{o} other{i}}",
   "description": "Descrizion{count, plural, =0{e} one{e} other{i}}",
   "webUrl": "Indirizz{count, plural, =0{o} one{o} other{i}} web",
@@ -42,7 +43,10 @@
   "order": "Ordin{count, plural, =0{e} one{e} other{i}}",
   "customer": "Client{count, plural, =0{i} one{e} other{i}}",
   "customerWaitConfirmation": "in attesa di conferma",
+  "payment": "Pagament{count, plural, =0{i} one{o} other{i}}",
 
   "currencySymbol": "Simbolo valuta",
-  "currencyDecimals": "Decimali valuta"
+  "currencyDecimals": "Decimali valuta",
+  "minOrderRequestMinutes": "Tempo minimo richiesta ordine",
+  "processingOrdersMinutesPartition": "Intervallo ordini in lavorazione"
 }

@@ -4,7 +4,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { SelectItem } from 'primeng/api/selectitem';
 import { map } from 'rxjs/operators';
-import { CompaniesService } from '../open-api';
+import { BranchDetails, CompaniesService } from '../open-api';
 import { AuthService } from '../pages/auth/auth.service';
 import { MenuService } from '../services/menu.service';
 import { SessionService } from '../services/session.service';
@@ -24,6 +24,7 @@ export class TopBarComponent implements OnInit {
   appLogo: string = null;
 
   branchesItems: SelectItem[];
+  branch: BranchDetails;
 
   constructor(
     private translate: TranslateService,
@@ -48,9 +49,10 @@ export class TopBarComponent implements OnInit {
       this.appLogo = c !== null ? c.logoUrl : 'assets/images/pizza.png'
     });
 
+    this.session.getBranch().subscribe(b => this.branch = b)
     this.session.getBranches().pipe(map(bs => {
       if (!bs) { return [] }
-      return bs.map(b => { return { label: b.address.place + ' - ' + b.address.streetAddress, value: b.id } })
+      return bs.map(b => { return { label: b.address.place + ' - ' + b.address.streetAddress, value: b } })
     }))
       .subscribe(items => {
         this.branchesItems = items
@@ -68,5 +70,9 @@ export class TopBarComponent implements OnInit {
         }
       }
     ]
+  }
+
+  updateBranch(branch: BranchDetails) {
+    this.session.setBranch(branch)
   }
 }

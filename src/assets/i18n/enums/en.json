@@ -12,6 +12,10 @@
     "PAY_PAL": "PayPal",
     "CASH_ON_DELIVERY": "Cash on delivery"
   },
+  "ShippingType": {
+    "DELIVERY_TO_HOME": "Delivery to home",
+    "PICKUP_IN_STORE": "Pickup in store"
+  },
   "UserType": {
     "ADMIN": "Admin",
     "WORKER": "Dipendente",
@@ -20,5 +24,13 @@
   "UserStatus": {
     "Active": "Active",
     "ToConfirm": "Confirmation pending"
+  },
+  "OrderState": {
+    "PENDING": "Pending",
+    "PROCESSING": "Processing",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "FAILED": "Failed",
+    "REFUNDED": "Refunded"
   }
 }

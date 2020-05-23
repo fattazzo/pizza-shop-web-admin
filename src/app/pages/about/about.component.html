@@ -6,16 +6,29 @@
   </div>
 
   <!-- Widgets -->
-  <div class="p-col-3">
-    <!-- Web -->
-    <app-about-widget></app-about-widget>
+  <!-- Web -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3" i18nKey="web"></app-about-widget>
 
-    <!-- OpenApi -->
+  <!-- OpenApi -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3" i18nKey="openapi" imageSrc="assets/images/openapi.png"
+    [link]="baseUrl + '/swagger-ui.html'"></app-about-widget>
 
-    <!-- I18N -->
+  <!-- I18N -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3" i18nKey="i18n" imageSrc="assets/images/language.png">
+  </app-about-widget>
 
-    <!-- Android -->
-  </div>
+  <!-- Database -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3" i18nKey="database" imageSrc="assets/images/database.png">
+  </app-about-widget>
+
+  <!-- Open source -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3 p-xl-offset-3" i18nKey="opensource"
+    imageSrc="assets/images/opensource.png">
+  </app-about-widget>
+
+  <!-- Android -->
+  <app-about-widget class="p-col-12 p-md-6 p-lg-4 p-xl-3" i18nKey="android" imageSrc="assets/images/mobile.png">
+  </app-about-widget>
 </div>
 
 <!-- Contact -->

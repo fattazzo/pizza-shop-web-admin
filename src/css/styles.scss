@@ -68,3 +68,43 @@ body .ui-inputtext {
 body .ui-picklist .ui-picklist-list .ui-picklist-item {
   opacity: 1 !important;
 }
+
+.order-state-badge {
+  border-radius: 2px;
+  padding: 0.25em 0.5em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+
+  &.status-COMPLETED {
+    background-color: #c8e6c9;
+    color: #256029;
+  }
+
+  &.status-CANCELLED {
+    background-color: #ffcdd2;
+    color: #c63737;
+  }
+
+  &.status-PROCESSING {
+    background-color: #feedaf;
+    color: #8a5340;
+  }
+
+  &.status-PENDING {
+    background-color: #b3e5fc;
+    color: #23547b;
+  }
+
+  &.status-FAILED {
+    background-color: #eccfff;
+    color: #694382;
+  }
+
+  &.status-REFUNDED {
+    background-color: #e4b07d;
+    color: #805b36;
+  }
+}

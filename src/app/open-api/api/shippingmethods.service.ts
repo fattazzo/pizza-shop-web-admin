@@ -207,13 +207,20 @@ export class ShippingmethodsService {
     /**
      * List All shippingmethods
      * Gets a list of all &#x60;ShippingMethod&#x60; entities.
+     * @param includeDisabled If true, the list of all entities include enabled and disabled &#x60;Size&#x60;
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getShippingMethods(observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingMethod>>;
-    public getShippingMethods(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingMethod>>>;
-    public getShippingMethods(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingMethod>>>;
-    public getShippingMethods(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getShippingMethods(includeDisabled?: boolean, observe?: 'body', reportProgress?: boolean): Observable<Array<ShippingMethod>>;
+    public getShippingMethods(includeDisabled?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ShippingMethod>>>;
+    public getShippingMethods(includeDisabled?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ShippingMethod>>>;
+    public getShippingMethods(includeDisabled?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (includeDisabled !== undefined && includeDisabled !== null) {
+            queryParameters = queryParameters.set('includeDisabled', <any>includeDisabled);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -239,6 +246,7 @@ export class ShippingmethodsService {
 
         return this.httpClient.request<Array<ShippingMethod>>('get',`${this.basePath}/shippingmethods`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

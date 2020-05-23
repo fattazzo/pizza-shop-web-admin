@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export type Role = 'WEB_ADMIN' | 'SECURITY' | 'SHIPPING_METHODS' | 'COMPANY' | 'EDIT_ACCOUNT' | 'VARIATIONS' | 'PRODUCTS';
+export type Role = 'WEB_ADMIN' | 'SECURITY' | 'SHIPPING_METHODS' | 'COMPANY' | 'EDIT_ACCOUNT' | 'VARIATIONS' | 'PRODUCTS' | 'ORDERS' | 'CREATE_ORDER' | 'PROCESS_ORDER';
 
 export const Role = {
     WEBADMIN: 'WEB_ADMIN' as Role,
@@ -19,5 +19,8 @@ export const Role = {
     COMPANY: 'COMPANY' as Role,
     EDITACCOUNT: 'EDIT_ACCOUNT' as Role,
     VARIATIONS: 'VARIATIONS' as Role,
-    PRODUCTS: 'PRODUCTS' as Role
+    PRODUCTS: 'PRODUCTS' as Role,
+    ORDERS: 'ORDERS' as Role,
+    CREATEORDER: 'CREATE_ORDER' as Role,
+    PROCESSORDER: 'PROCESS_ORDER' as Role
 };

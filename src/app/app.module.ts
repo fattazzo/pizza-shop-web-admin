@@ -6,9 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faMapMarkedAlt as fasMapMarkedAlt, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faSpinner, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faCreditCard as fasCreditCard, faHourglassHalf, faMapMarkedAlt as fasMapMarkedAlt, faMoneyBillWave, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faSpinner, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TranslateCompiler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RxStompService } from '@stomp/ng2-stompjs';
 import { MESSAGE_FORMAT_CONFIG, TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -67,6 +68,15 @@ import { PizzaFormPricesComponent } from './pages/data/items/pizza/pizzas/pizza-
 import { PizzaFormComponent } from './pages/data/items/pizza/pizzas/pizza-form/pizza-form.component';
 import { PizzasTableComponent } from './pages/data/items/pizza/pizzas/pizzas-table/pizzas-table.component';
 import { PizzasComponent } from './pages/data/items/pizza/pizzas/pizzas.component';
+import { ProductCategoriesFormComponent } from './pages/data/items/product/product-categories/product-categories-form/product-categories-form.component';
+import { ProductCategoriesTableComponent } from './pages/data/items/product/product-categories/product-categories-table/product-categories-table.component';
+import { ProductCategoriesComponent } from './pages/data/items/product/product-categories/product-categories.component';
+import { ProductVariationsFormComponent } from './pages/data/items/product/product-variations/product-variations-form/product-variations-form.component';
+import { ProductVariationsTableComponent } from './pages/data/items/product/product-variations/product-variations-table/product-variations-table.component';
+import { ProductVariationsComponent } from './pages/data/items/product/product-variations/product-variations.component';
+import { ProductFormPricesComponent } from './pages/data/items/product/products/product-form-prices/product-form-prices.component';
+import { ProductFormComponent } from './pages/data/items/product/products/product-form/product-form.component';
+import { ProductsTableComponent } from './pages/data/items/product/products/products-table/products-table.component';
 import { ProductsComponent } from './pages/data/items/product/products/products.component';
 import { SettingsComponent } from './pages/data/settings/settings.component';
 import { ShippingMethodsFormComponent } from './pages/data/shipping-methods/shipping-methods-form/shipping-methods-form.component';
@@ -75,6 +85,8 @@ import { ShippingMethodsComponent } from './pages/data/shipping-methods/shipping
 import { UsersFormComponent } from './pages/data/users/users-form/users-form.component';
 import { UsersTableComponent } from './pages/data/users/users-table/users-table.component';
 import { UsersComponent } from './pages/data/users/users.component';
+import { HomeOrdersPendingComponent } from './pages/home/home-orders-pending/home-orders-pending.component';
+import { HomeOrdersProcessingComponent } from './pages/home/home-orders-processing/home-orders-processing.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyCurrencyPipe } from './pipes/my-currency.pipe';
 import { AppMessageService } from './services/app-message.service';
@@ -85,15 +97,7 @@ import { ThemeService } from './services/theme/theme.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { createMultiTranslateLoader } from './translation/multi-translate-http-loader';
 import { AuthUtils } from './utils/auth-utils';
-import { ProductCategoriesComponent } from './pages/data/items/product/product-categories/product-categories.component';
-import { ProductVariationsComponent } from './pages/data/items/product/product-variations/product-variations.component';
-import { ProductCategoriesTableComponent } from './pages/data/items/product/product-categories/product-categories-table/product-categories-table.component';
-import { ProductCategoriesFormComponent } from './pages/data/items/product/product-categories/product-categories-form/product-categories-form.component';
-import { ProductVariationsTableComponent } from './pages/data/items/product/product-variations/product-variations-table/product-variations-table.component';
-import { ProductVariationsFormComponent } from './pages/data/items/product/product-variations/product-variations-form/product-variations-form.component';
-import { ProductsTableComponent } from './pages/data/items/product/products/products-table/products-table.component';
-import { ProductFormComponent } from './pages/data/items/product/products/product-form/product-form.component';
-import { ProductFormPricesComponent } from './pages/data/items/product/products/product-form-prices/product-form-prices.component';
+import { OrdersEventsService } from './websocket/services/orders/oders-events.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return createMultiTranslateLoader(http);
@@ -190,7 +194,9 @@ export function apiConfigFactory(): Configuration {
     ProductVariationsFormComponent,
     ProductsTableComponent,
     ProductFormComponent,
-    ProductFormPricesComponent
+    ProductFormPricesComponent,
+    HomeOrdersPendingComponent,
+    HomeOrdersProcessingComponent
   ],
   imports: [
     BrowserModule,
@@ -256,7 +262,9 @@ export function apiConfigFactory(): Configuration {
     MenuService,
     ConfirmationService,
     AppMessageService,
-    DialogService
+    DialogService,
+    RxStompService,
+    OrdersEventsService
   ],
   entryComponents: [DeliveryAdressesFormComponent],
   bootstrap: [AppComponent]
@@ -268,7 +276,7 @@ export class AppModule {
     this.library.addIcons(farEdit);
     // solid
     this.library.addIcons(fasUser, fasMapMarkedAlt, faQuestionCircle, fasTrashAlt, faMoneyCheckAlt,
-      faChevronRight, faUserFriends, faPizzaSlice, faSpinner);
+      faChevronRight, faUserFriends, faPizzaSlice, faSpinner, faMoneyBillWave, fasCreditCard, faHourglassHalf);
     // brand
     this.library.addIcons();
   }

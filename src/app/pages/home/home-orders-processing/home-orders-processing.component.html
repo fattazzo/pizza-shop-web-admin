@@ -1,0 +1,37 @@
+<p-table #orderssTable [value]="processingOrders" dataKey="id" [loading]="loading" autoLayout="true" [rowHover]="true"
+  [rows]="10" [paginator]="true" sortField="timeRef">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th translate [translateParams]="{ count: 1}">timeRef</th>
+      <th pSortableColumn="id">#</th>
+      <th translate [translateParams]="{ count: 1}">customer</th>
+      <th translate [translateParams]="{ count: 1}">payment</th>
+      <th translate [translateParams]="{ count: 1}">shippingType</th>
+      <th translate [translateParams]="{ count: 1}">dateRequest</th>
+      <th translate [translateParams]="{ count: 1}">total</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-orderp let-rowIndex="rowIndex">
+    <tr class="ui-selectable-row">
+      <td *ngIf="rowGroupMetadata[orderp.timeRef.getTime()].index === rowIndex"
+        [attr.rowspan]="rowGroupMetadata[orderp.timeRef.getTime()].size" class="table-column-center">
+        <h1>{{orderp.timeRef | date:'HH:mm'}}</h1>
+      </td>
+      <td>{{orderp.order?.id}}</td>
+      <td>{{orderp.order?.customerUserName}}</td>
+      <td>{{orderp.order?.shippingMethod}}</td>
+      <td>
+        <div *ngIf="orderp.order">
+          <div *ngIf="orderp.order?.shippingType === shippingTypeHome; else elseBlock">
+            <span>{{orderp.order?.deliveryAddressStreet}} {{orderp.order?.deliveryAddressNumber}}</span>
+            <br />
+            <span>{{orderp.order?.deliveryAddressPlace}} {{orderp.order?.deliveryAddressPostalCode}}</span>
+          </div>
+          <ng-template #elseBlock><span translate>ShippingType.{{orderp.order?.shippingType}}</span></ng-template>
+        </div>
+      </td>
+      <td>{{orderp.order?.dateRequestConfirmed | date:'HH:mm'}}</td>
+      <td class="table-column-number" style="white-space: nowrap;">{{orderp.order?.total | mycurrency}}</td>
+    </tr>
+  </ng-template>
+</p-table>

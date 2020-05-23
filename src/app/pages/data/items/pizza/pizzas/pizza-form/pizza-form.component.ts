@@ -58,7 +58,7 @@ export class PizzaFormComponent implements OnInit {
       this.pizzasService.getItemPizza(p.id, true).subscribe(pd => {
         this.pizza = pd;
         this.pizza.prices?.sort(function (a, b) {
-          return (a.size.order || Number.MAX_VALUE) - (b.size.order || Number.MAX_VALUE) || a.size.order - b.size.order;
+          return (a.variationSize.order || Number.MAX_VALUE) - (b.variationSize.order || Number.MAX_VALUE) || a.variationSize.order - b.variationSize.order;
         })
         this.itemPizza.emit(this.pizza);
         this.updateImageItem();
@@ -68,7 +68,7 @@ export class PizzaFormComponent implements OnInit {
 
   onNew() {
     this.pizza = { id: null, name: null, description: null, enabled: true, category: null, doughs: null, sizes: null, toppingExtras: null };
-    this.pizza.prices = this.sizes.map(size => { return <ItemPizzaPrice>{ id: null, size: size, price: 0 } })
+    this.pizza.prices = this.sizes.map(size => { return <ItemPizzaPrice>{ id: null, variationSize: size, price: 0 } })
 
     this.imageItem = null;
     this.itemPizza.emit(null);
@@ -112,7 +112,9 @@ export class PizzaFormComponent implements OnInit {
   }
 
   openFile() {
-    (document.querySelector('.inputUpload') as HTMLInputElement).click()
+    if (this.pizza.id) {
+      (document.querySelector('.inputUpload') as HTMLInputElement).click()
+    }
   }
 
   handle(event) {

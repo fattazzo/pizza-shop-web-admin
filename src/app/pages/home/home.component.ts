@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
 
   loading = false;
 
+  pendingOrdersCounter = 0;
+  processingOrdersCounter = 0;
+
   constructor(
     private dashboardService: DashboardService
   ) { }
@@ -23,6 +26,14 @@ export class HomeComponent implements OnInit {
       this.loading = false;
     },
       _error => this.loading = false);
+  }
+
+  onPendingOrdersCounterChange(value: number) {
+    this.pendingOrdersCounter = value
+  }
+
+  onProcessingOrdersCounterChange(value: number) {
+    this.processingOrdersCounter = value
   }
 
 }

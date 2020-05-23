@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { SelectItem } from 'primeng/api/selectitem';
+import { ShippingTypeHandler } from 'src/app/handler/shipping-type.handler';
 import { ShippingMethod, ShippingmethodsService } from 'src/app/open-api';
 import { ShippingMethodType } from 'src/app/open-api/model/shippingMethodType';
 import { AppMessageService } from 'src/app/services/app-message.service';
@@ -16,6 +17,8 @@ export class ShippingMethodsFormComponent implements OnInit {
   shippingMethod: ShippingMethod;
 
   types: SelectItem[] = [];
+
+  shippingTypeAvailable: SelectItem[];
 
   constructor(
     private shippingMethodsComponentService: ShippingMethodsComponentService,
@@ -42,10 +45,11 @@ export class ShippingMethodsFormComponent implements OnInit {
         let typeDesc = this.translate.instant('ShippingMethodType.' + type);
         return { label: typeDesc, value: type }
       });
+    this.shippingTypeAvailable = ShippingTypeHandler.createSelectedItems(this.translate)
   }
 
   onNew() {
-    this.shippingMethod = { id: null, title: null, description: null, type: null, enabled: true };
+    this.shippingMethod = { id: null, title: null, description: null, type: null, enabled: true, shippingTypes: [] };
   }
 
   onSubmit() {

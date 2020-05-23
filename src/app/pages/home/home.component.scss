@@ -1,0 +1,33 @@
+.root-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.widgets-container {
+  order: 0;
+}
+
+.orders-list-container {
+  order: 1;
+  padding: 0 0 0.5em 0;
+}
+
+@media (max-width: 900px) {
+  .widgets-container {
+    order: 1;
+  }
+
+  .orders-list-container {
+    order: 0;
+  }
+}
+
+:host {
+  ::ng-deep .ui-tabview {
+    padding: 0;
+  }
+
+  ::ng-deep .ui-tabview-panels {
+    padding: 0 !important;
+  }
+}

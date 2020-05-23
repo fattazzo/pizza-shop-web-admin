@@ -23,4 +23,9 @@ export interface Settings {
      * Number of decimals used for currency
      */
     currencyDecimals: number;
+    /**
+     * Minimum time in minutes to request the order
+     */
+    minOrderRequestMinutes: number;
+    processingOrdersMinutesPartition: number;
 }

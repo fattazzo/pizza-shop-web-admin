@@ -64,5 +64,43 @@
 
   "show": "Show",
 
-  "all": "All{gender, select, male{} female{} other{}}"
+  "all": "All{gender, select, male{} female{} other{}}",
+
+  "pending_orders": "Pending orders",
+  "processing_orders": "Processing orders",
+
+  "minute": "Minut{count, plural, =0{s} one{} other{s}}",
+
+  "newOrderAlert": {
+    "title": "New order created",
+    "detail": "A new order has arrived!"
+  },
+
+  "about": {
+    "web": {
+      "title": "Web api and admin",
+      "detail": "The project is divided into 2 main modules. The first which offers all the Rest API necessary for the functionality of the back office and frontend and the second which allows the internal management of the pizzeria via browser."
+    },
+    "openapi": {
+      "title": "OpenApi",
+      "detail": "All APIs are provided according to the OpenApi 3.0 specification in order to be implemented in a simple and precise way in any framework and language you intend to use.",
+      "link": "Rest API"
+    },
+    "i18n": {
+      "title": "Internazionalizzation",
+      "detail": "Both main modules are designed for language support and those present are English and Italian. New languages can be added without any programming knowledge."
+    },
+    "database": {
+      "title": "Database",
+      "detail": "The MariaDB (MySql) and PostgreSQL databases are officially supported but using an ORM as an abstraction of data access it is possible to extend the support to other RDBMS."
+    },
+    "opensource": {
+      "title": "Open source",
+      "detail": "Both modules are open source and the code can be freely modified in a personal copy or in collaboration on the existing one."
+    },
+    "android": {
+      "title": "Android / iOS",
+      "detail": "To complete the management of the back office it is possible, using the API, to create native Android or iOS apps for the use of customers for the creation of orders, coupons, promotions, etc..."
+    }
+  }
 }

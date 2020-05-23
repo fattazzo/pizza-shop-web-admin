@@ -22,7 +22,7 @@ export class ShippingMethodsTableComponent implements OnInit {
   ngOnInit(): void {
 
     this.loading = true;
-    this.shippingMethodsService.getShippingMethods()
+    this.shippingMethodsService.getShippingMethods(true)
       .subscribe(result => {
         this.loading = false;
         this.shippingMethods = result;

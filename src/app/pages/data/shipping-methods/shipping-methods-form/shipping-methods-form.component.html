@@ -1,6 +1,13 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
   <p-panel header="{{shippingMethod.title || ('new' | translate:&quot;{ gender: 'male' }&quot;) }}">
     <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <!-- enabled -->
+      <div class="p-grid">
+        <div class="p-col-5 form-label" translate [translateParams]="{gender:'male'}">enabled</div>
+        <div class="p-col-7">
+          <p-checkbox binary="true" [(ngModel)]="shippingMethod.enabled" name="enabled"></p-checkbox>
+        </div>
+      </div>
       <!-- title -->
       <div class="p-grid">
         <div class="p-col-5 form-label" translate>name</div>
@@ -24,12 +31,17 @@
             placeholder="{{'required' | translate:&quot;{ gender: 'male' }&quot;}}"></p-dropdown>
         </div>
       </div>
-      <!-- enabled -->
-      <div class="p-grid">
-        <div class="p-col-5 form-label" translate [translateParams]="{gender:'male'}">enabled</div>
-        <div class="p-col-7">
-          <p-checkbox binary="true" [(ngModel)]="shippingMethod.enabled" name="enabled"></p-checkbox>
-        </div>
+      <!-- shipping types -->
+      <div class="p-col-12">
+        <p-listbox [options]="shippingTypeAvailable" [(ngModel)]="shippingMethod.shippingTypes" [multiple]="true"
+          [checkbox]="true" name="shippingTypes">
+          <p-header translate [translateParams]="{count: 2}">
+            shippingType
+          </p-header>
+          <ng-template let-method pTemplate="item">
+            <span>{{method.label}}</span>
+          </ng-template>
+        </p-listbox>
       </div>
     </div>
     <div class="p-grid">

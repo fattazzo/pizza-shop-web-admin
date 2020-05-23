@@ -24,7 +24,8 @@
   "number": "Number{count, plural, =0{} one{} other{s}}",
   "postalCode": "Postal code{count, plural, =0{} one{} other{s}}",
   "place": "Place",
-  "shippingMethod": "Shipping method{count, plural, =0{} one{} other{s}}",
+  "shippingMethod": "Payment method{count, plural, =0{} one{} other{s}}",
+  "shippingType": "Delivery typ{count, plural, =0{} one{e} other{es}}",
   "type": "Type{count, plural, =0{} one{} other{s}}",
   "description": "Description{count, plural, =0{} one{} other{s}}",
   "webUrl": "Web url{count, plural, =0{} one{} other{s}}",
@@ -42,7 +43,10 @@
   "order": "Order{count, plural, =0{} one{} other{s}}",
   "customer": "Customer{count, plural, =0{} one{} other{s}}",
   "customerWaitConfirmation": "waiting for confirmation",
+  "payment": "Payment{count, plural, =0{} one{} other{s}}",
 
   "currencySymbol": "Currency symbol",
-  "currencyDecimals": "Currency decimals"
+  "currencyDecimals": "Currency decimals",
+  "minOrderRequestMinutes": "Min. time order request",
+  "processingOrdersMinutesPartition": "Processing orders interval"
 }

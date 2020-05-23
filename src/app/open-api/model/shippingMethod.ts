@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { ShippingMethodType } from './shippingMethodType';
+import { ShippingType } from './shippingType';
 
 export interface ShippingMethod { 
     /**
@@ -26,4 +27,5 @@ export interface ShippingMethod {
     description?: string;
     type: ShippingMethodType;
     enabled: boolean;
+    shippingTypes: Array<ShippingType>;
 }

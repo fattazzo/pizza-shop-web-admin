@@ -13,6 +13,6 @@ import { VariationSize } from './variationSize';
 
 export interface ItemPizzaPrice { 
     id?: number;
-    size: VariationSize;
     price: number;
+    variationSize: VariationSize;
 }

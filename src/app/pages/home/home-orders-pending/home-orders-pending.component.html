@@ -1,0 +1,33 @@
+<p-table #orderssTable [value]="orders" dataKey="id" [loading]="loading" autoLayout="true" [rowHover]="true" [rows]="10"
+  [paginator]="true">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th pSortableColumn="id">
+        #
+        <p-sortIcon field="id"></p-sortIcon>
+      </th>
+      <th translate [translateParams]="{ count: 1}">customer</th>
+      <th translate [translateParams]="{ count: 1}">payment</th>
+      <th translate [translateParams]="{ count: 1}">shippingType</th>
+      <th translate [translateParams]="{ count: 1}">dateRequest</th>
+      <th translate [translateParams]="{ count: 1}">total</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-order>
+    <tr class="ui-selectable-row">
+      <td>{{order.id}}</td>
+      <td>{{order.customerUserName}}</td>
+      <td>{{order.shippingMethod}}</td>
+      <td>
+        <div *ngIf="order.shippingType === shippingTypeHome; else elseBlock">
+          <span>{{order.deliveryAddressStreet}} {{order.deliveryAddressNumber}}</span>
+          <br />
+          <span>{{order.deliveryAddressPlace}} {{order.deliveryAddressPostalCode}}</span>
+        </div>
+        <ng-template #elseBlock><span translate>ShippingType.{{order.shippingType}}</span></ng-template>
+      </td>
+      <td>{{order.dateRequest | date:'dd/MM/yyyy'}}<br />{{order.dateRequest | date:'HH:mm'}}</td>
+      <td class="table-column-number" style="white-space: nowrap;">{{order.total | mycurrency}}</td>
+    </tr>
+  </ng-template>
+</p-table>

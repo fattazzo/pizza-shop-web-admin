@@ -1,1 +1,16 @@
-<p>about-widget works!</p>
+<fieldset>
+  <legend translate>about.{{i18nKey}}.title</legend>
+  <div class="root-container">
+    <div>
+      <div>
+        <img [src]="imageSrc" />
+      </div>
+      <div translate>about.{{i18nKey}}.detail</div>
+    </div>
+
+    <a [href]="link" target="_blank" *ngIf="link">
+      <button pButton [label]="'about.'+i18nKey+'.link' | translate"></button>
+    </a>
+
+  </div>
+</fieldset>

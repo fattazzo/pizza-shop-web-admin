@@ -64,5 +64,43 @@
 
   "show": "Visualizza",
 
-  "all": "Tutt{gender, select, male{i} female{e} other{i}}"
+  "all": "Tutt{gender, select, male{i} female{e} other{i}}",
+
+  "pending_orders": "Ordini in attesa",
+  "processing_orders": "Ordini in lavorazione",
+
+  "minute": "Minut{count, plural, =0{i} one{o} other{i}}",
+
+  "newOrderAlert": {
+    "title": "Nuovo ordine creato",
+    "detail": "E' arrivato un nuovo ordine!"
+  },
+
+  "about": {
+    "web": {
+      "title": "Web api e admin",
+      "detail": "Il progetto si suddivide in 2 moduli principali. Il primo che offre tutte le Rest API necessarie alla funzionalità del back office e del frontend e il secondo che permette la gestione interna della pizzeria tramite via browser."
+    },
+    "openapi": {
+      "title": "OpenApi",
+      "detail": "Tutte le API vengono fornite secondo la specifica OpenApi 3.0 per poter essere implementate in maniera semplice e precisa in qualunque framework e linguaggio si intenda utilizzare.",
+      "link": "Rest API"
+    },
+    "i18n": {
+      "title": "Internazionalizzazione",
+      "detail": "Entrambi i moduli principali sono predisposti per il supporto alle lingue e Quelle presenti sono inglese e italiano. Nuove lingue potranno essere aggiunte anche senza nessuna conoscenza del campo della programmazione."
+    },
+    "database": {
+      "title": "Database",
+      "detail": "Vengono ufficialmente supportati i database MariaBD(MySql) e PostreSQL ma utilizzando un ORM come astrazione di accesso ai dati è possibile estendere il supporto ad altri RDBMS."
+    },
+    "opensource": {
+      "title": "Open source",
+      "detail": "Entrambi i moduli sono open source e il codice può essere liberamente modificato in copia personale o in collaborazione su quello esistente."
+    },
+    "android": {
+      "title": "Android / iOS",
+      "detail": "A completare la gestione del back office è possibile, sfruttando le API, creare app native Android o iOS per a utilizzo della clientela per la creazione di ordini, coupon, promozioni, ecc..."
+    }
+  }
 }

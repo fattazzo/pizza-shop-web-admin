@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
 
-  baseApiRestUrl: 'http://localhost:9090/pizza-shop-api'
-  //baseApiRestUrl: 'https://pizza-shop-rest-api.herokuapp.com/pizza-shop-api'
+  baseApiRestUrl: 'http://localhost:9090/pizza-shop-api',
+  //baseApiRestUrl: 'https://pizza-shop-rest-api.herokuapp.com/pizza-shop-api',
+
+  // WebSocket port
+  wsPort: 9090
 };
 
 /*

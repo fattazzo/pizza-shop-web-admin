@@ -20,7 +20,7 @@ export interface ToppingExtra {
     id?: number;
     topping: Topping;
     dough: VariationDough;
-    size: VariationSize;
     extra: number;
     enabled: boolean;
+    variationSize: VariationSize;
 }

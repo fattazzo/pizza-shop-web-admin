@@ -44,6 +44,8 @@
     "lastName": "Last name",
     "groups": "Groups",
     "deliveryAddresses": "Delivery address",
-    "order": "Order"
+    "order": "Order",
+    "minOrderRequestMinutes": "Min. time order request",
+    "processingOrdersMinutesPartition": "Processing orders interval"
   }
 }

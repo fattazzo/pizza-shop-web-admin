@@ -1,0 +1,16 @@
+.translated-paragraph {
+  white-space: pre-wrap;
+}
+
+.image-container {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+
+.image-placeholder {
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--border-color);
+}

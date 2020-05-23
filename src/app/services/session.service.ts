@@ -65,7 +65,7 @@ export class SessionService {
   }
 
   getBranchId(): number {
-    return this._branch.value.id;
+    return this._branch.value?.id;
   }
 
   getBranch(): Observable<BranchDetails> {

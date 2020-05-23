@@ -100,7 +100,9 @@ export class ProductFormComponent implements OnInit {
   }
 
   openFile() {
-    (document.querySelector('.inputUpload') as HTMLInputElement).click()
+    if (this.product.id) {
+      (document.querySelector('.inputUpload') as HTMLInputElement).click()
+    }
   }
 
   handle(event) {

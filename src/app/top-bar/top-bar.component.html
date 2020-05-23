@@ -21,7 +21,8 @@
 
 <div class='ui-toolbar p-align-center main-toolbar'>
   <div class="branch-container">
-    <p-dropdown *ngIf="(session.getBranch() | async)" [options]=" branchesItems" [ngModel]="session.getBranch() |async">
+    <p-dropdown *ngIf="(session.getBranch() | async)" [options]=" branchesItems" [(ngModel)]="branch"
+      (onChange)="updateBranch($event.value)">
     </p-dropdown>
   </div>
   <div *ngIf="(session.getUser() | async) as user" class="user-container">

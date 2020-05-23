@@ -8,6 +8,8 @@ import { CategoriesService } from './api/categories.service';
 import { CompaniesService } from './api/companies.service';
 import { DashboardService } from './api/dashboard.service';
 import { GroupsService } from './api/groups.service';
+import { OrdersService } from './api/orders.service';
+import { OrderslinesService } from './api/orderslines.service';
 import { PizzacategoriesService } from './api/pizzacategories.service';
 import { PizzasService } from './api/pizzas.service';
 import { PizzavariationsService } from './api/pizzavariations.service';
@@ -31,6 +33,8 @@ import { UsersService } from './api/users.service';
     CompaniesService,
     DashboardService,
     GroupsService,
+    OrdersService,
+    OrderslinesService,
     PizzacategoriesService,
     PizzasService,
     PizzavariationsService,
