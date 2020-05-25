@@ -17,7 +17,7 @@ export class WebSocketService {
     heartbeatOutgoing: 20000,
     reconnectDelay: 10000,
     webSocketFactory: () => {
-      return new WebSocket('ws://' + window.location.hostname + ':' + environment.wsPort + '/pizza-shop-api/ws/websocket');
+      return new WebSocket('wss://' + window.location.hostname + ':' + environment.wsPort + '/pizza-shop-api/ws/websocket');
     },
     debug: (str) => { console.log(str); }
   };
