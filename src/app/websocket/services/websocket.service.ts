@@ -12,20 +12,23 @@ export class WebSocketService {
   private obsStompConnection: Observable<any>;
   private subscribers: Array<any> = [];
   private subscriberIndex = 0;
-  private stompConfig: FixedStompConfig = {
-    heartbeatIncoming: 0,
-    heartbeatOutgoing: 20000,
-    reconnectDelay: 10000,
-    webSocketFactory: () => {
-      return new WebSocket('ws://' + window.location.hostname + ':' + environment.wsPort + '/pizza-shop-api/ws/websocket');
-    },
-    debug: (str) => { console.log(str); }
-  };
+  private stompConfig: FixedStompConfig;
 
   constructor(
     private stompService: RxStompService,
     private options: WebSocketOptions
   ) {
+
+    this.stompConfig = {
+      heartbeatIncoming: 0,
+      heartbeatOutgoing: 20000,
+      reconnectDelay: 10000,
+      webSocketFactory: () => {
+        return new WebSocket(environment.baseApiRestUrl.replace('http', 'w') + ':' + environment.wsPort + '/pizza-shop-api/ws/websocket');
+      },
+      debug: (str) => { console.log(str); }
+    };
+
     // Initialise a list of possible subscribers.
     this.createObservableSocket();
     // Activate subscription to broker.
