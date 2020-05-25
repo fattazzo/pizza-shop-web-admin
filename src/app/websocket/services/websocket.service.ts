@@ -24,7 +24,7 @@ export class WebSocketService {
       heartbeatOutgoing: 20000,
       reconnectDelay: 10000,
       webSocketFactory: () => {
-        return new WebSocket(environment.baseApiRestUrl.replace('https', 'wss') + ':' + environment.wsPort + '/ws/websocket');
+        return new WebSocket(environment.baseApiRestUrl);
       },
       debug: (str) => { console.log(str); }
     };

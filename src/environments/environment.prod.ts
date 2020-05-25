@@ -3,6 +3,5 @@ export const environment = {
 
   baseApiRestUrl: 'https://pizza-shop-rest-api.herokuapp.com/pizza-shop-api',
 
-  // WebSocket port
-  wsPort: 8080
+  wsUrl: 'wss://pizza-shop-rest-api.herokuapp.com/pizza-shop-api/ws/websocket'
 };
