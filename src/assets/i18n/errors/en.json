@@ -46,6 +46,11 @@
     "deliveryAddresses": "Delivery address",
     "order": "Order",
     "minOrderRequestMinutes": "Min. time order request",
-    "processingOrdersMinutesPartition": "Processing orders interval"
+    "processingOrdersMinutesPartition": "Processing orders interval",
+    "dateCreation": "Creation date",
+    "dateRequest": "Delivery time required",
+    "dateRequestConfirmed": "Delivery time confirmed",
+    "customerNote": "Customer note",
+    "backofficeNote": "Backoffice note"
   }
 }

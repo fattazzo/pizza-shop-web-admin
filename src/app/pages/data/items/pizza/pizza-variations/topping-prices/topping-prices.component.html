@@ -2,8 +2,8 @@
   <!-- Parameters -->
   <div class="p-col-12 p-md-5">
     <div class="p-grid">
-      <span class="p-col-6" translate [translateParams]="{ count:2}">dough</span>
-      <div class="p-col-6 ui-fluid">
+      <span class="p-col-4" translate [translateParams]="{ count:2}">dough</span>
+      <div class="p-col-8 ui-fluid">
         <p-dropdown [options]="doughs" [(ngModel)]="doughSelected" placeholder="{{'selectADough'|translate}}"
           optionLabel="name" (onChange)="onParametersChange()">
           <ng-template let-item pTemplate="selectedItem">
@@ -14,8 +14,8 @@
           </ng-template>
         </p-dropdown>
       </div>
-      <span class="p-col-6" translate [translateParams]="{ count:2}">size</span>
-      <div class="p-col-6 ui-fluid">
+      <span class="p-col-4" translate [translateParams]="{ count:2}">size</span>
+      <div class="p-col-8 ui-fluid">
         <p-dropdown [options]="sizes" [(ngModel)]="sizeSelected" placeholder="{{'selectASize'|translate}}"
           optionLabel="name" (onChange)="onParametersChange()">
           <ng-template let-item pTemplate="selectedItem">
@@ -30,8 +30,8 @@
   </div>
   <!-- Table -->
   <div class="p-col-12 p-md-7">
-    <p-table #toppingsTable [value]="toppingExtras" [responsive]="true" selectionMode="single" dataKey="id"
-      [loading]="loading" autoLayout="true">
+    <p-table #toppingsTable [value]="toppingExtras" selectionMode="single" dataKey="id" [loading]="loading"
+      autoLayout="true">
       <ng-template pTemplate="caption">
         <div class="p-grid">
           <div class="p-col table-title" style="display: flex;justify-content: space-between;">
@@ -44,7 +44,7 @@
       <ng-template pTemplate="header" let-extra>
         <tr>
           <th translate [translateParams]="{ count: 1}">name</th>
-          <th translate [translateParams]="{ count: 1}">description</th>
+          <th translate [translateParams]="{ count: 1}">extra</th>
           <th translate [translateParams]="{ gender: 'male'}">enabled</th>
         </tr>
       </ng-template>

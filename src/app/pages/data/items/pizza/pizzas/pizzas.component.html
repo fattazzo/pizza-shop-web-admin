@@ -1,6 +1,6 @@
 <div class="p-grid">
-  <app-pizzas-table class="p-sm-12 p-md-12 p-lg-5 p-xl-5 p-col-12"></app-pizzas-table>
-  <app-pizza-form class="p-sm-12 p-md-12 p-lg-7 p-xl-7 p-col-12" (itemPizza)="onItemPizzaChange($event)">
+  <app-pizzas-table class="p-sm-12 p-md-5 p-lg-5 p-xl-5 p-col-12"></app-pizzas-table>
+  <app-pizza-form class="p-sm-12 p-md-7 p-lg-7 p-xl-7 p-col-12" (itemPizza)="onItemPizzaChange($event)">
   </app-pizza-form>
   <app-pizza-extras-summary class="p-col-12" *ngIf="itemPizza" [pizza]="itemPizza">
   </app-pizza-extras-summary>

@@ -1,5 +1,5 @@
-<p-table #branchesTable [value]="branches" [responsive]="true" selectionMode="single" [(selection)]="branchSelected"
-  dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+<p-table #branchesTable [value]="branches" selectionMode="single" [(selection)]="branchSelected" dataKey="id"
+  [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div class="p-grid">
       <div class="p-col table-title">

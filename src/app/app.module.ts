@@ -13,6 +13,7 @@ import { RxStompService } from '@stomp/ng2-stompjs';
 import { MESSAGE_FORMAT_CONFIG, TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -20,7 +21,9 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FieldsetModule } from 'primeng/fieldset';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ListboxModule } from 'primeng/listbox';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
@@ -88,6 +91,13 @@ import { UsersComponent } from './pages/data/users/users.component';
 import { HomeOrdersPendingComponent } from './pages/home/home-orders-pending/home-orders-pending.component';
 import { HomeOrdersProcessingComponent } from './pages/home/home-orders-processing/home-orders-processing.component';
 import { HomeComponent } from './pages/home/home.component';
+import { OrdersStatesComponent } from './pages/orders/orders-states/orders-states.component';
+import { OrderStateCancelledComponent } from './pages/orders/orders-states/states/order-state-cancelled/order-state-cancelled.component';
+import { OrderStateCompletedComponent } from './pages/orders/orders-states/states/order-state-completed/order-state-completed.component';
+import { OrderStateFailedComponent } from './pages/orders/orders-states/states/order-state-failed/order-state-failed.component';
+import { OrderStatePendingComponent } from './pages/orders/orders-states/states/order-state-pending/order-state-pending.component';
+import { OrderStateProcessingComponent } from './pages/orders/orders-states/states/order-state-processing/order-state-processing.component';
+import { OrderStateRefundedComponent } from './pages/orders/orders-states/states/order-state-refunded/order-state-refunded.component';
 import { MyCurrencyPipe } from './pipes/my-currency.pipe';
 import { AppMessageService } from './services/app-message.service';
 import { MenuService } from './services/menu.service';
@@ -196,7 +206,14 @@ export function apiConfigFactory(): Configuration {
     ProductFormComponent,
     ProductFormPricesComponent,
     HomeOrdersPendingComponent,
-    HomeOrdersProcessingComponent
+    HomeOrdersProcessingComponent,
+    OrdersStatesComponent,
+    OrderStateProcessingComponent,
+    OrderStateCompletedComponent,
+    OrderStateCancelledComponent,
+    OrderStateRefundedComponent,
+    OrderStatePendingComponent,
+    OrderStateFailedComponent
   ],
   imports: [
     BrowserModule,
@@ -225,6 +242,7 @@ export function apiConfigFactory(): Configuration {
     CardModule,
     PanelModule,
     InputTextModule,
+    InputNumberModule,
     CheckboxModule,
     TableModule,
     PickListModule,
@@ -236,7 +254,9 @@ export function apiConfigFactory(): Configuration {
     TabViewModule,
     DialogModule,
     SelectButtonModule,
-    TreeTableModule
+    TreeTableModule,
+    CalendarModule,
+    InputTextareaModule
   ],
   exports: [TranslateModule],
   providers: [
@@ -266,7 +286,7 @@ export function apiConfigFactory(): Configuration {
     RxStompService,
     OrdersEventsService
   ],
-  entryComponents: [DeliveryAdressesFormComponent],
+  entryComponents: [DeliveryAdressesFormComponent, OrdersStatesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

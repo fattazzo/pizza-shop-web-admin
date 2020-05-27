@@ -34,7 +34,7 @@
         </tr>
         <tr [pSelectableRow]="toppingExtra">
           <td [ngClass]="{'entity-disabled': !toppingExtra.dough.enabled}">{{ toppingExtra.dough.name}}</td>
-          <td [ngClass]="{'entity-disabled': !toppingExtra.size.enabled}">{{ toppingExtra.size.name}}</td>
+          <td [ngClass]="{'entity-disabled': !toppingExtra.size?.enabled}">{{ toppingExtra.size?.name}}</td>
           <td class="table-column-number" [ngClass]="{'price-zero-warning': toppingExtra.extra === 0 }">
             {{ toppingExtra.extra | mycurrency}}</td>
         </tr>

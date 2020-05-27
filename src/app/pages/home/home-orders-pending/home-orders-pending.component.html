@@ -1,5 +1,5 @@
 <p-table #orderssTable [value]="orders" dataKey="id" [loading]="loading" autoLayout="true" [rowHover]="true" [rows]="10"
-  [paginator]="true">
+  [paginator]="true" (onRowSelect)="onOrderSelect($event.data)" selectionMode="single">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th pSortableColumn="id">
@@ -14,7 +14,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-order>
-    <tr class="ui-selectable-row">
+    <tr class="ui-selectable-row" [pSelectableRow]="order">
       <td>{{order.id}}</td>
       <td>{{order.customerUserName}}</td>
       <td>{{order.shippingMethod}}</td>

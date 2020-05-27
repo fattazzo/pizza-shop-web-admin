@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { OrderSearchParameters, OrderSearchResult, OrdersService, OrderState, ShippingType } from 'src/app/open-api';
 import { SessionService } from 'src/app/services/session.service';
+import { OrdersEventsService } from 'src/app/websocket/services/orders/oders-events.service';
 import { OrderProcessing } from './models/order-precessing';
 
 @Component({
@@ -21,10 +22,17 @@ export class HomeOrdersProcessingComponent implements OnInit {
 
   constructor(
     private ordersService: OrdersService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private ordersEventsService: OrdersEventsService,
   ) { }
 
   ngOnInit(): void {
+    this.ordersEventsService.orderUpdated().subscribe(order => {
+      if (order != null)
+        console.log("PROCESSING: UPDATE " + order);
+
+      this.searchOrders()
+    })
 
     this.sessionService.getBranch().subscribe(() => this.searchOrders())
   }
@@ -51,7 +59,10 @@ export class HomeOrdersProcessingComponent implements OnInit {
     dates.forEach(date => ordersMap.set(date, []));
 
     // Remove all orders out of date ranges
-    const ordersFiltered = orders.filter(order => new Date(order.dateRequestConfirmed) >= dates[0] && new Date(order.dateRequestConfirmed) <= dates[dates.length - 1])
+    const ordersFiltered = orders.filter(order => {
+      const test = new Date(order.dateRequestConfirmed) >= dates[0] && new Date(order.dateRequestConfirmed) <= dates[dates.length - 1]
+      return test;
+    })
     const ordersExcluded = orders.length - ordersFiltered.length;
 
     // Place order in map

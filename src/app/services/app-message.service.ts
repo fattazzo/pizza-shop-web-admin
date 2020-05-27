@@ -42,11 +42,11 @@ export class AppMessageService {
     this.add('success', titleKey, detailKey)
   }
 
-  add(severity: string, titleKey: string, detailKey: string) {
+  add(severity: string, titleKey: string, detailKey: string, titleParams?: any, detailParams?: any) {
     const message = {
       severity: severity,
-      summary: this.translate.instant(titleKey),
-      detail: this.translate.instant(detailKey)
+      summary: this.translate.instant(titleKey, titleParams),
+      detail: this.translate.instant(detailKey, detailParams)
     };
 
     this.messageService.add(message)

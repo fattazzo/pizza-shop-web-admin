@@ -6,7 +6,10 @@
     "COMPANY": "Company and branches management",
     "EDIT_ACCOUNT": "Account management",
     "VARIATIONS": "Variations management",
-    "PRODUCTS": "Products management"
+    "PRODUCTS": "Products management",
+    "ORDERS": "Orders management",
+    "CREATE_ORDER": "Order creation",
+    "PROCESS_ORDER": "Order processing"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

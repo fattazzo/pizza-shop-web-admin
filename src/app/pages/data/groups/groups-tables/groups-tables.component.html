@@ -1,5 +1,5 @@
-<p-table #groupsTable [value]="groups" [responsive]="true" selectionMode="single" [(selection)]="groupSelected"
-  dataKey="id" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+<p-table #groupsTable [value]="groups" selectionMode="single" [(selection)]="groupSelected" dataKey="id"
+  [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div class="p-grid">
       <div class="p-col table-title">

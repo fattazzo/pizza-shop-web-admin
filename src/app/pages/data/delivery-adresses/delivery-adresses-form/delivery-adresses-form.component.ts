@@ -37,7 +37,9 @@ export class DeliveryAdressesFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ref.close(this.address);
+    if (this.ref) {
+      this.ref.close(this.address);
+    }
   }
 
 }

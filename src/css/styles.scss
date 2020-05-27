@@ -107,4 +107,9 @@ body .ui-picklist .ui-picklist-list .ui-picklist-item {
     background-color: #e4b07d;
     color: #805b36;
   }
+
+  &.status-DISABLED {
+    background-color: #9c9c9b;
+    color: #444341;
+  }
 }

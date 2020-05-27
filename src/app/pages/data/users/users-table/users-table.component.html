@@ -1,5 +1,5 @@
-<p-table #usersTable [value]="users" [responsive]="true" selectionMode="single" [(selection)]="userSelected"
-  dataKey="username" [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
+<p-table #usersTable [value]="users" selectionMode="single" [(selection)]="userSelected" dataKey="username"
+  [loading]="loading" autoLayout="true" (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div class="p-grid">
       <div class="p-col table-title">

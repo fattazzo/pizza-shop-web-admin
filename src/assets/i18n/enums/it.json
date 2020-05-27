@@ -6,7 +6,10 @@
     "COMPANY": "Gestione azienda e sedi",
     "EDIT_ACCOUNT": "Modifica account",
     "VARIATIONS": "Gestione variazioni",
-    "PRODUCTS": "Gestione prodotti"
+    "PRODUCTS": "Gestione prodotti",
+    "ORDERS": "Gestione ordini",
+    "CREATE_ORDER": "Creazione ordini",
+    "PROCESS_ORDER": "Gestione ordini"
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",

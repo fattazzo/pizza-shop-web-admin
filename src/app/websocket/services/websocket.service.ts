@@ -26,7 +26,7 @@ export class WebSocketService {
       webSocketFactory: () => {
         return new WebSocket(environment.wsUrl);
       },
-      debug: (str) => { console.log(str); }
+      //debug: (str) => { console.log(str); }
     };
 
     // Initialise a list of possible subscribers.

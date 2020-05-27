@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { OrderSearchParameters, OrderSearchResult, OrdersService, OrderState, ShippingType } from 'src/app/open-api';
-import { AppMessageService } from 'src/app/services/app-message.service';
 import { SessionService } from 'src/app/services/session.service';
 import { OrdersEventsService } from 'src/app/websocket/services/orders/oders-events.service';
+import { OrdersStatesComponent } from '../../orders/orders-states/orders-states.component';
 
 @Component({
   selector: 'app-home-orders-list',
@@ -21,7 +22,7 @@ export class HomeOrdersPendingComponent implements OnInit {
 
   constructor(
     private ordersEventsService: OrdersEventsService,
-    private appMessageService: AppMessageService,
+    private dialogService: DialogService,
     private ordersService: OrdersService,
     private sessionService: SessionService
   ) { }
@@ -29,7 +30,13 @@ export class HomeOrdersPendingComponent implements OnInit {
   ngOnInit(): void {
     this.ordersEventsService.orderCreated().subscribe(order => {
       if (order != null)
-        this.searchOrders()
+        console.log("PENDING: CREATE " + order);
+      this.searchOrders()
+    })
+    this.ordersEventsService.orderUpdated().subscribe(order => {
+      if (order != null)
+        console.log("PENDING: UPDATE " + order);
+      this.searchOrders()
     })
 
     this.sessionService.getBranch().subscribe(() => this.searchOrders())
@@ -47,5 +54,15 @@ export class HomeOrdersPendingComponent implements OnInit {
       }, _error => {
         this.loading = false;
       })
+  }
+
+  onOrderSelect(order: OrderSearchResult) {
+    this.ordersService.getOrder(order.id).subscribe(orderDetails => {
+      const ref = this.dialogService.open(OrdersStatesComponent, {
+        data: { order: orderDetails },
+        header: 'Choose a Car',
+        width: '70%'
+      });
+    })
   }
 }

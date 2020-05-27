@@ -1,5 +1,5 @@
 <div class="p-col-12" style="padding: 0;">
-  <p-table #pricesTable [value]="pizza.prices" selectionMode="single" dataKey="size.name" autoLayout="true">
+  <p-table #pricesTable [value]="pizza.prices" [rowHover]="true" dataKey="variationSize.name" autoLayout="true">
     <ng-template pTemplate="header" let-price>
       <tr>
         <th translate [translateParams]="{ count: 1}">variation</th>
@@ -7,8 +7,8 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-price>
-      <tr [pSelectableRow]="price">
-        <td [ngClass]="{'entity-disabled': !price.size.enabled}">{{ price.size.name}}</td>
+      <tr class="ui-selectable-row">
+        <td [ngClass]="{'entity-disabled': !price.variationSize.enabled}">{{ price.variationSize.name}}</td>
         <td pEditableColumn class="table-column-number">
           <p-cellEditor>
             <ng-template pTemplate="input">

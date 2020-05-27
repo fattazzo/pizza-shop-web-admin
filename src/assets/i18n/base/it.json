@@ -75,6 +75,10 @@
     "title": "Nuovo ordine creato",
     "detail": "E' arrivato un nuovo ordine!"
   },
+  "orderChangeStateAlert": {
+    "title": "Stato ordine modificato",
+    "detail": "L'ordine numero {orderNumber} è passato in stato {orderState}"
+  },
 
   "about": {
     "web": {

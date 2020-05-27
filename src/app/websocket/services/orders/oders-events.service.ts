@@ -4,13 +4,15 @@ import { SocketResponse, SocketResponseType } from '../../models/websocket.respo
 import { OrdersWebsocketService } from './orders-websocket.sevice';
 
 export enum OrderEvent {
-  CREATED = 'CREATED'
+  CREATED = 'CREATED',
+  UPDATED = 'UPDATED'
 }
 
 @Injectable({ providedIn: 'root' })
 export class OrdersEventsService {
 
   _newOrderCreated: BehaviorSubject<number> = new BehaviorSubject(null);
+  _orderUpdated: BehaviorSubject<number> = new BehaviorSubject(null);
 
   constructor(ordersWebsocketService: OrdersWebsocketService) {
 
@@ -27,13 +29,19 @@ export class OrdersEventsService {
 
       const data = JSON.parse(response.data)
 
-      if (data.event = OrderEvent.CREATED) {
+      if (data.event == OrderEvent.CREATED) {
         this._newOrderCreated.next(data.content.id)
+      } else if (data.event == OrderEvent.UPDATED) {
+        this._orderUpdated.next(data.content.id);
       }
     }
   }
 
   orderCreated(): Observable<number> {
     return this._newOrderCreated.asObservable();
+  }
+
+  orderUpdated(): Observable<number> {
+    return this._orderUpdated.asObservable();
   }
 }

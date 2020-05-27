@@ -46,6 +46,11 @@
     "deliveryAddresses": "Indirizzo di consegna",
     "order": "Ordine",
     "minOrderRequestMinutes": "Tempo minimo richiesta ordine",
-    "processingOrdersMinutesPartition": "Intervallo ordini in lavorazione"
+    "processingOrdersMinutesPartition": "Intervallo ordini in lavorazione",
+    "dateCreation": "Data creazione",
+    "dateRequest": "Ora consegna richiesta",
+    "dateRequestConfirmed": "Ora consegna confermata",
+    "customerNote": "Note cliente",
+    "backofficeNote": "Note operatore"
   }
 }
