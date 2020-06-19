@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCcPaypal } from '@fortawesome/free-brands-svg-icons';
 import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faCreditCard as fasCreditCard, faHourglassHalf, faMapMarkedAlt as fasMapMarkedAlt, faMoneyBillWave, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faSpinner, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faCogs, faCreditCard as fasCreditCard, faEye as fasEye, faHourglassHalf, faMapMarkedAlt as fasMapMarkedAlt, faMoneyBillWave, faMoneyCheckAlt, faPizzaSlice, faQuestionCircle, faSpinner, faTrashAlt as fasTrashAlt, faUser as fasUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { TranslateCompiler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RxStompService } from '@stomp/ng2-stompjs';
@@ -91,6 +92,10 @@ import { UsersComponent } from './pages/data/users/users.component';
 import { HomeOrdersPendingComponent } from './pages/home/home-orders-pending/home-orders-pending.component';
 import { HomeOrdersProcessingComponent } from './pages/home/home-orders-processing/home-orders-processing.component';
 import { HomeComponent } from './pages/home/home.component';
+import { OrderDetailsHeaderComponent } from './pages/orders/order-details/order-details-header/order-details-header.component';
+import { OrderDetailsLinePizzaComponent } from './pages/orders/order-details/order-details-line-pizza/order-details-line-pizza.component';
+import { OrderDetailsLineProductComponent } from './pages/orders/order-details/order-details-line-product/order-details-line-product.component';
+import { OrderDetailsComponent } from './pages/orders/order-details/order-details.component';
 import { OrdersStatesComponent } from './pages/orders/orders-states/orders-states.component';
 import { OrderStateCancelledComponent } from './pages/orders/orders-states/states/order-state-cancelled/order-state-cancelled.component';
 import { OrderStateCompletedComponent } from './pages/orders/orders-states/states/order-state-completed/order-state-completed.component';
@@ -213,7 +218,11 @@ export function apiConfigFactory(): Configuration {
     OrderStateCancelledComponent,
     OrderStateRefundedComponent,
     OrderStatePendingComponent,
-    OrderStateFailedComponent
+    OrderStateFailedComponent,
+    OrderDetailsComponent,
+    OrderDetailsHeaderComponent,
+    OrderDetailsLinePizzaComponent,
+    OrderDetailsLineProductComponent
   ],
   imports: [
     BrowserModule,
@@ -286,7 +295,7 @@ export function apiConfigFactory(): Configuration {
     RxStompService,
     OrdersEventsService
   ],
-  entryComponents: [DeliveryAdressesFormComponent, OrdersStatesComponent],
+  entryComponents: [DeliveryAdressesFormComponent, OrdersStatesComponent, OrderDetailsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -296,8 +305,8 @@ export class AppModule {
     this.library.addIcons(farEdit);
     // solid
     this.library.addIcons(fasUser, fasMapMarkedAlt, faQuestionCircle, fasTrashAlt, faMoneyCheckAlt,
-      faChevronRight, faUserFriends, faPizzaSlice, faSpinner, faMoneyBillWave, fasCreditCard, faHourglassHalf);
+      faChevronRight, faUserFriends, faPizzaSlice, faSpinner, faMoneyBillWave, fasCreditCard, faHourglassHalf, fasEye, faCogs);
     // brand
-    this.library.addIcons();
+    this.library.addIcons(faCcPaypal);
   }
 }

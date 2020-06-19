@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 
-export type ShippingMethodType = 'PAY_PAL' | 'CASH_ON_DELIVERY';
+export type ShippingMethodType = 'PAY_PAL' | 'CASH';
 
 export const ShippingMethodType = {
     PAYPAL: 'PAY_PAL' as ShippingMethodType,
-    CASHONDELIVERY: 'CASH_ON_DELIVERY' as ShippingMethodType
+    CASH: 'CASH' as ShippingMethodType
 };

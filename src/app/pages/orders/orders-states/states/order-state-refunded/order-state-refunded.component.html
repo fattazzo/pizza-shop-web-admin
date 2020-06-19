@@ -1,1 +1,18 @@
-<p>order-state-refunded works!</p>
+<form #form="ngForm">
+  <div class="p-grid">
+
+    <span class="p-col-4" translate>customerNote</span>
+    <div class="p-col-8 ui-fluid">
+      <textarea pInputTextarea [(ngModel)]="order.customerNote" disabled="true" name="customerNote"></textarea>
+    </div>
+
+    <span class="p-col-4" translate>backofficeNote</span>
+    <div class="p-col-8 ui-fluid">
+      <textarea pInputTextarea [(ngModel)]="order.backofficeNote" name="backofficeNote"></textarea>
+    </div>
+
+    <div class="p-col-4 p-offset-8 ui-fluid">
+      <button pButton type="button" label="Ok" icon="pi pi-check" [disabled]="!form.valid" (click)="process()"></button>
+    </div>
+  </div>
+</form>

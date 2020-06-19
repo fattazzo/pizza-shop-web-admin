@@ -1,5 +1,5 @@
 <p-table #orderssTable [value]="orders" dataKey="id" [loading]="loading" autoLayout="true" [rowHover]="true" [rows]="10"
-  [paginator]="true" (onRowSelect)="onOrderSelect($event.data)" selectionMode="single">
+  [paginator]="true" selectionMode="single">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th pSortableColumn="id">
@@ -11,10 +11,12 @@
       <th translate [translateParams]="{ count: 1}">shippingType</th>
       <th translate [translateParams]="{ count: 1}">dateRequest</th>
       <th translate [translateParams]="{ count: 1}">total</th>
+      <th translate [translateParams]="{ count: 2}">detail</th>
+      <th translate [translateParams]="{ count: 2}">action</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-order>
-    <tr class="ui-selectable-row" [pSelectableRow]="order">
+    <tr class="ui-selectable-row">
       <td>{{order.id}}</td>
       <td>{{order.customerUserName}}</td>
       <td>{{order.shippingMethod}}</td>
@@ -28,6 +30,16 @@
       </td>
       <td>{{order.dateRequest | date:'dd/MM/yyyy'}}<br />{{order.dateRequest | date:'HH:mm'}}</td>
       <td class="table-column-number" style="white-space: nowrap;">{{order.total | mycurrency}}</td>
+      <td style="text-align: center;">
+        <a (click)='openOrderDetails(order)'>
+          <fa-icon [icon]="['fas', 'eye']" size="2x"></fa-icon>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a (click)='onOrderSelect(order)'>
+          <fa-icon [icon]="['fas', 'cogs']" size="2x"></fa-icon>
+        </a>
+      </td>
     </tr>
   </ng-template>
 </p-table>

@@ -9,6 +9,8 @@
       <th translate [translateParams]="{ count: 1}">shippingType</th>
       <th translate [translateParams]="{ count: 1}">dateRequest</th>
       <th translate [translateParams]="{ count: 1}">total</th>
+      <th translate [translateParams]="{ count: 2}">detail</th>
+      <th translate [translateParams]="{ count: 2}">action</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-orderp let-rowIndex="rowIndex">
@@ -32,6 +34,16 @@
       </td>
       <td>{{orderp.order?.dateRequestConfirmed | date:'HH:mm'}}</td>
       <td class="table-column-number" style="white-space: nowrap;">{{orderp.order?.total | mycurrency}}</td>
+      <td style="text-align: center;">
+        <a (click)='openOrderDetails(orderp.order)' *ngIf="orderp.order">
+          <fa-icon [icon]="['fas', 'eye']" size="2x"></fa-icon>
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a (click)='onOrderSelect(orderp.order)' *ngIf="orderp.order">
+          <fa-icon [icon]="['fas', 'cogs']" size="2x"></fa-icon>
+        </a>
+      </td>
     </tr>
   </ng-template>
 </p-table>

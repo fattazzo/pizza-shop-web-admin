@@ -54,5 +54,6 @@
   "dateRequest": "Ora consegna richiesta",
   "dateRequestConfirmed": "Ora consegna confermata",
   "customerNote": "Note cliente",
-  "backofficeNote": "Note operatore"
+  "backofficeNote": "Note operatore",
+  "total": "Total{count, plural, =0{i} one{e} other{i}}"
 }

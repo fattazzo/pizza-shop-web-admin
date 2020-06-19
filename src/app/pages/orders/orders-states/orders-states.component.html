@@ -8,13 +8,17 @@
 </div>
 
 <div style="margin-top: 2em;">
-  <div *ngIf="!selectedState">Vuoto</div>
-  <app-order-state-pending *ngIf="selectedState === stateEnum.PENDING"></app-order-state-pending>
+  <div *ngIf="!selectedState" style="padding: 5em;"></div>
+  <app-order-state-pending *ngIf="selectedState === stateEnum.PENDING" [order]="order"
+    (orderChanged)="onOrderChanged($event)"></app-order-state-pending>
   <app-order-state-processing *ngIf="selectedState === stateEnum.PROCESSING" [order]="order"
     (orderChanged)="onOrderChanged($event)">
   </app-order-state-processing>
-  <app-order-state-completed *ngIf="selectedState === stateEnum.COMPLETED"></app-order-state-completed>
-  <app-order-state-cancelled *ngIf="selectedState === stateEnum.CANCELLED"></app-order-state-cancelled>
+  <app-order-state-completed *ngIf="selectedState === stateEnum.COMPLETED" [order]="order"
+    (orderChanged)="onOrderChanged($event)"></app-order-state-completed>
+  <app-order-state-cancelled *ngIf="selectedState === stateEnum.CANCELLED" [order]="order"
+    (orderChanged)="onOrderChanged($event)"></app-order-state-cancelled>
   <app-order-state-failed *ngIf="selectedState === stateEnum.FAILED"></app-order-state-failed>
-  <app-order-state-refunded *ngIf="selectedState === stateEnum.REFUNDED"></app-order-state-refunded>
+  <app-order-state-refunded *ngIf="selectedState === stateEnum.REFUNDED" [order]="order"
+    (orderChanged)="onOrderChanged($event)"></app-order-state-refunded>
 </div>

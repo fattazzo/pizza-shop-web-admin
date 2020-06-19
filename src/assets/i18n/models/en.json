@@ -54,5 +54,6 @@
   "dateRequest": "Delivery time required",
   "dateRequestConfirmed": "Delivery time confirmed",
   "customerNote": "Customer note",
-  "backofficeNote": "Backoffice note"
+  "backofficeNote": "Backoffice note",
+  "total": "Total{count, plural, =0{} one{s} other{}}"
 }

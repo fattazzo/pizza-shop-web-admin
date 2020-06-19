@@ -1,0 +1,12 @@
+<div
+  style="width: 100%;border-bottom: 2px dotted rgba(204, 204, 204, 0.582);display: flex;justify-content: space-between;">
+  <h3 style="margin: 0.25em 0 0 0;">{{line.quantity}} {{line.item.name}}</h3>
+  <h3 style="margin: 0.25em 0 0 0; white-space: nowrap;">{{line.total |mycurrency}}</h3>
+</div>
+<p>impasto {{line.pizzaDough.name}}</p>
+<p>dimensione {{line.pizzaPrice.variationSize.name}}</p>
+<p *ngIf="line.pizzaToppingExtras?.length > 0">extra
+  <ng-container *ngFor="let topping of line.pizzaToppingExtras">
+    <b> {{topping.topping.name}} </b>
+  </ng-container>
+</p>

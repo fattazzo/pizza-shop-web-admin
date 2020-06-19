@@ -13,7 +13,7 @@
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",
-    "CASH_ON_DELIVERY": "Pagamento alla consegna"
+    "CASH": "Contanti"
   },
   "ShippingType": {
     "DELIVERY_TO_HOME": "Consegna a casa",

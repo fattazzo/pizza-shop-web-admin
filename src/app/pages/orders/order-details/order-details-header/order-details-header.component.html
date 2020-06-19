@@ -1,0 +1,36 @@
+<div class="p-grid" style="margin-top: 1em;">
+  <span class="p-col-6 p-md-3" translate>status</span>
+  <label class="p-col-6 p-md-3 order-state-badge" [class]="'status-'+order.state">{{order.state}}</label>
+
+  <span class="p-col-6 p-md-3" translate [translateParams]="{count:1}">total</span>
+  <label class="p-col-6 p-md-3" style="font-weight: bold;">{{order.total |mycurrency}}</label>
+
+  <span class="p-col-6 p-md-3" translate [translateParams]="{count:1}">customer</span>
+  <label class="p-col-6 p-md-9">{{order.customer.username}}</label>
+
+  <span class="p-col-6 p-md-3" translate>dateCreation</span>
+  <label class="p-col-6 p-md-3">{{order.dateCreation | date:'dd/MM/yyyy HH:mm'}}</label>
+
+  <span class="p-col-6 p-md-3" translate>dateRequest</span>
+  <label class="p-col-6 p-md-3">{{order.dateRequest | date:'dd/MM/yyyy HH:mm'}}</label>
+
+  <span class="p-col-6 p-md-3" translate>customerNote</span>
+  <label class="p-col-6 p-md-9">{{order.customerNote}}</label>
+
+  <span class="p-col-6 p-md-3" translate>dateRequestConfirmed</span>
+  <label class="p-col-6 p-md-9">{{order.dateRequestConfirmed | date:'dd/MM/yyyy HH:mm'}}</label>
+
+  <span class="p-col-6 p-md-3" translate>backofficeNote</span>
+  <label class="p-col-6 p-md-9">{{order.backofficeNote}}</label>
+
+  <span class="p-col-6 p-md-3" translate [translateParams]="{ count: 1}">shippingType</span>
+  <label class="p-col-6 p-md-3" translate>ShippingType.{{order.shippingType}}</label>
+
+  <span class="p-col-6 p-md-3" translate [translateParams]="{ count: 1}">payment</span>
+  <label class="p-col-6 p-md-3">{{order.shippingMethod.title}}</label>
+
+  <span class="p-col-6 p-md-3" translate [translateParams]="{count:1}">deliveryAddress</span>
+  <label class="p-col-6 p-md-9">{{order.deliveryAddress?.streetAddress}} {{order.deliveryAddress?.number}}
+    {{order.deliveryAddress?.place}} {{order.deliveryAddress?.postalCode}}</label>
+
+</div>

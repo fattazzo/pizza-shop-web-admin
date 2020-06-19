@@ -13,7 +13,7 @@
   },
   "ShippingMethodType": {
     "PAY_PAL": "PayPal",
-    "CASH_ON_DELIVERY": "Cash on delivery"
+    "CASH": "Cash"
   },
   "ShippingType": {
     "DELIVERY_TO_HOME": "Delivery to home",

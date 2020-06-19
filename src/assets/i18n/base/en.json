@@ -79,6 +79,11 @@
     "title": "State order changed",
     "detail": "Order number {orderNumber} has gone into {orderState} state"
   },
+  "chooseNewOrderState": "Choose new state",
+  "orderDetails": "Details order n. {number}",
+
+  "detail": "Detail{count, plural, =0{s} one{} other{s}}",
+  "action": "Action{count, plural, =0{s} one{} other{s}}",
 
   "about": {
     "web": {

@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { OrderSearchParameters, OrderSearchResult, OrdersService, OrderState, ShippingType } from 'src/app/open-api';
+import { TranslateService } from '@ngx-translate/core';
+import { DialogService } from 'primeng/dynamicdialog';
+import { OrderSearchParameters, OrderSearchResult, OrdersService, OrderState, ShippingMethodType, ShippingType } from 'src/app/open-api';
 import { SessionService } from 'src/app/services/session.service';
 import { OrdersEventsService } from 'src/app/websocket/services/orders/oders-events.service';
+import { OrderDetailsComponent } from '../../orders/order-details/order-details.component';
+import { OrdersStatesComponent } from '../../orders/orders-states/orders-states.component';
 import { OrderProcessing } from './models/order-precessing';
 
 @Component({
@@ -18,12 +22,15 @@ export class HomeOrdersProcessingComponent implements OnInit {
   processingOrders: OrderProcessing[] = [];
   rowGroupMetadata: any;
 
-  shippingTypeHome = ShippingType.DELIVERYTOHOME
+  shippingTypeHome = ShippingType.DELIVERYTOHOME;
+  shippingMethodEnum = ShippingMethodType;
 
   constructor(
     private ordersService: OrdersService,
     private sessionService: SessionService,
     private ordersEventsService: OrdersEventsService,
+    private dialogService: DialogService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -139,5 +146,25 @@ export class HomeOrdersProcessingComponent implements OnInit {
         }
       }
     }
+  }
+
+  onOrderSelect(order: OrderSearchResult) {
+    this.ordersService.getOrder(order.id).subscribe(orderDetails => {
+      const ref = this.dialogService.open(OrdersStatesComponent, {
+        data: { order: orderDetails },
+        header: this.translate.instant('chooseNewOrderState'),
+        styleClass: 'p-col-11 p-md-9 p-lg-6'
+      });
+    })
+  }
+
+  openOrderDetails(order: OrderSearchResult) {
+    this.ordersService.getOrder(order.id).subscribe(orderDetails => {
+      const ref = this.dialogService.open(OrderDetailsComponent, {
+        data: { order: orderDetails },
+        header: this.translate.instant('orderDetails', { number: orderDetails.id }),
+        styleClass: 'p-col-11 p-md-8 p-lg-6'
+      });
+    })
   }
 }

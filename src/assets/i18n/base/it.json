@@ -79,6 +79,11 @@
     "title": "Stato ordine modificato",
     "detail": "L'ordine numero {orderNumber} è passato in stato {orderState}"
   },
+  "chooseNewOrderState": "Seleziona un nuovo stato per l'ordine",
+  "orderDetails": "Dettaglio ordine numero {number}",
+
+  "detail": "Dettagli{count, plural, =0{} one{o} other{}}",
+  "action": "Azion{count, plural, =0{i} one{e} other{i}}",
 
   "about": {
     "web": {

@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { OrderSearchParameters, OrderSearchResult, OrdersService, OrderState, ShippingType } from 'src/app/open-api';
 import { SessionService } from 'src/app/services/session.service';
 import { OrdersEventsService } from 'src/app/websocket/services/orders/oders-events.service';
+import { OrderDetailsComponent } from '../../orders/order-details/order-details.component';
 import { OrdersStatesComponent } from '../../orders/orders-states/orders-states.component';
 
 @Component({
@@ -24,7 +26,8 @@ export class HomeOrdersPendingComponent implements OnInit {
     private ordersEventsService: OrdersEventsService,
     private dialogService: DialogService,
     private ordersService: OrdersService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -60,8 +63,18 @@ export class HomeOrdersPendingComponent implements OnInit {
     this.ordersService.getOrder(order.id).subscribe(orderDetails => {
       const ref = this.dialogService.open(OrdersStatesComponent, {
         data: { order: orderDetails },
-        header: 'Choose a Car',
-        width: '70%'
+        header: this.translate.instant('chooseNewOrderState'),
+        styleClass: 'p-col-11 p-md-8 p-lg-6'
+      });
+    })
+  }
+
+  openOrderDetails(order: OrderSearchResult) {
+    this.ordersService.getOrder(order.id).subscribe(orderDetails => {
+      const ref = this.dialogService.open(OrderDetailsComponent, {
+        data: { order: orderDetails },
+        header: this.translate.instant('orderDetails', { number: orderDetails.id }),
+        styleClass: 'p-col-11 p-md-9 p-lg-6'
       });
     })
   }

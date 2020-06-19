@@ -1,0 +1,6 @@
+<app-order-details-header [order]="order"></app-order-details-header>
+
+<ng-container *ngFor="let line of order.lines">
+  <app-order-details-line-pizza *ngIf="line.pizzaPrice" [line]="line"></app-order-details-line-pizza>
+  <app-order-details-line-product *ngIf="line.productPrice" [line]="line"></app-order-details-line-product>
+</ng-container>
